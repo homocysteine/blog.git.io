@@ -7,14 +7,17 @@
   
   <title>The Tough Road in learning Graph | Homocysteine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
+<meta property="og:type" content="article">
 <meta property="og:title" content="The Tough Road in learning Graph">
 <meta property="og:url" content="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/index.html">
 <meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-04T05:22:13.957Z">
+<meta property="og:updated_time" content="2018-12-04T12:29:37.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Tough Road in learning Graph">
+<meta name="twitter:description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
   
     <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
   
@@ -83,11 +86,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="王林琛牛逼"><a href="#王林琛牛逼" class="headerlink" title="王林琛牛逼"></a>王林琛牛逼</h1><h1 id="Traversing-Graph"><a href="#Traversing-Graph" class="headerlink" title="Traversing Graph"></a>Traversing Graph</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>DFS is similar with the preorder traverse in tree.</p>
+<h3 id="Descirbe"><a href="#Descirbe" class="headerlink" title="Descirbe"></a>Descirbe</h3><ol>
+<li>Choose a node as the start node.</li>
+<li>Then, visit the adjNode of the start node , regard the one of its adjNodes as a new start node.</li>
+<li>repeat the step2, until we find that all the adjNodes of current node has been visisted.</li>
+<li>return to the pre node,repeat step2 and step3.</li>
+<li>Eventually, if there are still some modes remained,add them to the tail of the sequence.</li>
+</ol>
+<h3 id="implementation-ALGraph"><a href="#implementation-ALGraph" class="headerlink" title="implementation(ALGraph)"></a>implementation(ALGraph)</h3><ol>
+<li>Use a for-loop to initialize the Visited Array.</li>
+<li>Use a for-loop,judging the visited property at first. If the node has not been visited yet,call the DFS</li>
+<li>DFS: <ol>
+<li>assign the visited property with true.</li>
+<li>visit operation</li>
+<li>FirstAdhVex</li>
+<li>NextAdjVex<h4 id="Firstadj"><a href="#Firstadj" class="headerlink" title="Firstadj"></a>Firstadj</h4></li>
+</ol>
+</li>
+</ol>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>find children recursively, assisted</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjp9ardwk0000hgwzea8vrrp2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjp9q4fce0001okwzhteoahay" class="article-share-link">Share</a>
       
       
     </footer>
@@ -95,6 +118,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/12/04/Knowledge-points/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Knowledge points
+        
+      </div>
+    </a>
   
   
     <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" id="article-nav-older" class="article-nav-link-wrap">
@@ -134,6 +166,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/12/04/Knowledge-points/">Knowledge points</a>
+          </li>
         
           <li>
             <a href="/2018/12/04/The-Tough-Road-in-learning-Graph/">The Tough Road in learning Graph</a>
