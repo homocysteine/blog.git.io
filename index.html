@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-The-Tough-Road-in-learning-React-2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/" class="article-date">
+  <time datetime="2018-12-16T05:26:11.000Z" itemprop="datePublished">2018-12-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.</p>
+<h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Define the entry of the program</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ComponentName/&gt;,document.getElementById(<span class="string">'id'</span>));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The id content may be different but you can check it in index.html.</p>
+<h2 id="import-outside-component"><a href="#import-outside-component" class="headerlink" title="import outside component"></a>import outside component</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentName from <span class="string">'filepath'</span>;</span><br></pre></td></tr></table></figure>
+<p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
+<h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjpqh1fw20004h4wze889q8he" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-React-Native-1" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/09/React-Native-1/" class="article-date">
@@ -99,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjpgdb7pp0002i4wzg8tat2f9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjpqh1fvu0001h4wztee122cu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -144,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjpgdb7pk0001i4wz6k6akn8q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjpqh1fvx0002h4wzslhowubv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjpgdb7py0003i4wz85owqegr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjpqh1fw00003h4wzikefphcw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjpgdb7q20004i4wzx6zmnn9u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjpqh1fwi0006h4wzawapce3d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjpgdb7p20000i4wzwgz3ezir" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjpqh1fvo0000h4wz1x1kcy3e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjpgdb7q50005i4wzar4ycfmy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjpqh1fw30005h4wzirnjsni1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -379,6 +428,10 @@
       <ul>
         
           <li>
+            <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
+          </li>
+        
+          <li>
             <a href="/2018/12/09/React-Native-1/">React Native(1)</a>
           </li>
         
@@ -392,10 +445,6 @@
         
           <li>
             <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/">The Tough Road in learning React(1)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/23/How-to-edit-Hexo/">How to edit Hexo</a>
           </li>
         
       </ul>
