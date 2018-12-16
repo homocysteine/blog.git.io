@@ -7,17 +7,20 @@
   
   <title>The Tough Road in learning React(2) | Homocysteine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way. Two important part that you have to">
+  <meta name="description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Tough Road in learning React(2)">
 <meta property="og:url" content="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/index.html">
 <meta property="og:site_name" content="Homocysteine">
-<meta property="og:description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way. Two important part that you have to">
+<meta property="og:description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-16T05:48:33.605Z">
+<meta property="og:image" content="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png">
+<meta property="og:image" content="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png">
+<meta property="og:updated_time" content="2018-12-16T08:58:25.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="The Tough Road in learning React(2)">
-<meta name="twitter:description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way. Two important part that you have to">
+<meta name="twitter:description" content="Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png">
   
     <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
   
@@ -86,7 +89,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.</p>
+        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or C/C++)</p>
 <h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
 <li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
 </li>
@@ -99,7 +102,33 @@
 <p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
 <h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
+<h2 id="Use-arguments-to-pass-the-components"><a href="#Use-arguments-to-pass-the-components" class="headerlink" title="Use arguments to pass the components"></a>Use arguments to pass the components</h2><p>Using arguments to pass the components can help you return the value according to user’s current state.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    var component;</span><br><span class="line">    <span class="function"><span class="title">if</span></span>()&#123;</span><br><span class="line">        component=&lt;ComonentLogin&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        component=&lt;CompenentHeader&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>(&#123;component&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="JSX-expression"><a href="#JSX-expression" class="headerlink" title="JSX expression"></a>JSX expression</h2><ol>
+<li>You can use ? expression for help.</li>
+<li>You can deisgn a button in the following way. Value is the content which will be displayed in the button. Disabled decide whether you can click the button.</li>
+</ol>
+<p>You can use arguments {} to control above all.<br>e.g.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png" alt=""> </p>
+<h2 id="Life-cycle-methods"><a href="#Life-cycle-methods" class="headerlink" title="Life-cycle methods"></a>Life-cycle methods</h2><p>Override the original methods<br>You can carry on your logical in the different stage of a program.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png" alt=""></p>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ol>
+<li>State represents the state of the component.</li>
+<li>State’s effective scope is its class.So you can implement the change in a local area instead of refreshing all the page.</li>
+<li>All the class have the poperty of State. So you can call it use this.state.</li>
+<li><p>Initialize the state:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.state=&#123;argument1:value1,argument2:value2...&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Display the state:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.state.argument1&#125;&#123;this.state.argument2&#125;&lt;/p&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Set the state</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Time method</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;operation,waiting time);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state=&#123;username:<span class="string">"Bob"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br><span class="line">        &#125;,5000);</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p>Similar with State, every class has its own props,you can use this.props two call it.<br>The crucial difference btwween state and props is the spot they areinitialized.State is initialized in the constructor,props is initialized where you call the component.<br>Use blank two divide props.<br>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ComponentHeader userid=&#123;123456&#125; username=&#123;<span class="string">"Jack"</span>&#125;/&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.props.username&#125;&#123;this.props.userid&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
