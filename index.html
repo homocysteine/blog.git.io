@@ -220,7 +220,15 @@
 </li>
 <li><p>Install Android Stuido<br><a href="https://www.cnblogs.com/xiadewang/p/7820377.html" target="_blank" rel="noopener">tutorial</a><br>(Including Hello world instance)</p>
 </li>
+<li>Open the android file in the project with andriod studio</li>
+<li><p>After compiling, use <code>cd</code> go to the root directory of your project,then input</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>If you unfortunately meet the problem <code>unable to load script from assets index.android.bundle on windows</code>,then use the following steps to solve:<br>step 1: construct a folder in the “main” directory.<br>step 2: input the order</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform android --dev <span class="literal">false</span> --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>step 3: restart your program,until you see<br><img src="/2018/12/09/React-Native-1/1.png" alt=""></p>
 
       
     </div>
