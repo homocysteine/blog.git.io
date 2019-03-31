@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-MySQL-Shell" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/MySQL-Shell/" class="article-date">
+  <time datetime="2019-03-31T11:52:03.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-启动mysql服务"><a href="#1-启动mysql服务" class="headerlink" title="1.启动mysql服务"></a>1.启动mysql服务</h2><p>以管理员身份运行cmd，在命令行中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-关闭mysql服务"><a href="#2-关闭mysql服务" class="headerlink" title="2.关闭mysql服务"></a>2.关闭mysql服务</h2><p>与启动类似的操作，只不过命令换成了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
+<p>ps:cmd中的清屏指令为<code>cls</code></p>
+<h2 id="3-查看mysql版本"><a href="#3-查看mysql版本" class="headerlink" title="3.查看mysql版本"></a>3.查看mysql版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -V</span><br></pre></td></tr></table></figure>
+<p>注意V要大写</p>
+<h2 id="4-mysql登录"><a href="#4-mysql登录" class="headerlink" title="4.mysql登录"></a>4.mysql登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p -P3306 -h127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>如果使用的是默认端口和本地服务器，则-P和-h参数是不用加的<br>输入完密码后便成功登录了mysql</p>
+<h2 id="5-mysql退出"><a href="#5-mysql退出" class="headerlink" title="5.mysql退出"></a>5.mysql退出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>;</span><br><span class="line">quit;</span><br><span class="line">\q;</span><br></pre></td></tr></table></figure>
+<p>任意一个都可以<br>ps:登录到mysql后，记得句句有分号。</p>
+<h2 id="6-mysql编码规范"><a href="#6-mysql编码规范" class="headerlink" title="6.mysql编码规范"></a>6.mysql编码规范</h2><p>(1) 关键字 与 函数名 全部大写<br>(2) 数据库名、表名、字段名 全部小写<br>(3) SQL语句必须以分号结尾</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="cjtwxrneh000388wzply2mvci" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/25/review-of-C/" class="article-date">
@@ -91,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjrbedd6d0009agwztnj7jwhp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjtwxrnfi000a88wz4jksc53r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -131,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjrbedd5a0003agwzovx1zzra" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjtwxrnel000588wzbjob5csz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjrbedd580002agwzvydqrltf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjtwxrne5000088wz7g0jeix5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjrbedd6a0008agwzckq7i7n9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjtwxrnep000888wze9a5q8cf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjrbedd5x0004agwz5yayw6wa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjtwxrnej000488wz6gcgzriu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +415,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjrbedd560001agwzami1p9ck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjtwxrneg000288wz1xnbabt8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +471,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjrbedd5z0005agwzv7goftfk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjtwxrnem000688wzartrjc1h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +516,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjrbedd640007agwzvf1ocv3g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjtwxrneo000788wzt29lvtni" class="article-share-link">Share</a>
       
       
     </footer>
@@ -519,52 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjrbedd4z0000agwzhd1zzuj0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/hello-world/" class="article-date">
-  <time datetime="2018-11-23T05:55:33.873Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjrbedd620006agwzcm5eazam" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjtwxrnee000188wztuhz8oxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -575,6 +576,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -592,7 +598,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -603,6 +609,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
+          </li>
         
           <li>
             <a href="/2019/01/25/review-of-C/">review of C++</a>
@@ -618,10 +628,6 @@
         
           <li>
             <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/09/React-Native-1/">React Native(1)</a>
           </li>
         
       </ul>
