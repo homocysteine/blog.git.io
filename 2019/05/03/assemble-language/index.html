@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>assemble language | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 汇编数据类型db 字节类型变量，一个字节类型占一个字节，偏移量加1dw 字类型变量，一个字类型变量占两个字节，偏移量加2dd 双字类型变量，一个双字型变量占四个字节，偏移量加4 2. 汇编循环汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减11234mov cx,3n1:XXXXloop n1 3. 用堆栈保护复用寄存器123pus">
+<meta property="og:type" content="article">
+<meta property="og:title" content="assemble language">
+<meta property="og:url" content="http://yoursite.com/2019/05/03/assemble-language/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="1. 汇编数据类型db 字节类型变量，一个字节类型占一个字节，偏移量加1dw 字类型变量，一个字类型变量占两个字节，偏移量加2dd 双字类型变量，一个双字型变量占四个字节，偏移量加4 2. 汇编循环汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减11234mov cx,3n1:XXXXloop n1 3. 用堆栈保护复用寄存器123pus">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-04T12:30:06.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="assemble language">
+<meta name="twitter:description" content="1. 汇编数据类型db 字节类型变量，一个字节类型占一个字节，偏移量加1dw 字类型变量，一个字类型变量占两个字节，偏移量加2dd 双字类型变量，一个双字型变量占四个字节，偏移量加4 2. 汇编循环汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减11234mov cx,3n1:XXXXloop n1 3. 用堆栈保护复用寄存器123pus">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/03/assemble-language/" class="article-date">
+  <time datetime="2019-05-03T08:27:36.000Z" itemprop="datePublished">2019-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      assemble language
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-汇编数据类型"><a href="#1-汇编数据类型" class="headerlink" title="1. 汇编数据类型"></a>1. 汇编数据类型</h2><p>db 字节类型变量，一个字节类型占一个字节，偏移量加1<br>dw 字类型变量，一个字类型变量占两个字节，偏移量加2<br>dd 双字类型变量，一个双字型变量占四个字节，偏移量加4</p>
+<h2 id="2-汇编循环"><a href="#2-汇编循环" class="headerlink" title="2. 汇编循环"></a>2. 汇编循环</h2><p>汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,3</span><br><span class="line">n1:</span><br><span class="line">XXXX</span><br><span class="line">loop n1</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-用堆栈保护复用寄存器"><a href="#3-用堆栈保护复用寄存器" class="headerlink" title="3. 用堆栈保护复用寄存器"></a>3. 用堆栈保护复用寄存器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push AA</span><br><span class="line">XXX    /*中间可以更改AA中的值作为它用*/</span><br><span class="line">pop AA</span><br></pre></td></tr></table></figure>
+<h2 id="4-条件跳转"><a href="#4-条件跳转" class="headerlink" title="4. 条件跳转"></a>4. 条件跳转</h2><p>无条件跳转：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmp n1</span><br><span class="line">n1:</span><br><span class="line">XXX</span><br></pre></td></tr></table></figure></p>
+<p>有条件转移情形一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmp ax,8</span><br><span class="line">jnz n1 //如果不相等，则跳到n1处</span><br><span class="line">jz n1   //如果相等，则跳到n1处</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="cjv9ltzce0009gowz3ki59x1b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/31/MySQL-Shell/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MySQL_Shell</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/03/assemble-language/">assemble language</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/25/review-of-C/">review of C++</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/21/GaoDe-component/">GaoDe component</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

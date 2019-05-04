@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-How-to-edit-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/How-to-edit-Hexo/" class="article-date">
+  <time datetime="2018-11-23T06:29:12.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/How-to-edit-Hexo/">How to edit Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="can-you-hear-me"><a href="#can-you-hear-me" class="headerlink" title="can you hear me?"></a>can you hear me?</h2><h3 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog."></a>This is my first blog.</h3><h5 id="I’m-wondering-how-to-edit-it"><a href="#I’m-wondering-how-to-edit-it" class="headerlink" title="I’m wondering how to edit it."></a>I’m wondering how to edit it.</h5><h4 id="It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be"><a href="#It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be" class="headerlink" title="It seems that the more ‘#’ is, the smaller the character will be."></a>It seems that the more ‘#’ is, the smaller the character will be.</h4><p>what if i type without ‘#’?<br>It become the content of text!!</p>
+<p>Different with html,the key enter is also work here.</p>
+<p>So what if i want to type a line of system call like ‘hexo s’?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
+<p>And what if i want to put a website address in my blog page?<br><a href="https:www.baidu.com" target="_blank" rel="noopener">Try</a><br>In this way ‘try’ becomes a hyperlink.</p>
+<p>Let’s think about the pictures.<br><img src="/2018/11/23/How-to-edit-Hexo/gf.jpg" alt=""><br>since nobody will see the blog, i use my girlfriend’s picture as a test.</p>
+<p>If you want to load your post,just use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>By the way:if you want to check the effect of your edition,you must set up your hexo first,use the order like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-title"><a href="#1-title" class="headerlink" title="1.title"></a>1.title</h3><p>If you want to write a title,you should type several ‘#’ before your content, the less ‘#’ there are, the highest priorty the title possesses.<br>Be careful that there must be a blank between the ‘#’ character and your title content.</p>
+<h3 id="2-enter"><a href="#2-enter" class="headerlink" title="2.enter"></a>2.enter</h3><p>when you edit your blog, it is similar to edit a text in word. The enter and blank are also work.</p>
+<h3 id="3-order"><a href="#3-order" class="headerlink" title="3.order"></a>3.order</h3><p>If you want to show a code use special call to enclose your content.</p>
+<h3 id="4-website-address"><a href="#4-website-address" class="headerlink" title="4.website address"></a>4.website address</h3><p>If you want to put on a website address, use the formal like<br>“[describe]”+”(the address)”.</p>
+<h3 id="5-picture"><a href="#5-picture" class="headerlink" title="5.picture"></a>5.picture</h3><p>You have to modify the property of your deployment at first.<br>Change the “post_asset_folder” to true.<br>then use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$npm</span> install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>Then create a new folder in source, the folder’s name must be consistent with your .md file.<br>put a picture into the folder, then use the formal like<br>“![]”+”(foldername/picturename.pictureformat)” to create it in the web page.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjv9ltza50003gowz2qu9nz6o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/hello-world/" class="article-date">
@@ -97,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjtwxrner000988wzzw4de5km" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjv9ltzci000agowzlph8ekjf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -130,7 +179,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -141,6 +190,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/03/assemble-language/">assemble language</a>
+          </li>
         
           <li>
             <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
@@ -156,10 +209,6 @@
         
           <li>
             <a href="/2018/12/21/GaoDe-component/">GaoDe component</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
           </li>
         
       </ul>

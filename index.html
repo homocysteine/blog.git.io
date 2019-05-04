@@ -62,6 +62,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/03/assemble-language/" class="article-date">
+  <time datetime="2019-05-03T08:27:36.000Z" itemprop="datePublished">2019-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/03/assemble-language/">assemble language</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-汇编数据类型"><a href="#1-汇编数据类型" class="headerlink" title="1. 汇编数据类型"></a>1. 汇编数据类型</h2><p>db 字节类型变量，一个字节类型占一个字节，偏移量加1<br>dw 字类型变量，一个字类型变量占两个字节，偏移量加2<br>dd 双字类型变量，一个双字型变量占四个字节，偏移量加4</p>
+<h2 id="2-汇编循环"><a href="#2-汇编循环" class="headerlink" title="2. 汇编循环"></a>2. 汇编循环</h2><p>汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,3</span><br><span class="line">n1:</span><br><span class="line">XXXX</span><br><span class="line">loop n1</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-用堆栈保护复用寄存器"><a href="#3-用堆栈保护复用寄存器" class="headerlink" title="3. 用堆栈保护复用寄存器"></a>3. 用堆栈保护复用寄存器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push AA</span><br><span class="line">XXX    /*中间可以更改AA中的值作为它用*/</span><br><span class="line">pop AA</span><br></pre></td></tr></table></figure>
+<h2 id="4-条件跳转"><a href="#4-条件跳转" class="headerlink" title="4. 条件跳转"></a>4. 条件跳转</h2><p>无条件跳转：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmp n1</span><br><span class="line">n1:</span><br><span class="line">XXX</span><br></pre></td></tr></table></figure></p>
+<p>有条件转移情形一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmp ax,8</span><br><span class="line">jnz n1 //如果不相等，则跳到n1处</span><br><span class="line">jz n1   //如果相等，则跳到n1处</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="cjv9ltzce0009gowz3ki59x1b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-MySQL-Shell" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/03/31/MySQL-Shell/" class="article-date">
@@ -99,7 +140,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="cjtwxrneh000388wzply2mvci" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="cjv9ltza80004gowzwr6h8uj6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -138,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjtwxrnfi000a88wz4jksc53r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjv9ltzcn000bgowzzhucwioz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -178,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjtwxrnel000588wzbjob5csz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjv9ltza20002gowzaxe3wzdt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjtwxrne5000088wz7g0jeix5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjv9ltz9j0000gowzuwwgeqw8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjtwxrnep000888wze9a5q8cf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjv9ltzca0008gowz7mb90awd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -371,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjtwxrnej000488wz6gcgzriu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjv9ltzac0005gowzdyqmd3jx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -416,7 +457,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjtwxrneg000288wz1xnbabt8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjv9ltz9x0001gowzh0mda6tb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -472,7 +513,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjtwxrnem000688wzartrjc1h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjv9ltzag0006gowz6hg19085" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,56 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjtwxrneo000788wzt29lvtni" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-How-to-edit-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/How-to-edit-Hexo/" class="article-date">
-  <time datetime="2018-11-23T06:29:12.000Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/How-to-edit-Hexo/">How to edit Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="can-you-hear-me"><a href="#can-you-hear-me" class="headerlink" title="can you hear me?"></a>can you hear me?</h2><h3 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog."></a>This is my first blog.</h3><h5 id="I’m-wondering-how-to-edit-it"><a href="#I’m-wondering-how-to-edit-it" class="headerlink" title="I’m wondering how to edit it."></a>I’m wondering how to edit it.</h5><h4 id="It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be"><a href="#It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be" class="headerlink" title="It seems that the more ‘#’ is, the smaller the character will be."></a>It seems that the more ‘#’ is, the smaller the character will be.</h4><p>what if i type without ‘#’?<br>It become the content of text!!</p>
-<p>Different with html,the key enter is also work here.</p>
-<p>So what if i want to type a line of system call like ‘hexo s’?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
-<p>And what if i want to put a website address in my blog page?<br><a href="https:www.baidu.com" target="_blank" rel="noopener">Try</a><br>In this way ‘try’ becomes a hyperlink.</p>
-<p>Let’s think about the pictures.<br><img src="/2018/11/23/How-to-edit-Hexo/gf.jpg" alt=""><br>since nobody will see the blog, i use my girlfriend’s picture as a test.</p>
-<p>If you want to load your post,just use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>By the way:if you want to check the effect of your edition,you must set up your hexo first,use the order like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-title"><a href="#1-title" class="headerlink" title="1.title"></a>1.title</h3><p>If you want to write a title,you should type several ‘#’ before your content, the less ‘#’ there are, the highest priorty the title possesses.<br>Be careful that there must be a blank between the ‘#’ character and your title content.</p>
-<h3 id="2-enter"><a href="#2-enter" class="headerlink" title="2.enter"></a>2.enter</h3><p>when you edit your blog, it is similar to edit a text in word. The enter and blank are also work.</p>
-<h3 id="3-order"><a href="#3-order" class="headerlink" title="3.order"></a>3.order</h3><p>If you want to show a code use special call to enclose your content.</p>
-<h3 id="4-website-address"><a href="#4-website-address" class="headerlink" title="4.website address"></a>4.website address</h3><p>If you want to put on a website address, use the formal like<br>“[describe]”+”(the address)”.</p>
-<h3 id="5-picture"><a href="#5-picture" class="headerlink" title="5.picture"></a>5.picture</h3><p>You have to modify the property of your deployment at first.<br>Change the “post_asset_folder” to true.<br>then use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$npm</span> install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
-<p>Then create a new folder in source, the folder’s name must be consistent with your .md file.<br>put a picture into the folder, then use the formal like<br>“![]”+”(foldername/picturename.pictureformat)” to create it in the web page.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjtwxrnee000188wztuhz8oxo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjv9ltzc70007gowzwij52f6j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -599,7 +591,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -610,6 +602,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/05/03/assemble-language/">assemble language</a>
+          </li>
         
           <li>
             <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
@@ -625,10 +621,6 @@
         
           <li>
             <a href="/2018/12/21/GaoDe-component/">GaoDe component</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
           </li>
         
       </ul>
