@@ -62,6 +62,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/08/python-spider/" class="article-date">
+  <time datetime="2019-05-08T11:40:28.000Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/python-spider/">python spider</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>python注释方法 <code>#</code><br>python函数定义 <code>def function(parameter):</code>。注意缩进</p>
+<h2 id="1-request库的get方法"><a href="#1-request库的get方法" class="headerlink" title="1.request库的get方法"></a>1.request库的get方法</h2><p>获取网页最简单的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r=requests.get(url)</span><br></pre></td></tr></table></figure></p>
+<p>右边是Request对象<br>左边是Response对象，包含所有返回的资源</p>
+<h3 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h3><p>r.status_code 返回状态码，200表示成功，一般都会检测一下<br>r.text 用字符串表示出网页内容</p>
+<h2 id="2-通用代码框架"><a href="#2-通用代码框架" class="headerlink" title="2.通用代码框架"></a>2.通用代码框架</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url,timeout=30)</span><br><span class="line">        r.raise_for_status() <span class="comment">#如果状态不是200，引发HttpError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding <span class="comment">#选择合适的编码方式</span></span><br><span class="line">        <span class="built_in">return</span> r.text</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"产生异常"</span> <span class="comment">#抛出异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:  <span class="comment">#封装</span></span><br><span class="line">    url = <span class="string">"https://www.zhibo8.cc/"</span></span><br><span class="line">    <span class="built_in">print</span>(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<h2 id="3-request库head方法"><a href="#3-request库head方法" class="headerlink" title="3. request库head方法"></a>3. request库head方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r=requests.head(url)</span><br><span class="line"><span class="built_in">print</span>(r.headers) <span class="comment">#用很小的网络流量获取概要信息</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="cjvgiq1el000b7cwzxq81s629" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/03/assemble-language/" class="article-date">
@@ -93,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="cjv9ltzce0009gowz3ki59x1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="cjvgiq1eh00097cwz2pfku135" class="article-share-link">Share</a>
       
       
     </footer>
@@ -140,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="cjv9ltza80004gowzwr6h8uj6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="cjvgiq1ds00037cwzl9bty30c" class="article-share-link">Share</a>
       
       
     </footer>
@@ -179,7 +221,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjv9ltzcn000bgowzzhucwioz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="cjvgiq1f1000c7cwzowe0ifv5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjv9ltza20002gowzaxe3wzdt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="cjvgiq1dw00057cwzz5bvuzo4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -271,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjv9ltz9j0000gowzuwwgeqw8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="cjvgiq1dg00007cwzmcitdlas" class="article-share-link">Share</a>
       
       
     </footer>
@@ -346,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjv9ltzca0008gowz7mb90awd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="cjvgiq1eg00087cwzbrs5oc1w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjv9ltzac0005gowzdyqmd3jx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="cjvgiq1du00047cwzcxuc0kxj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -457,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjv9ltz9x0001gowzh0mda6tb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="cjvgiq1dr00027cwzpcypsu1m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -513,52 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjv9ltzag0006gowz6hg19085" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-React(1)" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" class="article-date">
-  <time datetime="2018-12-02T06:31:49.000Z" itemprop="datePublished">2018-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/02/The-Tough-Road-in-learning-React(1)/">The Tough Road in learning React(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="install-the-React"><a href="#install-the-React" class="headerlink" title="install the React"></a>install the React</h2><p>just execute the instruction<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure></p>
-<h2 id="create-a-project"><a href="#create-a-project" class="headerlink" title="create a project"></a>create a project</h2><p>just input following code<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-react-app</span><br><span class="line">$ create-react-app my-app</span><br></pre></td></tr></table></figure></p>
-<p>By the way, if you want to preview the effect of your web page,you can visit the domainname “localhost:3000”.<br>Before you visit local:3000,you must input the<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> my-app/</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure></p>
-<p>Otherwise, you can’t open the webpage.<br>Then you can modify the index.js file, to create your own webpage based on React.</p>
-<h2 id="Add-component-to-the-website"><a href="#Add-component-to-the-website" class="headerlink" title="Add component to the website"></a>Add component to the website</h2><p>one way to add a component is using javascript function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props) &#123;</span><br><span class="line">  <span class="built_in">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line">const element = &lt;Welcome name=<span class="string">"Sara"</span> /&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p>In this section, we define an element <code>&lt;welcome name=&quot;Sara&quot;&gt;</code>and call the element in the ReactDom.render function.<br>React use {name: ‘Sara’} as props(the argument of Welcome)<br>Welcome function return a value <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code><br>React DOM refreshes the DOM, the DOM become <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props)&#123;</span><br><span class="line">    <span class="built_in">return</span> &lt;h1&gt;Hello world again,&#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Combine</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(&lt;Combine /&gt;, </span><br><span class="line">    document.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
-<p>Use div to show more than one components at one time.</p>
-<h2 id="！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase"><a href="#！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase" class="headerlink" title="！！！！！Warning:the first letter of the component’s name must be uppercase."></a>！！！！！Warning:the first letter of the component’s name must be uppercase.</h2><h2 id="something-you-should-know"><a href="#something-you-should-know" class="headerlink" title="something you should  know"></a>something you should  know</h2><p>The big parenthesis ‘{}’ means extracting the content.<br>You can show a component use element or component name(<welcome>)</welcome></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjv9ltzc70007gowzwij52f6j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="cjvgiq1dx00067cwz20yw4v60" class="article-share-link">Share</a>
       
       
     </footer>
@@ -604,6 +601,10 @@
       <ul>
         
           <li>
+            <a href="/2019/05/08/python-spider/">python spider</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/03/assemble-language/">assemble language</a>
           </li>
         
@@ -617,10 +618,6 @@
         
           <li>
             <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/21/GaoDe-component/">GaoDe component</a>
           </li>
         
       </ul>

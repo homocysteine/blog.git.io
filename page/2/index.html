@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-The-Tough-Road-in-learning-React(1)" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" class="article-date">
+  <time datetime="2018-12-02T06:31:49.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/02/The-Tough-Road-in-learning-React(1)/">The Tough Road in learning React(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="install-the-React"><a href="#install-the-React" class="headerlink" title="install the React"></a>install the React</h2><p>just execute the instruction<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure></p>
+<h2 id="create-a-project"><a href="#create-a-project" class="headerlink" title="create a project"></a>create a project</h2><p>just input following code<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-react-app</span><br><span class="line">$ create-react-app my-app</span><br></pre></td></tr></table></figure></p>
+<p>By the way, if you want to preview the effect of your web page,you can visit the domainname “localhost:3000”.<br>Before you visit local:3000,you must input the<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> my-app/</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure></p>
+<p>Otherwise, you can’t open the webpage.<br>Then you can modify the index.js file, to create your own webpage based on React.</p>
+<h2 id="Add-component-to-the-website"><a href="#Add-component-to-the-website" class="headerlink" title="Add component to the website"></a>Add component to the website</h2><p>one way to add a component is using javascript function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props) &#123;</span><br><span class="line">  <span class="built_in">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line">const element = &lt;Welcome name=<span class="string">"Sara"</span> /&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>In this section, we define an element <code>&lt;welcome name=&quot;Sara&quot;&gt;</code>and call the element in the ReactDom.render function.<br>React use {name: ‘Sara’} as props(the argument of Welcome)<br>Welcome function return a value <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code><br>React DOM refreshes the DOM, the DOM become <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props)&#123;</span><br><span class="line">    <span class="built_in">return</span> &lt;h1&gt;Hello world again,&#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Combine</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(&lt;Combine /&gt;, </span><br><span class="line">    document.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>Use div to show more than one components at one time.</p>
+<h2 id="！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase"><a href="#！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase" class="headerlink" title="！！！！！Warning:the first letter of the component’s name must be uppercase."></a>！！！！！Warning:the first letter of the component’s name must be uppercase.</h2><h2 id="something-you-should-know"><a href="#something-you-should-know" class="headerlink" title="something you should  know"></a>something you should  know</h2><p>The big parenthesis ‘{}’ means extracting the content.<br>You can show a component use element or component name(<welcome>)</welcome></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="cjvgiq1ef00077cwze0u7z1i1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-How-to-edit-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/How-to-edit-Hexo/" class="article-date">
@@ -101,7 +146,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjv9ltza50003gowz2qu9nz6o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="cjvgiq1do00017cwzyzjk9feb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjv9ltzci000agowzlph8ekjf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="cjvgiq1ej000a7cwzdhnj8zct" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,6 +237,10 @@
       <ul>
         
           <li>
+            <a href="/2019/05/08/python-spider/">python spider</a>
+          </li>
+        
+          <li>
             <a href="/2019/05/03/assemble-language/">assemble language</a>
           </li>
         
@@ -205,10 +254,6 @@
         
           <li>
             <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
-          </li>
-        
-          <li>
-            <a href="/2018/12/21/GaoDe-component/">GaoDe component</a>
           </li>
         
       </ul>

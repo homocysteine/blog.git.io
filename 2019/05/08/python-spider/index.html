@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>python spider | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="pspython注释方法 #python函数定义 def function(parameter):。注意缩进 1.request库的get方法获取网页最简单的方法1r=requests.get(url) 右边是Request对象左边是Response对象，包含所有返回的资源 Response对象r.status_code 返回状态码，200表示成功，一般都会检测一下r.text 用字符串表示出网页">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python spider">
+<meta property="og:url" content="http://yoursite.com/2019/05/08/python-spider/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="pspython注释方法 #python函数定义 def function(parameter):。注意缩进 1.request库的get方法获取网页最简单的方法1r=requests.get(url) 右边是Request对象左边是Response对象，包含所有返回的资源 Response对象r.status_code 返回状态码，200表示成功，一般都会检测一下r.text 用字符串表示出网页">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-08T12:27:00.771Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python spider">
+<meta name="twitter:description" content="pspython注释方法 #python函数定义 def function(parameter):。注意缩进 1.request库的get方法获取网页最简单的方法1r=requests.get(url) 右边是Request对象左边是Response对象，包含所有返回的资源 Response对象r.status_code 返回状态码，200表示成功，一般都会检测一下r.text 用字符串表示出网页">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/08/python-spider/" class="article-date">
+  <time datetime="2019-05-08T11:40:28.000Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python spider
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>python注释方法 <code>#</code><br>python函数定义 <code>def function(parameter):</code>。注意缩进</p>
+<h2 id="1-request库的get方法"><a href="#1-request库的get方法" class="headerlink" title="1.request库的get方法"></a>1.request库的get方法</h2><p>获取网页最简单的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r=requests.get(url)</span><br></pre></td></tr></table></figure></p>
+<p>右边是Request对象<br>左边是Response对象，包含所有返回的资源</p>
+<h3 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h3><p>r.status_code 返回状态码，200表示成功，一般都会检测一下<br>r.text 用字符串表示出网页内容</p>
+<h2 id="2-通用代码框架"><a href="#2-通用代码框架" class="headerlink" title="2.通用代码框架"></a>2.通用代码框架</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url,timeout=30)</span><br><span class="line">        r.raise_for_status() <span class="comment">#如果状态不是200，引发HttpError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding <span class="comment">#选择合适的编码方式</span></span><br><span class="line">        <span class="built_in">return</span> r.text</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"产生异常"</span> <span class="comment">#抛出异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:  <span class="comment">#封装</span></span><br><span class="line">    url = <span class="string">"https://www.zhibo8.cc/"</span></span><br><span class="line">    <span class="built_in">print</span>(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<h2 id="3-request库head方法"><a href="#3-request库head方法" class="headerlink" title="3. request库head方法"></a>3. request库head方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r=requests.head(url)</span><br><span class="line"><span class="built_in">print</span>(r.headers) <span class="comment">#用很小的网络流量获取概要信息</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="cjvgiq1el000b7cwzxq81s629" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/05/03/assemble-language/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">assemble language</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/05/08/python-spider/">python spider</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/03/assemble-language/">assemble language</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/25/review-of-C/">review of C++</a>
+          </li>
+        
+          <li>
+            <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
