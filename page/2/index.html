@@ -62,6 +62,72 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-React-Native-1" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/09/React-Native-1/" class="article-date">
+  <time datetime="2018-12-09T01:46:24.000Z" itemprop="datePublished">2018-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/09/React-Native-1/">React Native(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Step1-install-Node-js"><a href="#Step1-install-Node-js" class="headerlink" title="Step1:install Node.js"></a>Step1:install Node.js</h2><h2 id="Step2-install-React-Native"><a href="#Step2-install-React-Native" class="headerlink" title="Step2:install React Native"></a>Step2:install React Native</h2><p>ps:If you develop in Linux environment, install Homebrew and watchman at first.</p>
+<ol>
+<li><p>The command that install react native</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g react-native-cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Init a React Native project</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init HelloReact</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Install Android Stuido<br><a href="https://www.cnblogs.com/xiadewang/p/7820377.html" target="_blank" rel="noopener">tutorial</a><br>(Including Hello world instance)</p>
+</li>
+<li>Open the android file in the project with andriod studio</li>
+<li><p>After compiling, use <code>cd</code> go to the root directory of your project,then input</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>bug set<br>If you unfortunately meet the problem <code>unable to load script from assets index.android.bundle on windows</code>,then use the following steps to solve:<br>step 1: construct a folder in the “main” directory.<br>step 2: input the order</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform android --dev <span class="literal">false</span> --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>step 3: restart your program,until you see<br><img src="/2018/12/09/React-Native-1/1.png" alt=""></p>
+<p>If you meet the problem <code>app:installDebug</code>, it means you have to open the virtual mobile first ,then input the order <code>react-native run-android</code></p>
+<p>If you meet the problem <code>could not connect to development server</code>, just input the order in current directory<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
+<p>If you meet the problem <code>execution failed for task &#39;:app:transformClassesWithDexForDebug&#39;</code><br>Find the app build.gradle file, modify the following function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.tabbar"</span></span><br><span class="line">        minSdkVersion rootProject.ext.minSdkVersion</span><br><span class="line">        targetSdkVersion rootProject.ext.targetSdkVersion</span><br><span class="line">        versionCode 1</span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters <span class="string">"armeabi-v7a"</span>, <span class="string">"x86"</span></span><br><span class="line">        &#125;</span><br><span class="line">        multiDexEnabled <span class="literal">true</span> //add this one</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>bunble-&gt;open VM-&gt;run-android-&gt;restart the VM</p>
+<ol start="7">
+<li>Then modify the App.js two create your own react-native work,double press the ‘R’ two watch the effect.</li>
+</ol>
+<h2 id="My-first-react-native-work"><a href="#My-first-react-native-work" class="headerlink" title="My first react-native work"></a>My first react-native work</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import React,&#123;Component&#125; from <span class="string">'react'</span>;</span><br><span class="line">import &#123;Platform,StyleSheet,Text,View&#125; from <span class="string">'react-native'</span>;</span><br><span class="line">//import components</span><br><span class="line"><span class="built_in">export</span> default class App extends Component&lt; &#123;&#125; &gt;&#123;//define your components</span><br><span class="line">  <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(&lt;View style=&#123;styles.rootView&#125;&gt;</span><br><span class="line">    &lt;View style=&#123;styles.viewOne&#125;/&gt;</span><br><span class="line">    &lt;View style=&#123;styles.viewTwo&#125;/&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//use styles variable to <span class="built_in">set</span> the style property of all components</span><br><span class="line">const styles=StyleSheet.create(&#123;</span><br><span class="line">  rootView: &#123;</span><br><span class="line">    flexDirection: <span class="string">'row'</span>,</span><br><span class="line">    height: 100,</span><br><span class="line">    marginTop: 40</span><br><span class="line">  &#125;,</span><br><span class="line">  viewOne: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'blue'</span>,</span><br><span class="line">    flex: 0.4</span><br><span class="line">  &#125;,</span><br><span class="line">  viewTwo: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'red'</span>,</span><br><span class="line">    flex: 0.6</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="TabBar-instance"><a href="#TabBar-instance" class="headerlink" title="TabBar instance"></a>TabBar instance</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from <span class="string">'react'</span>;</span><br><span class="line">import &#123;</span><br><span class="line">  Platform,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  Image</span><br><span class="line">&#125; from <span class="string">'react-native'</span>;</span><br><span class="line">import TabNavigator from <span class="string">'react-native-tab-navigator'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default class App extends Component&lt;&#123;&#125;&gt; &#123;//这是APP的一整个组件</span><br><span class="line">//开局先对这个组件的state进行初始化</span><br><span class="line">  state = &#123;</span><br><span class="line">    selectedTab: <span class="string">'home'</span>, //selectedTab是设置默认选定的tab</span><br><span class="line">  &#125;;</span><br><span class="line">//_renderContent是页面渲染函数，这里设置颜色和页面文字内容</span><br><span class="line">//tab切换时，使用此函数生成对应元素</span><br><span class="line">  _renderContent = (color: string, pageText: string) =&gt; &#123;//总体内容</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      &lt;View style=&#123;[styles.tabContent, &#123;backgroundColor: color&#125;]&#125;&gt;&#123;/**/&#125;</span><br><span class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;&#123;pageText&#125;&lt;/Text&gt;</span><br><span class="line">      &lt;/View&gt;//Text内容采用参数传递的方式</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line">  /*尖括号里面是一个组件，同一个尖括号里可以设置这些组建的属性*/</span><br><span class="line">  /*页面切换时改变文字*/</span><br><span class="line">  //以下是底部选框内容</span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;//主要函数</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      //TabNavigator.Item是TabNavigator的子组件</span><br><span class="line">      //badgeText是设置TabNavigator右上角的角标内容</span><br><span class="line">      //onPress是设置TabNavigator.Item在受到点击后的反应，可以用一个事件函数来设置组件状态的改变</span><br><span class="line">      //renderIcon设置图标静态样式</span><br><span class="line">      //renderSelectedIcon设置图标选中时的样式</span><br><span class="line">      //在选中框中对渲染函数进行传参，改变整体样式</span><br><span class="line">      //selected判断当前的选中框是否被选中</span><br><span class="line">      //===相当于==</span><br><span class="line">      //Image组件可以设置style和<span class="built_in">source</span>属性</span><br><span class="line">      &lt;TabNavigator&gt;</span><br><span class="line">        &lt;TabNavigator.Item  </span><br><span class="line">          selected=&#123;this.state.selectedTab === <span class="string">'home'</span>&#125;</span><br><span class="line">          title=<span class="string">"首页"</span></span><br><span class="line">          renderIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./flux.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          renderSelectedIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./relay.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          badgeText=<span class="string">"1"</span></span><br><span class="line">          onPress=&#123;() =&gt; this.setState(&#123; selectedTab: <span class="string">'home'</span> &#125;)&#125;&gt;</span><br><span class="line">          &#123;this._renderContent(<span class="string">'#414A8C'</span>, <span class="string">'首页 Tab - 1'</span>)&#125;</span><br><span class="line">        &lt;/TabNavigator.Item&gt;</span><br><span class="line">        &lt;TabNavigator.Item</span><br><span class="line">          selected=&#123;this.state.selectedTab === <span class="string">'profile'</span>&#125;</span><br><span class="line">          title=<span class="string">"个人中心"</span></span><br><span class="line">          renderIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./flux.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          renderSelectedIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./relay.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          badgeText=<span class="string">"2"</span></span><br><span class="line">          onPress=&#123;() =&gt; this.setState(&#123; selectedTab: <span class="string">'profile'</span> &#125;)&#125;&gt;</span><br><span class="line">           &#123;this._renderContent(<span class="string">'#783E33'</span>, <span class="string">'个人中心 Tab - 2'</span>)&#125;</span><br><span class="line">        &lt;/TabNavigator.Item&gt;</span><br><span class="line">      &lt;/TabNavigator&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//以下设置页面渲染函数中tab部分的样式</span><br><span class="line">var styles = StyleSheet.create(&#123;</span><br><span class="line">  tabContent: &#123;</span><br><span class="line">    flex: 1,//伸缩因子</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  tabText: &#123;</span><br><span class="line">    color: <span class="string">'white'</span>,</span><br><span class="line">    margin: 50,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h2><p>箭头函数类似于lamda表达式，用于事件处理  ()=&gt;{ , }<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onPress=&#123;()=&gt;Alert.alert(<span class="string">'hhh'</span>,<span class="string">'没啥事'</span>,[&#123;text:<span class="string">'OK'</span>,onPress:()=&gt;console.log(<span class="string">'这有啥用？'</span>)&#125;])&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="登录界面-懒得写了"><a href="#登录界面-懒得写了" class="headerlink" title="登录界面 懒得写了"></a>登录界面 懒得写了</h2><p><img src="/2018/12/09/React-Native-1/signup.jpg" alt=""><br>The string in js must use ‘’ to enclose the content.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="ckbdbsp3y0005fcwz0jm4ilwl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Knowledge-points" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/04/Knowledge-points/" class="article-date">
@@ -97,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="ck6g88zyr00026kwzcyonpr9a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="ckbdbsp3q0003fcwztdylzwxz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ck6g88zz100076kwz6ufo9ee5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbdbsp420007fcwzsy3v2uqc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="ck6g88zz200086kwzhee1x7oc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="ckbdbsp430008fcwz704ec9uw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -247,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="ck6g88zyg00006kwz6ecez7to" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="ckbdbsp3j0001fcwz2v5efuic" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="ck6g88zz8000b6kwziqain3qz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="ckbdbsp4j000cfcwz8a2e24nb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -325,7 +391,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -336,6 +402,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/06/13/Two-Sum/">Two Sum</a>
+          </li>
         
           <li>
             <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
@@ -351,10 +421,6 @@
         
           <li>
             <a href="/2019/05/03/assemble-language/">assemble language</a>
-          </li>
-        
-          <li>
-            <a href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
           </li>
         
       </ul>
