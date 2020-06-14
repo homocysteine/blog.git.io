@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Add-two-numbers" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/14/Add-two-numbers/" class="article-date">
+  <time datetime="2020-06-14T12:27:08.000Z" itemprop="datePublished">2020-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h1><h1 id="基本数学解法，要考虑到多种意外情况"><a href="#基本数学解法，要考虑到多种意外情况" class="headerlink" title="基本数学解法，要考虑到多种意外情况"></a>基本数学解法，要考虑到多种意外情况</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     <span class="function"><span class="title">ListNode</span></span>() &#123;&#125;</span><br><span class="line"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="line"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">import static java.lang.Integer.max;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        int count1 = 0;</span><br><span class="line">            int count2 = 0;</span><br><span class="line">            ListNode temp;</span><br><span class="line">            ListNode list1 = l1;</span><br><span class="line">            ListNode list2 = l2;</span><br><span class="line">            temp = l1;</span><br><span class="line">            <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">                count1++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = l2;</span><br><span class="line">            <span class="keyword">while</span>(temp!= null)&#123;</span><br><span class="line">                count2++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            //ListNode result = new</span><br><span class="line">            int size = max(count1,count2)+1;</span><br><span class="line">            int[] result = new int[size];</span><br><span class="line">            <span class="keyword">for</span>(int i=0;list1!=null||list2!=null;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list1==null||list2==null)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(list1==null)&#123;</span><br><span class="line">                        result[i]=result[i]+list2.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        result[i]=result[i]+list1.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i]=result[i]+list1.val+list2.val;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(result[i]&gt;=10)&#123;</span><br><span class="line">                    result[i+1]=result[i]/10;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i+1]=0;</span><br><span class="line">                &#125;</span><br><span class="line">                result[i]=result[i]%10;</span><br><span class="line">                <span class="keyword">if</span>(list1 == null)&#123;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(list2 == null)&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ListNode first = null;</span><br><span class="line">            ListNode second = null;</span><br><span class="line">            <span class="keyword">if</span>(result[size-1]!=0)&#123;</span><br><span class="line">                first = new ListNode(result[size-1]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-2;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                first = new ListNode(result[size-2]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-3;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结知识点</p>
+<ol>
+<li><p>Java中的链表数据结构<br>使用类来表示链表结点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ListNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="title">ListNode</span></span>()&#123;&#125;;</span><br><span class="line">    ListNode(int val)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(int val,ListNode next)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">        this.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对链表进行遍历的方式<br>使用一个temp指针指向一个结点，然后temp=temp.next这样的去遍历</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static void displayList(ListNode list)&#123;</span><br><span class="line">        ListNode temp = list;</span><br><span class="line">        <span class="keyword">if</span>(temp == null)&#123;</span><br><span class="line">            System.out.println(<span class="string">"链表为空\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">            System.out.print(temp.val+<span class="string">" "</span>);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbf1u37z000080wzz9u8qqdg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Two-Sum" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/13/Two-Sum/" class="article-date">
@@ -114,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbdbsp4f000afcwzlzfr7n0p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbf1u38y000b80wz88mtl606" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbdbsp3o0002fcwziswmusfk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbf1u389000280wzho36wtxn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbdbsp4u000ffcwzxatucjlu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbf1u39c000e80wzvysbgfpz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -246,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbdbsp4k000dfcwzee69uog9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbf1u39d000f80wz5amidljc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +332,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbdbsp4h000bfcwzos1uar9m" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbf1u390000c80wze00lt7y0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -334,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbdbsp3v0004fcwzvvsefzbp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbf1u38h000580wzb31rqp6z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbdbsp4m000efcwzxny206y6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbf1u39f000g80wznr4ifkh2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -413,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbdbsp400006fcwzcpzalsqt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbf1u38m000880wzg5m2j1rc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -465,82 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbdbsp3f0000fcwzigrxndjt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-React-2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/" class="article-date">
-  <time datetime="2018-12-16T05:26:11.000Z" itemprop="datePublished">2018-12-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or C/C++)</p>
-<h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Define the entry of the program</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ComponentName/&gt;,document.getElementById(<span class="string">'id'</span>));</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>The id content may be different but you can check it in index.html.</p>
-<h2 id="import-outside-component"><a href="#import-outside-component" class="headerlink" title="import outside component"></a>import outside component</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentName from <span class="string">'filepath'</span>;</span><br></pre></td></tr></table></figure>
-<p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
-<h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Use-arguments-to-pass-the-components"><a href="#Use-arguments-to-pass-the-components" class="headerlink" title="Use arguments to pass the components"></a>Use arguments to pass the components</h2><p>Using arguments to pass the components can help you return the value according to user’s current state.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    var component;</span><br><span class="line">    <span class="function"><span class="title">if</span></span>()&#123;</span><br><span class="line">        component=&lt;ComonentLogin&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        component=&lt;CompenentHeader&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>(&#123;component&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="JSX-expression"><a href="#JSX-expression" class="headerlink" title="JSX expression"></a>JSX expression</h2><ol>
-<li>You can use ? expression for help.</li>
-<li>You can deisgn a button in the following way. Value is the content which will be displayed in the button. Disabled decide whether you can click the button.</li>
-</ol>
-<p>You can use arguments {} to control above all.<br>e.g.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png" alt=""> </p>
-<h2 id="Life-cycle-methods"><a href="#Life-cycle-methods" class="headerlink" title="Life-cycle methods"></a>Life-cycle methods</h2><p>Override the original methods<br>You can carry on your logical in the different stage of a program.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png" alt=""></p>
-<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ol>
-<li>State represents the state of the component.</li>
-<li>State’s effective scope is its class.So you can implement the change in a local area instead of refreshing all the page.</li>
-<li>All the class have the poperty of State. So you can call it use this.state.</li>
-<li><p>Initialize the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.state=&#123;argument1:value1,argument2:value2...&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Display the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.state.argument1&#125;&#123;this.state.argument2&#125;&lt;/p&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Set the state</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Time method</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;operation,waiting time);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state=&#123;username:<span class="string">"Bob"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br><span class="line">        &#125;,5000);</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p>Similar with State, every class has its own props,you can use this.props two call it.<br>The crucial difference btwween state and props is the spot they areinitialized.State is initialized in the constructor,props is initialized where you call the component.<br>Use blank two divide props.<br>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ComponentHeader userid=&#123;123456&#125; username=&#123;<span class="string">"Jack"</span>&#125;/&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.props.username&#125;&#123;this.props.userid&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="ckbdbsp4d0009fcwzbk08bdzy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbf1u387000180wztuwsr1nz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,6 +556,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/Two-Sum/">Two Sum</a>
           </li>
         
@@ -599,10 +573,6 @@
         
           <li>
             <a href="/2019/05/08/python-spider/">python spider</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/03/assemble-language/">assemble language</a>
           </li>
         
       </ul>
