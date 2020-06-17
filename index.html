@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-5-最长回文子串" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/5-最长回文子串/" class="article-date">
+  <time datetime="2020-06-17T11:51:59.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#解法一：暴力法</p>
+<ol>
+<li>列举出所有可能的子串</li>
+<li>专门写一个函数，检查子串和它的逆序是否相等</li>
+<li>使用hashmap将最大的长度和字符串对应起来</li>
+<li>反转字符串可以使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new StringBuilder(str).reverse().toString()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>StringBuilder和StringBuffer很相似，StringBuffer线程安全；StringBuilder速度更快<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static String longestPalindrome(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">""</span>))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxlength=0;</span><br><span class="line">        HashMap&lt;Integer,String&gt; map = new HashMap();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(s.substring(i,j)))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(j-i&gt;maxlength)&#123;</span><br><span class="line">                        maxlength = j-i;</span><br><span class="line">                        map.put(maxlength,s.substring(i,j));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> map.get(maxlength);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean check(String substring)&#123;</span><br><span class="line">        <span class="keyword">if</span>(substring.equals(new StringBuilder(substring).reverse().toString()))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>#动态规划法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbjazvn50001k0wzvjrc7shu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
@@ -120,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbj6vad90007mwwzzr7z4jk1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbjazvo0000ck0wzo03arlnf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbj6vad70006mwwzu2ylqyqa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbjazvnd0005k0wzfwm465zo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -228,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbj6vact0000mwwzvposvnui" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbjazvmy0000k0wz85vles7g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbj6vadp000gmwwzqqnsvpcx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbjazvo5000fk0wzswenraed" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbj6vad30003mwwzqghyya1b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbjazvn90003k0wzne2fhxhs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -380,7 +426,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbj6vady000imwwzrxmt3cp6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbjazvoa000jk0wzufz0kgyg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +468,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbj6vadm000emwwzwwllpuos" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbjazvo9000ik0wza69wyr7d" class="article-share-link">Share</a>
       
       
     </footer>
@@ -463,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbj6vadl000dmwwzn0ilw9rl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbjazvo3000ek0wz19vgyrd8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -510,46 +556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbj6vad40004mwwzutdiuo85" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/review-of-C/" class="article-date">
-  <time datetime="2019-01-25T01:52:23.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/review-of-C/">review of C++</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-The-string-of-C"><a href="#1-The-string-of-C" class="headerlink" title="1. The string of C++"></a>1. The string of C++</h2><p>If you want to use string in c++, you’d better include the .h file <string><br>You can create a string instance like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="string">"str"</span>;</span><br><span class="line">String str2;</span><br></pre></td></tr></table></figure></string></p>
-<p>You can copy an instance using =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2=str1;</span><br></pre></td></tr></table></figure></p>
-<p>You can concat two instance using +<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str3=str1+str2;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbj6vadr000hmwwzifz0mjgg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbjazvni0008k0wz1petoh5e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -595,6 +602,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
           </li>
         
@@ -608,10 +619,6 @@
         
           <li>
             <a href="/2020/06/13/Two-Sum/">Two Sum</a>
-          </li>
-        
-          <li>
-            <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
           </li>
         
       </ul>
