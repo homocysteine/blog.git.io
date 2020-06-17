@@ -62,6 +62,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
+  <time datetime="2020-06-17T01:11:44.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Leetcode problem-3</p>
+<h1 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h1><ol>
+<li>利用两个for循环列举出string中所有可能的substring的情况；</li>
+<li>再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static class Solution &#123;</span><br><span class="line">        public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">            //考虑从一个字母到所有字母都上的情况</span><br><span class="line">            int maxlength=0;</span><br><span class="line">            //String maxstr = null;</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                    String temp = s.substring(i,j);</span><br><span class="line">                    <span class="keyword">if</span>(check(temp))&#123;</span><br><span class="line">                        //没有重复字符</span><br><span class="line">                        <span class="keyword">if</span>(temp.length()&gt;maxlength)&#123;</span><br><span class="line">                            maxlength = temp.length();</span><br><span class="line">                            //maxstr = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        //有重复字符</span><br><span class="line">                        <span class="built_in">continue</span>;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean check(String substring)&#123;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;substring.length();i++)&#123;</span><br><span class="line">                Character ch = substring.charAt(i);</span><br><span class="line">                <span class="keyword">if</span>(set.contains(ch))</span><br><span class="line">                    //说明有重复</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                //在不包括的情况下要加进去</span><br><span class="line">                set.add(ch);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>总结：<br>在检查是否有重复字母时，使用到了HashSet；</p>
+<ol>
+<li>HashSet基于HashMap，组合了Hash在迭代时不能保证顺序；</li>
+<li>具有add、remove、contains、size操作，时间复杂度都是O(1)级别</li>
+<li>线程不安全</li>
+<li>HashSet是为了快速查找而设计的set，set是一种特殊的collection,不保存重复的元素</li>
+<li>Map适合存储键值对数据，常用操作get、put；Set检索能力低下，但是删除和插入效率高，常用操作add、remove、contains；List与数组类似，可以动态增长，插入删除效率低。</li>
+</ol>
+<h1 id="解法二：Sliding-windows"><a href="#解法二：Sliding-windows" class="headerlink" title="解法二：Sliding windows"></a>解法二：Sliding windows</h1><p>（本题能使用滑动窗口，原因是因为：要求连续、且连续部分有内部的限制）</p>
+<ol>
+<li>形成一个字符串的滑动窗口</li>
+<li>设定坐标i、j，当新加入的成员满足要求时，增长j</li>
+<li>当新加入的成员不满足要求时，增加i，进行缩减检查<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int maxlength = 0;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;s.length() &amp;&amp; j&lt;s.length())&#123;</span><br><span class="line">                <span class="keyword">if</span>(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                    //如果集合中已经包含了新加进来的字符，则去掉，然后更改索引</span><br><span class="line">                    set.remove(s.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    //如果不包含最左侧的字符</span><br><span class="line">                    set.add(s.charAt(j));</span><br><span class="line">                    j++;</span><br><span class="line">                    maxlength = Math.max(maxlength,j-i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>HashSet和HashMap的参数都要求是对象int对应Integer，char对应Character</li>
+<li>String获取指定索引字符的方式：str.charAt(i)</li>
+<li>快速比大小：Math.max(a,b)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbiqecyg0004h0wz5ozwm6fd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Add-two-numbers" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/14/Add-two-numbers/" class="article-date">
@@ -97,7 +160,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbf1u37z000080wzz9u8qqdg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbiqecy30000h0wzbmve6m93" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbf1u38y000b80wz88mtl606" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbiqecyq0009h0wzkc5672kg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbf1u389000280wzho36wtxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbiqecya0002h0wzvmvmbhj5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbf1u39c000e80wzvysbgfpz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbiqecz7000hh0wz947k718b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +354,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbf1u39d000f80wz5amidljc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbiqecz5000fh0wzrmdvidzk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -332,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbf1u390000c80wze00lt7y0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbiqecz1000dh0wzunaof21t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -379,7 +442,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbf1u38h000580wzb31rqp6z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbiqecyk0007h0wzcf1fxi2a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -418,7 +481,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbf1u39f000g80wznr4ifkh2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbiqecz6000gh0wze0yd5ks7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -458,59 +521,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbf1u38m000880wzg5m2j1rc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-GaoDe-component" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/21/GaoDe-component/" class="article-date">
-  <time datetime="2018-12-21T01:36:23.000Z" itemprop="datePublished">2018-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/21/GaoDe-component/">GaoDe component</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="更多详细内容"><a href="#更多详细内容" class="headerlink" title="更多详细内容"></a>更多详细内容</h2><p><a href="https://github.com/qiuxiang/react-native-amap3d" target="_blank" rel="noopener">地图配置</a></p>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-native-amap3d</span><br></pre></td></tr></table></figure>
-<h2 id="获取key"><a href="#获取key" class="headerlink" title="获取key"></a>获取key</h2><ol>
-<li>先用android studio创建一个android项目</li>
-<li>在高德开放平台上注册一个号</li>
-<li>点击 控制台-&gt;应用管理-&gt;我的应用-&gt;创建一个应用</li>
-<li>点击添加key</li>
-<li><p>在控制台输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .android</span><br><span class="line">keyrool -list -v -keystore debug.keystore</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>默认口令为android</p>
-</li>
-<li>将SHA1值复制到第一个必填框内</li>
-<li>在创建的安卓项目文件夹内找到android-&gt;app-&gt;src-&gt;main-&gt;用记事本打开那个.xml文件，复制package值到第二个必填框</li>
-<li>至此,key添加工作完成</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbf1u387000180wztuwsr1nz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbiqecyj0006h0wz0yatvuv2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -556,6 +567,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
           </li>
         
@@ -569,10 +584,6 @@
         
           <li>
             <a href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
-          </li>
-        
-          <li>
-            <a href="/2019/05/08/python-spider/">python spider</a>
           </li>
         
       </ul>

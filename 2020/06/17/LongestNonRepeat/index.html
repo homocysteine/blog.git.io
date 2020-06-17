@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>LongestNonRepeat | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Leetcode problem-3 解法一：暴力法 利用两个for循环列举出string中所有可能的substring的情况； 再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；1234567891011121314151617181920212223242526272829303132333435363738static class Solution &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LongestNonRepeat">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/LongestNonRepeat/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="Leetcode problem-3 解法一：暴力法 利用两个for循环列举出string中所有可能的substring的情况； 再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；1234567891011121314151617181920212223242526272829303132333435363738static class Solution &amp;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-17T02:22:58.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LongestNonRepeat">
+<meta name="twitter:description" content="Leetcode problem-3 解法一：暴力法 利用两个for循环列举出string中所有可能的substring的情况； 再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；1234567891011121314151617181920212223242526272829303132333435363738static class Solution &amp;">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
+  <time datetime="2020-06-17T01:11:44.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      LongestNonRepeat
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Leetcode problem-3</p>
+<h1 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h1><ol>
+<li>利用两个for循环列举出string中所有可能的substring的情况；</li>
+<li>再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static class Solution &#123;</span><br><span class="line">        public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">            //考虑从一个字母到所有字母都上的情况</span><br><span class="line">            int maxlength=0;</span><br><span class="line">            //String maxstr = null;</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                    String temp = s.substring(i,j);</span><br><span class="line">                    <span class="keyword">if</span>(check(temp))&#123;</span><br><span class="line">                        //没有重复字符</span><br><span class="line">                        <span class="keyword">if</span>(temp.length()&gt;maxlength)&#123;</span><br><span class="line">                            maxlength = temp.length();</span><br><span class="line">                            //maxstr = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        //有重复字符</span><br><span class="line">                        <span class="built_in">continue</span>;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean check(String substring)&#123;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;substring.length();i++)&#123;</span><br><span class="line">                Character ch = substring.charAt(i);</span><br><span class="line">                <span class="keyword">if</span>(set.contains(ch))</span><br><span class="line">                    //说明有重复</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                //在不包括的情况下要加进去</span><br><span class="line">                set.add(ch);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>总结：<br>在检查是否有重复字母时，使用到了HashSet；</p>
+<ol>
+<li>HashSet基于HashMap，组合了Hash在迭代时不能保证顺序；</li>
+<li>具有add、remove、contains、size操作，时间复杂度都是O(1)级别</li>
+<li>线程不安全</li>
+<li>HashSet是为了快速查找而设计的set，set是一种特殊的collection,不保存重复的元素</li>
+<li>Map适合存储键值对数据，常用操作get、put；Set检索能力低下，但是删除和插入效率高，常用操作add、remove、contains；List与数组类似，可以动态增长，插入删除效率低。</li>
+</ol>
+<h1 id="解法二：Sliding-windows"><a href="#解法二：Sliding-windows" class="headerlink" title="解法二：Sliding windows"></a>解法二：Sliding windows</h1><p>（本题能使用滑动窗口，原因是因为：要求连续、且连续部分有内部的限制）</p>
+<ol>
+<li>形成一个字符串的滑动窗口</li>
+<li>设定坐标i、j，当新加入的成员满足要求时，增长j</li>
+<li>当新加入的成员不满足要求时，增加i，进行缩减检查<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int maxlength = 0;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;s.length() &amp;&amp; j&lt;s.length())&#123;</span><br><span class="line">                <span class="keyword">if</span>(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                    //如果集合中已经包含了新加进来的字符，则去掉，然后更改索引</span><br><span class="line">                    set.remove(s.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    //如果不包含最左侧的字符</span><br><span class="line">                    set.add(s.charAt(j));</span><br><span class="line">                    j++;</span><br><span class="line">                    maxlength = Math.max(maxlength,j-i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>HashSet和HashMap的参数都要求是对象int对应Integer，char对应Character</li>
+<li>String获取指定索引字符的方式：str.charAt(i)</li>
+<li>快速比大小：Math.max(a,b)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbiqecyg0004h0wz5ozwm6fd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/14/Add-two-numbers/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Add_two_numbers</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/Two-Sum/">Two Sum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
+          </li>
+        
+          <li>
+            <a href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
