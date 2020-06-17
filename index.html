@@ -62,6 +62,56 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-链表题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/链表题/" class="article-date">
+  <time datetime="2020-06-17T13:57:37.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/链表题/">链表题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序</p>
+<h1 id="ReverseList"><a href="#ReverseList" class="headerlink" title="ReverseList"></a>ReverseList</h1><ol>
+<li>设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点</li>
+<li>curr的next指向prev</li>
+<li>prev指向curr</li>
+<li>curr指向temp</li>
+<li>temp指向temp.next<br>相当于从一个链表向另一个链表中迁移<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ListNode prev = null;</span><br><span class="line">        //用指针curr记住第一个</span><br><span class="line">        ListNode curr = list;</span><br><span class="line">        ListNode temp = null;</span><br><span class="line">        <span class="keyword">while</span>(curr!=null)&#123;</span><br><span class="line">            temp = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> prev;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="mergeList"><a href="#mergeList" class="headerlink" title="mergeList"></a>mergeList</h1><ol>
+<li>设置一个头结点，用head、p3分别指着</li>
+<li>输入的两个链表分别用p1、p2指着</li>
+<li>之后是类似于归并排序一样，进行三个while的操作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">static ListNode mergeList(ListNode list1, ListNode list2)&#123;</span><br><span class="line">        ListNode p1=null,p2=null;</span><br><span class="line">        p1=list1;p2=list2;</span><br><span class="line">        //设置一个头结点解决问题</span><br><span class="line">        ListNode head = new ListNode();</span><br><span class="line">        ListNode p3 =head;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p1.val&lt;=p2.val)&#123;</span><br><span class="line">                p3.next = p1;</span><br><span class="line">                p1=p1.next;</span><br><span class="line">                p3=p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p3.next = p2;</span><br><span class="line">                p2 = p2.next;</span><br><span class="line">                p3 = p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p2!=null)&#123;</span><br><span class="line">            p3.next=p2;</span><br><span class="line">            p2 = p2.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> head.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbjfizr1000k70wzyoe2x2j1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-5-最长回文子串" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/17/5-最长回文子串/" class="article-date">
@@ -98,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbjazvn50001k0wzvjrc7shu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbjfizp7000070wz2y8gsjwq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -166,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbjazvo0000ck0wzo03arlnf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbjfizpu000a70wzffowff9f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -229,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbjazvnd0005k0wzfwm465zo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbjfizpo000770wz0aab3gye" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,7 +324,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbjazvmy0000k0wz85vles7g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbjfizpc000170wzzqzt65p6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbjazvo5000fk0wzswenraed" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbjfizq4000e70wzbquqva77" class="article-share-link">Share</a>
       
       
     </footer>
@@ -381,7 +431,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbjazvn90003k0wzne2fhxhs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbjfizpi000470wzskddpzwr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -426,7 +476,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbjazvoa000jk0wzufz0kgyg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbjfizqh000j70wzjz2osunp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -468,7 +518,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbjazvo9000ik0wza69wyr7d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbjfizqe000h70wzyffnz34f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -509,54 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbjazvo3000ek0wz19vgyrd8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MySQL-Shell" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/31/MySQL-Shell/" class="article-date">
-  <time datetime="2019-03-31T11:52:03.000Z" itemprop="datePublished">2019-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-启动mysql服务"><a href="#1-启动mysql服务" class="headerlink" title="1.启动mysql服务"></a>1.启动mysql服务</h2><p>以管理员身份运行cmd，在命令行中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-关闭mysql服务"><a href="#2-关闭mysql服务" class="headerlink" title="2.关闭mysql服务"></a>2.关闭mysql服务</h2><p>与启动类似的操作，只不过命令换成了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
-<p>ps:cmd中的清屏指令为<code>cls</code></p>
-<h2 id="3-查看mysql版本"><a href="#3-查看mysql版本" class="headerlink" title="3.查看mysql版本"></a>3.查看mysql版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -V</span><br></pre></td></tr></table></figure>
-<p>注意V要大写</p>
-<h2 id="4-mysql登录"><a href="#4-mysql登录" class="headerlink" title="4.mysql登录"></a>4.mysql登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p -P3306 -h127.0.0.1</span><br></pre></td></tr></table></figure>
-<p>如果使用的是默认端口和本地服务器，则-P和-h参数是不用加的<br>输入完密码后便成功登录了mysql</p>
-<h2 id="5-mysql退出"><a href="#5-mysql退出" class="headerlink" title="5.mysql退出"></a>5.mysql退出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>;</span><br><span class="line">quit;</span><br><span class="line">\q;</span><br></pre></td></tr></table></figure>
-<p>任意一个都可以<br>ps:登录到mysql后，记得句句有分号。</p>
-<h2 id="6-mysql编码规范"><a href="#6-mysql编码规范" class="headerlink" title="6.mysql编码规范"></a>6.mysql编码规范</h2><p>(1) 关键字 与 函数名 全部大写<br>(2) 数据库名、表名、字段名 全部小写<br>(3) SQL语句必须以分号结尾</p>
-<h2 id="7-mysql中中的交操作"><a href="#7-mysql中中的交操作" class="headerlink" title="7.mysql中中的交操作"></a>7.mysql中中的交操作</h2><p>mysql中没有INTERSECT关键字，所以用自然连接+选出公有属性代替</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbjazvni0008k0wz1petoh5e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbjfizq6000f70wz8vcu2ans" class="article-share-link">Share</a>
       
       
     </footer>
@@ -570,7 +573,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -602,6 +605,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/17/链表题/">链表题</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
           </li>
         
@@ -615,10 +622,6 @@
         
           <li>
             <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/Two-Sum/">Two Sum</a>
           </li>
         
       </ul>

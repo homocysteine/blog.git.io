@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>链表题 | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序 ReverseList 设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点 curr的next指向prev prev指向curr curr指向temp temp指向temp.next相当于从一个链表向另一个链表中迁移1234567891011ListNode prev = null;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表题">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/链表题/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序 ReverseList 设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点 curr的next指向prev prev指向curr curr指向temp temp指向temp.next相当于从一个链表向另一个链表中迁移1234567891011ListNode prev = null;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-17T14:06:39.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="链表题">
+<meta name="twitter:description" content="链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序 ReverseList 设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点 curr的next指向prev prev指向curr curr指向temp temp指向temp.next相当于从一个链表向另一个链表中迁移1234567891011ListNode prev = null;">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-链表题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/链表题/" class="article-date">
+  <time datetime="2020-06-17T13:57:37.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      链表题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序</p>
+<h1 id="ReverseList"><a href="#ReverseList" class="headerlink" title="ReverseList"></a>ReverseList</h1><ol>
+<li>设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点</li>
+<li>curr的next指向prev</li>
+<li>prev指向curr</li>
+<li>curr指向temp</li>
+<li>temp指向temp.next<br>相当于从一个链表向另一个链表中迁移<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ListNode prev = null;</span><br><span class="line">        //用指针curr记住第一个</span><br><span class="line">        ListNode curr = list;</span><br><span class="line">        ListNode temp = null;</span><br><span class="line">        <span class="keyword">while</span>(curr!=null)&#123;</span><br><span class="line">            temp = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> prev;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="mergeList"><a href="#mergeList" class="headerlink" title="mergeList"></a>mergeList</h1><ol>
+<li>设置一个头结点，用head、p3分别指着</li>
+<li>输入的两个链表分别用p1、p2指着</li>
+<li>之后是类似于归并排序一样，进行三个while的操作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">static ListNode mergeList(ListNode list1, ListNode list2)&#123;</span><br><span class="line">        ListNode p1=null,p2=null;</span><br><span class="line">        p1=list1;p2=list2;</span><br><span class="line">        //设置一个头结点解决问题</span><br><span class="line">        ListNode head = new ListNode();</span><br><span class="line">        ListNode p3 =head;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p1.val&lt;=p2.val)&#123;</span><br><span class="line">                p3.next = p1;</span><br><span class="line">                p1=p1.next;</span><br><span class="line">                p3=p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p3.next = p2;</span><br><span class="line">                p2 = p2.next;</span><br><span class="line">                p3 = p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(p2!=null)&#123;</span><br><span class="line">            p3.next=p2;</span><br><span class="line">            p2 = p2.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> head.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbjfizr1000k70wzyoe2x2j1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/17/5-最长回文子串/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">5 最长回文子串</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/17/链表题/">链表题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
