@@ -62,6 +62,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
+  <time datetime="2020-06-17T03:38:09.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#快速排序</p>
+<ol>
+<li>在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &lt; high</li>
+<li>先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法；</li>
+<li>划分部分，先选择主元；</li>
+<li>以一个大的while循环作为主要部分，限制条件是low &lt; high</li>
+<li>在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情况</li>
+<li>partition最终返回的是主元的索引</li>
+<li>最坏情况是O(n^2)，发生在数组有序时；最好情况和一般情况都是O(nlogn)，最好情况发生在划分后主元两端元素相同时<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static int partition(int[] list, int low, int high)&#123;</span><br><span class="line">        int pivot = list[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            list[low] = list[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[high] = list[low];</span><br><span class="line">        &#125;</span><br><span class="line">        list[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void quickSort(int[] list, int low, int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(list,low,high);</span><br><span class="line">            quickSort(list,pivotIndex+1,high);</span><br><span class="line">            quickSort(list,low,pivotIndex-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#归并排序</p>
+<ol>
+<li>主要部分采用递归分治策略，递归条件是low &lt; high，之后算出中点左右分别递归调用函数，最终用merge函数实现合并</li>
+<li>merge函数中需要定义一个与输入数组等长的辅助数组；</li>
+<li>定义三个指针分别指向数组前半段、数组后半段，辅助数组</li>
+<li>使用三个while进行操作，按照出牌的方式。两边轮流打擂台，比大小，较小的先进入辅助数组</li>
+<li>之所以使用三个while是因为还要考虑一边出完牌，另一边还没有出完的情况</li>
+<li>辅助数组中的元素要重新赋值给原数组，注意赋值时的low、high界限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">static void merge(int[] current, int low, int mid, int high)&#123;</span><br><span class="line">        //合并连个数组（一个数组的前后两端，需要三个指针）</span><br><span class="line">        int[] targetTemp = new int[current.length];</span><br><span class="line">        int i=mid+1,j=low,k=low;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high &amp;&amp; j&lt;=mid) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current[i]&lt;=current[j])&#123;</span><br><span class="line">                targetTemp[k]=current[i];</span><br><span class="line">                k++;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                targetTemp[k]=current[j];</span><br><span class="line">                k++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high)&#123;</span><br><span class="line">            targetTemp[k]=current[i];</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=mid)&#123;</span><br><span class="line">            targetTemp[k]=current[j];</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int n=low;n&lt;=high;n++)&#123;</span><br><span class="line">            current[n] = targetTemp[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //low、high对应的是index</span><br><span class="line">    static void mergeSort(int[] current,int low, int high)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            mergeSort(current,low,mid);</span><br><span class="line">            mergeSort(current,mid+1,high);</span><br><span class="line">            merge(current,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#堆排序</p>
+<ol>
+<li>主要分为两部分：总体部分、调整部分</li>
+<li>总体部分接收一个list作为参数。首先从第一个非叶子节点开始，初建大顶堆；然后用一个for循环，先交换第一个和最后一个，然后再从第一个结点开始调整，范围不包括最后一个</li>
+<li>调整部分接受三个参数：list、调整范围、调整结点编号</li>
+<li>先将调整结点的值赋给临时变量</li>
+<li>然后用一个while循环，限制条件是左子节点不越界</li>
+<li>在while循环内先判断一下右子节点是否越界，在不越界且右子节点比左子节点大的情况下，指向右子节点</li>
+<li>然后将当前指向的结点和临时变量的值进行比较，如果比临时变量大，则用子结点覆盖当前节点，并进一步指向子结点的左子节点</li>
+<li>在while结束之后，将临时变量赋给它最终的位置处<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">static void sort(int[] list)&#123;</span><br><span class="line">        //从第一个非叶子节点开始调整</span><br><span class="line">        int temp=0;</span><br><span class="line">        //初建大顶堆</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length/2-1;i&gt;=0;i--)&#123;</span><br><span class="line">            //从第一个非叶子节点开始，调整范围是整个数组</span><br><span class="line">            heapAdjust(list,list.length,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length-1;i&gt;=1;i--)&#123;</span><br><span class="line">            //交换第一个和最后一个</span><br><span class="line">            temp = list[0];</span><br><span class="line">            list[0] = list[i];</span><br><span class="line">            list[i] = temp;</span><br><span class="line">            //从第一个开始，调整范围不包括最后一个</span><br><span class="line">            heapAdjust(list,i,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //参数1是list，参数2是调整范围长度，参数3是调整结点</span><br><span class="line">    static void heapAdjust(int[] list, int len, int i)&#123;</span><br><span class="line">        //临时变量存储</span><br><span class="line">        int temp = list[i];</span><br><span class="line">        int index = 2*i+1;</span><br><span class="line">        //当左子节点结点没有超过调整范围</span><br><span class="line">        <span class="keyword">while</span>(index&lt;len)&#123;</span><br><span class="line">            //比较左右子节点</span><br><span class="line">            <span class="keyword">if</span>(index+1&lt;len &amp;&amp; list[index]&lt;list[index+1])</span><br><span class="line">                //如果右子节点没有超过范围，且右子节点比较大,则指向右子节点</span><br><span class="line">                index++;</span><br><span class="line">            <span class="keyword">if</span>(list[index]&gt;temp)&#123;</span><br><span class="line">                list[i] = list[index];</span><br><span class="line">                i = index;</span><br><span class="line">                index = 2*index+1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将临时存储的变量交给最终确定的位置</span><br><span class="line">        list[i] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbj6vad90007mwwzzr7z4jk1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
@@ -115,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbiqecyg0004h0wz5ozwm6fd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbj6vad70006mwwzu2ylqyqa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +228,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbiqecy30000h0wzbmve6m93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbj6vact0000mwwzvposvnui" class="article-share-link">Share</a>
       
       
     </footer>
@@ -222,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbiqecyq0009h0wzkc5672kg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbj6vadp000gmwwzqqnsvpcx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -267,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbiqecya0002h0wzvmvmbhj5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbj6vad30003mwwzqghyya1b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -312,7 +380,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbiqecz7000hh0wz947k718b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbj6vady000imwwzrxmt3cp6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +422,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbiqecz5000fh0wzrmdvidzk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbj6vadm000emwwzwwllpuos" class="article-share-link">Share</a>
       
       
     </footer>
@@ -395,7 +463,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbiqecz1000dh0wzunaof21t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbj6vadl000dmwwzn0ilw9rl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -442,7 +510,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbiqecyk0007h0wzcf1fxi2a" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbj6vad40004mwwzutdiuo85" class="article-share-link">Share</a>
       
       
     </footer>
@@ -481,47 +549,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbiqecz6000gh0wze0yd5ks7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Something-you-should-know-in-run-goldbug" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/" class="article-date">
-  <time datetime="2018-12-29T06:34:43.000Z" itemprop="datePublished">2018-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Install-the-react-viro"><a href="#Install-the-react-viro" class="headerlink" title="Install the react-viro"></a>Install the react-viro</h2><p>execute the order in the root directory of your current project with<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-viro</span><br></pre></td></tr></table></figure></p>
-<h2 id="execute-android-setup-sh"><a href="#execute-android-setup-sh" class="headerlink" title="execute android-setup.sh"></a>execute android-setup.sh</h2><p>Find the script named android-setup.sh in node_modules-&gt;react-viro<br>Then , most importantly,you must move the script to the root directory of your project!!!!<br>In this way, you can either open the file with gitbash or cygwin64.</p>
-<h2 id="try-to-compile-your-project-in-Android-Studio"><a href="#try-to-compile-your-project-in-Android-Studio" class="headerlink" title="try to compile your project in Android Studio"></a>try to compile your project in Android Studio</h2><p>one thing you should know in any time:<br>the version of buildtool,the version of gradle and the version of plugin must match each other.<br>You can modify your plugin version in<br>android-&gt;build.gradle<br>You can modify your gradle version in android-&gt;gradle-&gt;wrapper-&gt;gradle-&gt;wrapper.properties<br>You can modify your buildtool version in<br>android-&gt;app-&gt;build.gradle</p>
-<p>The matching relationship<br><img src="/2018/12/29/Something-you-should-know-in-run-goldbug/1.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbiqecyj0006h0wz0yatvuv2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbj6vadr000hmwwzifz0mjgg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -567,6 +595,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
           </li>
         
@@ -580,10 +612,6 @@
         
           <li>
             <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
           </li>
         
       </ul>

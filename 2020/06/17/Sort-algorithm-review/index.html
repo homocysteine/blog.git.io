@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Sort algorithm review | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#快速排序  在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &amp;lt; high 先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法； 划分部分，先选择主元； 以一个大的while循环作为主要部分，限制条件是low &amp;lt; high 在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sort algorithm review">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/Sort-algorithm-review/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="#快速排序  在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &amp;lt; high 先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法； 划分部分，先选择主元； 以一个大的while循环作为主要部分，限制条件是low &amp;lt; high 在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-17T10:03:41.895Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sort algorithm review">
+<meta name="twitter:description" content="#快速排序  在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &amp;lt; high 先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法； 划分部分，先选择主元； 以一个大的while循环作为主要部分，限制条件是low &amp;lt; high 在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
+  <time datetime="2020-06-17T03:38:09.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sort algorithm review
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#快速排序</p>
+<ol>
+<li>在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &lt; high</li>
+<li>先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法；</li>
+<li>划分部分，先选择主元；</li>
+<li>以一个大的while循环作为主要部分，限制条件是low &lt; high</li>
+<li>在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情况</li>
+<li>partition最终返回的是主元的索引</li>
+<li>最坏情况是O(n^2)，发生在数组有序时；最好情况和一般情况都是O(nlogn)，最好情况发生在划分后主元两端元素相同时<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static int partition(int[] list, int low, int high)&#123;</span><br><span class="line">        int pivot = list[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            list[low] = list[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[high] = list[low];</span><br><span class="line">        &#125;</span><br><span class="line">        list[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void quickSort(int[] list, int low, int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(list,low,high);</span><br><span class="line">            quickSort(list,pivotIndex+1,high);</span><br><span class="line">            quickSort(list,low,pivotIndex-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#归并排序</p>
+<ol>
+<li>主要部分采用递归分治策略，递归条件是low &lt; high，之后算出中点左右分别递归调用函数，最终用merge函数实现合并</li>
+<li>merge函数中需要定义一个与输入数组等长的辅助数组；</li>
+<li>定义三个指针分别指向数组前半段、数组后半段，辅助数组</li>
+<li>使用三个while进行操作，按照出牌的方式。两边轮流打擂台，比大小，较小的先进入辅助数组</li>
+<li>之所以使用三个while是因为还要考虑一边出完牌，另一边还没有出完的情况</li>
+<li>辅助数组中的元素要重新赋值给原数组，注意赋值时的low、high界限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">static void merge(int[] current, int low, int mid, int high)&#123;</span><br><span class="line">        //合并连个数组（一个数组的前后两端，需要三个指针）</span><br><span class="line">        int[] targetTemp = new int[current.length];</span><br><span class="line">        int i=mid+1,j=low,k=low;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high &amp;&amp; j&lt;=mid) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current[i]&lt;=current[j])&#123;</span><br><span class="line">                targetTemp[k]=current[i];</span><br><span class="line">                k++;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                targetTemp[k]=current[j];</span><br><span class="line">                k++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high)&#123;</span><br><span class="line">            targetTemp[k]=current[i];</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=mid)&#123;</span><br><span class="line">            targetTemp[k]=current[j];</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int n=low;n&lt;=high;n++)&#123;</span><br><span class="line">            current[n] = targetTemp[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //low、high对应的是index</span><br><span class="line">    static void mergeSort(int[] current,int low, int high)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            mergeSort(current,low,mid);</span><br><span class="line">            mergeSort(current,mid+1,high);</span><br><span class="line">            merge(current,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#堆排序</p>
+<ol>
+<li>主要分为两部分：总体部分、调整部分</li>
+<li>总体部分接收一个list作为参数。首先从第一个非叶子节点开始，初建大顶堆；然后用一个for循环，先交换第一个和最后一个，然后再从第一个结点开始调整，范围不包括最后一个</li>
+<li>调整部分接受三个参数：list、调整范围、调整结点编号</li>
+<li>先将调整结点的值赋给临时变量</li>
+<li>然后用一个while循环，限制条件是左子节点不越界</li>
+<li>在while循环内先判断一下右子节点是否越界，在不越界且右子节点比左子节点大的情况下，指向右子节点</li>
+<li>然后将当前指向的结点和临时变量的值进行比较，如果比临时变量大，则用子结点覆盖当前节点，并进一步指向子结点的左子节点</li>
+<li>在while结束之后，将临时变量赋给它最终的位置处<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">static void sort(int[] list)&#123;</span><br><span class="line">        //从第一个非叶子节点开始调整</span><br><span class="line">        int temp=0;</span><br><span class="line">        //初建大顶堆</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length/2-1;i&gt;=0;i--)&#123;</span><br><span class="line">            //从第一个非叶子节点开始，调整范围是整个数组</span><br><span class="line">            heapAdjust(list,list.length,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length-1;i&gt;=1;i--)&#123;</span><br><span class="line">            //交换第一个和最后一个</span><br><span class="line">            temp = list[0];</span><br><span class="line">            list[0] = list[i];</span><br><span class="line">            list[i] = temp;</span><br><span class="line">            //从第一个开始，调整范围不包括最后一个</span><br><span class="line">            heapAdjust(list,i,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //参数1是list，参数2是调整范围长度，参数3是调整结点</span><br><span class="line">    static void heapAdjust(int[] list, int len, int i)&#123;</span><br><span class="line">        //临时变量存储</span><br><span class="line">        int temp = list[i];</span><br><span class="line">        int index = 2*i+1;</span><br><span class="line">        //当左子节点结点没有超过调整范围</span><br><span class="line">        <span class="keyword">while</span>(index&lt;len)&#123;</span><br><span class="line">            //比较左右子节点</span><br><span class="line">            <span class="keyword">if</span>(index+1&lt;len &amp;&amp; list[index]&lt;list[index+1])</span><br><span class="line">                //如果右子节点没有超过范围，且右子节点比较大,则指向右子节点</span><br><span class="line">                index++;</span><br><span class="line">            <span class="keyword">if</span>(list[index]&gt;temp)&#123;</span><br><span class="line">                list[i] = list[index];</span><br><span class="line">                i = index;</span><br><span class="line">                index = 2*index+1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将临时存储的变量交给最终确定的位置</span><br><span class="line">        list[i] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbj6vad90007mwwzzr7z4jk1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/17/LongestNonRepeat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">LongestNonRepeat</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/Two-Sum/">Two Sum</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
