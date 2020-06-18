@@ -62,6 +62,156 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-The-Tough-Road-in-learning-Graph" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/04/The-Tough-Road-in-learning-Graph/" class="article-date">
+  <time datetime="2018-12-04T05:22:13.000Z" itemprop="datePublished">2018-12-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/04/The-Tough-Road-in-learning-Graph/">The Tough Road in learning Graph</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="王林琛牛逼"><a href="#王林琛牛逼" class="headerlink" title="王林琛牛逼"></a>王林琛牛逼</h1><h1 id="Traversing-Graph"><a href="#Traversing-Graph" class="headerlink" title="Traversing Graph"></a>Traversing Graph</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>DFS is similar with the preorder traverse in tree.</p>
+<h3 id="Descirbe"><a href="#Descirbe" class="headerlink" title="Descirbe"></a>Descirbe</h3><ol>
+<li>Choose a node as the start node.</li>
+<li>Then, visit the adjNode of the start node , regard the one of its adjNodes as a new start node.</li>
+<li>repeat the step2, until we find that all the adjNodes of current node has been visisted.</li>
+<li>return to the pre node,repeat step2 and step3.</li>
+<li>Eventually, if there are still some modes remained,add them to the tail of the sequence.</li>
+</ol>
+<h3 id="implementation-ALGraph"><a href="#implementation-ALGraph" class="headerlink" title="implementation(ALGraph)"></a>implementation(ALGraph)</h3><ol>
+<li>Use a for-loop to initialize the Visited Array.</li>
+<li>Use a for-loop,judging the visited property at first. If the node has not been visited yet,call the DFS</li>
+<li>DFS: <ol>
+<li>assign the visited property with true.</li>
+<li>visit operation</li>
+<li>FirstAdhVex</li>
+<li>NextAdjVex<h4 id="Firstadj"><a href="#Firstadj" class="headerlink" title="Firstadj"></a>Firstadj</h4></li>
+</ol>
+</li>
+</ol>
+<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>find children recursively, assisted</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbkxkvj40009wwwzey65bcot" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-The-Tough-Road-in-learning-React(1)" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" class="article-date">
+  <time datetime="2018-12-02T06:31:49.000Z" itemprop="datePublished">2018-12-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/02/The-Tough-Road-in-learning-React(1)/">The Tough Road in learning React(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="install-the-React"><a href="#install-the-React" class="headerlink" title="install the React"></a>install the React</h2><p>just execute the instruction<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure></p>
+<h2 id="create-a-project"><a href="#create-a-project" class="headerlink" title="create a project"></a>create a project</h2><p>just input following code<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-react-app</span><br><span class="line">$ create-react-app my-app</span><br></pre></td></tr></table></figure></p>
+<p>By the way, if you want to preview the effect of your web page,you can visit the domainname “localhost:3000”.<br>Before you visit local:3000,you must input the<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> my-app/</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure></p>
+<p>Otherwise, you can’t open the webpage.<br>Then you can modify the index.js file, to create your own webpage based on React.</p>
+<h2 id="Add-component-to-the-website"><a href="#Add-component-to-the-website" class="headerlink" title="Add component to the website"></a>Add component to the website</h2><p>one way to add a component is using javascript function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props) &#123;</span><br><span class="line">  <span class="built_in">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line">const element = &lt;Welcome name=<span class="string">"Sara"</span> /&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>In this section, we define an element <code>&lt;welcome name=&quot;Sara&quot;&gt;</code>and call the element in the ReactDom.render function.<br>React use {name: ‘Sara’} as props(the argument of Welcome)<br>Welcome function return a value <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code><br>React DOM refreshes the DOM, the DOM become <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props)&#123;</span><br><span class="line">    <span class="built_in">return</span> &lt;h1&gt;Hello world again,&#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Combine</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(&lt;Combine /&gt;, </span><br><span class="line">    document.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
+<p>Use div to show more than one components at one time.</p>
+<h2 id="！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase"><a href="#！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase" class="headerlink" title="！！！！！Warning:the first letter of the component’s name must be uppercase."></a>！！！！！Warning:the first letter of the component’s name must be uppercase.</h2><h2 id="something-you-should-know"><a href="#something-you-should-know" class="headerlink" title="something you should  know"></a>something you should  know</h2><p>The big parenthesis ‘{}’ means extracting the content.<br>You can show a component use element or component name(<welcome>)</welcome></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="ckbkxkvja000cwwwz992yjcda" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-How-to-edit-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/23/How-to-edit-Hexo/" class="article-date">
+  <time datetime="2018-11-23T06:29:12.000Z" itemprop="datePublished">2018-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/23/How-to-edit-Hexo/">How to edit Hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="can-you-hear-me"><a href="#can-you-hear-me" class="headerlink" title="can you hear me?"></a>can you hear me?</h2><h3 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog."></a>This is my first blog.</h3><h5 id="I’m-wondering-how-to-edit-it"><a href="#I’m-wondering-how-to-edit-it" class="headerlink" title="I’m wondering how to edit it."></a>I’m wondering how to edit it.</h5><h4 id="It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be"><a href="#It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be" class="headerlink" title="It seems that the more ‘#’ is, the smaller the character will be."></a>It seems that the more ‘#’ is, the smaller the character will be.</h4><p>what if i type without ‘#’?<br>It become the content of text!!</p>
+<p>Different with html,the key enter is also work here.</p>
+<p>So what if i want to type a line of system call like ‘hexo s’?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
+<p>And what if i want to put a website address in my blog page?<br><a href="https:www.baidu.com" target="_blank" rel="noopener">Try</a><br>In this way ‘try’ becomes a hyperlink.</p>
+<p>Let’s think about the pictures.<br><img src="/2018/11/23/How-to-edit-Hexo/gf.jpg" alt=""><br>since nobody will see the blog, i use my girlfriend’s picture as a test.</p>
+<p>If you want to load your post,just use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>By the way:if you want to check the effect of your edition,you must set up your hexo first,use the order like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
+<h3 id="1-title"><a href="#1-title" class="headerlink" title="1.title"></a>1.title</h3><p>If you want to write a title,you should type several ‘#’ before your content, the less ‘#’ there are, the highest priorty the title possesses.<br>Be careful that there must be a blank between the ‘#’ character and your title content.</p>
+<h3 id="2-enter"><a href="#2-enter" class="headerlink" title="2.enter"></a>2.enter</h3><p>when you edit your blog, it is similar to edit a text in word. The enter and blank are also work.</p>
+<h3 id="3-order"><a href="#3-order" class="headerlink" title="3.order"></a>3.order</h3><p>If you want to show a code use special call to enclose your content.</p>
+<h3 id="4-website-address"><a href="#4-website-address" class="headerlink" title="4.website address"></a>4.website address</h3><p>If you want to put on a website address, use the formal like<br>“[describe]”+”(the address)”.</p>
+<h3 id="5-picture"><a href="#5-picture" class="headerlink" title="5.picture"></a>5.picture</h3><p>You have to modify the property of your deployment at first.<br>Change the “post_asset_folder” to true.<br>then use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$npm</span> install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
+<p>Then create a new folder in source, the folder’s name must be consistent with your .md file.<br>put a picture into the folder, then use the formal like<br>“![]”+”(foldername/picturename.pictureformat)” to create it in the web page.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="ckbkxkviv0004wwwzxofppmva" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/11/23/hello-world/" class="article-date">
@@ -97,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="ckbjfizqd000g70wzfpscigsz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="ckbkxkvjn000gwwwz2wn8a26g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -143,23 +293,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/18/动态规划/">动态规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/18/二叉树/">二叉树</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/18/全排列/">全排列</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/17/链表题/">链表题</a>
           </li>
         
           <li>
             <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
           </li>
         
       </ul>

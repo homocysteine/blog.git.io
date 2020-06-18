@@ -5,19 +5,19 @@
   
 
   
-  <title>The Tough Road in learning Graph | Homocysteine</title>
+  <title>二叉树 | Homocysteine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
+  <meta name="description" content="#二叉树遍历前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点 #二叉树的结点与深度的关系深度h，结点数n对于满二叉树：2^h-1=n对于完全二叉树：n=floor(log(n)/log(2))+1 ps:Scanner的n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The Tough Road in learning Graph">
-<meta property="og:url" content="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/index.html">
+<meta property="og:title" content="二叉树">
+<meta property="og:url" content="http://yoursite.com/2020/06/18/二叉树/index.html">
 <meta property="og:site_name" content="Homocysteine">
-<meta property="og:description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
+<meta property="og:description" content="#二叉树遍历前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点 #二叉树的结点与深度的关系深度h，结点数n对于满二叉树：2^h-1=n对于完全二叉树：n=floor(log(n)/log(2))+1 ps:Scanner的n">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-04T12:29:37.349Z">
+<meta property="og:updated_time" content="2020-06-18T13:29:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The Tough Road in learning Graph">
-<meta name="twitter:description" content="王林琛牛逼Traversing GraphDFSDFS is similar with the preorder traverse in tree. Descirbe Choose a node as the start node. Then, visit the adjNode of the start node , regard the one of its adjNodes as a new">
+<meta name="twitter:title" content="二叉树">
+<meta name="twitter:description" content="#二叉树遍历前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点 #二叉树的结点与深度的关系深度h，结点数n对于满二叉树：2^h-1=n对于完全二叉树：n=floor(log(n)/log(2))+1 ps:Scanner的n">
   
     <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-The-Tough-Road-in-learning-Graph" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-二叉树" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/12/04/The-Tough-Road-in-learning-Graph/" class="article-date">
-  <time datetime="2018-12-04T05:22:13.000Z" itemprop="datePublished">2018-12-04</time>
+    <a href="/2020/06/18/二叉树/" class="article-date">
+  <time datetime="2020-06-18T10:40:46.000Z" itemprop="datePublished">2020-06-18</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      The Tough Road in learning Graph
+      二叉树
     </h1>
   
 
@@ -86,31 +86,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="王林琛牛逼"><a href="#王林琛牛逼" class="headerlink" title="王林琛牛逼"></a>王林琛牛逼</h1><h1 id="Traversing-Graph"><a href="#Traversing-Graph" class="headerlink" title="Traversing Graph"></a>Traversing Graph</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>DFS is similar with the preorder traverse in tree.</p>
-<h3 id="Descirbe"><a href="#Descirbe" class="headerlink" title="Descirbe"></a>Descirbe</h3><ol>
-<li>Choose a node as the start node.</li>
-<li>Then, visit the adjNode of the start node , regard the one of its adjNodes as a new start node.</li>
-<li>repeat the step2, until we find that all the adjNodes of current node has been visisted.</li>
-<li>return to the pre node,repeat step2 and step3.</li>
-<li>Eventually, if there are still some modes remained,add them to the tail of the sequence.</li>
+        <p>#二叉树遍历<br>前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点<br>中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用<br>后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点</p>
+<p>#二叉树的结点与深度的关系<br>深度h，结点数n<br>对于满二叉树：2^h-1=n<br>对于完全二叉树：n=floor(log(n)/log(2))+1</p>
+<p>ps:Scanner的next和nextLine的区别<br>next:从第一个有效字符开始，到非有效字符结束<br>nextLine:Enter之前的全部字符</p>
+<p>#获取二叉树的深度</p>
+<ol>
+<li>使用前序遍历的架构</li>
+<li>如果当前的结点是null，直接返回0</li>
+<li>当前结点不是null，左右分别递归调用</li>
+<li>返回的是这一层回溯中的最大值+1，这样回溯了几层就加了几<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static int getDepth(TreeNode root)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==null)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            int left = getDepth(root.left);</span><br><span class="line">            int right = getDepth(root.right);</span><br><span class="line">            //每层回溯+1</span><br><span class="line">            <span class="built_in">return</span> Math.max(left,right)+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h3 id="implementation-ALGraph"><a href="#implementation-ALGraph" class="headerlink" title="implementation(ALGraph)"></a>implementation(ALGraph)</h3><ol>
-<li>Use a for-loop to initialize the Visited Array.</li>
-<li>Use a for-loop,judging the visited property at first. If the node has not been visited yet,call the DFS</li>
-<li>DFS: <ol>
-<li>assign the visited property with true.</li>
-<li>visit operation</li>
-<li>FirstAdhVex</li>
-<li>NextAdjVex<h4 id="Firstadj"><a href="#Firstadj" class="headerlink" title="Firstadj"></a>Firstadj</h4></li>
-</ol>
-</li>
-</ol>
-<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>find children recursively, assisted</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbkxkvj40009wwwzey65bcot" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbkxkvjr000jwwwzm9sqbv9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/12/04/Knowledge-points/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/06/18/动态规划/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Knowledge points
+          动态规划
         
       </div>
     </a>
   
   
-    <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/18/全排列/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">The Tough Road in learning React(1)</div>
+      <div class="article-nav-title">全排列</div>
     </a>
   
 </nav>

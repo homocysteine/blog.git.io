@@ -62,6 +62,142 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-动态规划" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/动态规划/" class="article-date">
+  <time datetime="2020-06-18T15:09:02.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/动态规划/">动态规划</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#爬楼梯</p>
+<ol>
+<li>动态规划实质上就是一个递推的过程</li>
+<li>先研究基本情况，再找出基本情况和之后情况的递推关系</li>
+<li>本题中的地推情况就是dp[i]=dp[i-1]+dp[i-2]</li>
+<li>创建dp数组时，应该是n+1的长度，然后从1开始</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckbkxkvjv000lwwwzjcleq4u2" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-二叉树" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/二叉树/" class="article-date">
+  <time datetime="2020-06-18T10:40:46.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/二叉树/">二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#二叉树遍历<br>前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点<br>中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用<br>后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点</p>
+<p>#二叉树的结点与深度的关系<br>深度h，结点数n<br>对于满二叉树：2^h-1=n<br>对于完全二叉树：n=floor(log(n)/log(2))+1</p>
+<p>ps:Scanner的next和nextLine的区别<br>next:从第一个有效字符开始，到非有效字符结束<br>nextLine:Enter之前的全部字符</p>
+<p>#获取二叉树的深度</p>
+<ol>
+<li>使用前序遍历的架构</li>
+<li>如果当前的结点是null，直接返回0</li>
+<li>当前结点不是null，左右分别递归调用</li>
+<li>返回的是这一层回溯中的最大值+1，这样回溯了几层就加了几<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static int getDepth(TreeNode root)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==null)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            int left = getDepth(root.left);</span><br><span class="line">            int right = getDepth(root.right);</span><br><span class="line">            //每层回溯+1</span><br><span class="line">            <span class="built_in">return</span> Math.max(left,right)+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbkxkvjr000jwwwzm9sqbv9j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-全排列" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/全排列/" class="article-date">
+  <time datetime="2020-06-18T08:16:23.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/全排列/">全排列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><p>回溯法的应用，因为排列要求不能重复，只是位置更换<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">backtrack&#123;</span><br><span class="line">    <span class="keyword">if</span> 满足条件</span><br><span class="line">       结果.add(路径)</span><br><span class="line">       <span class="built_in">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(选择:选择列表)&#123;</span><br><span class="line">        做出选择</span><br><span class="line">        backtrack(路径，选择列表)</span><br><span class="line">        撤销选择</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>list的add方法，参数是元素，加在最后面<br>list的remove方法，参数是索引</p>
+<ol>
+<li>如果list的长度到位，则将这次的结果交给res</li>
+<li>从选择列表中选择元素，加一个条件，对列表中没有的元素才执行操作</li>
+<li>选择方式：加到列表中</li>
+<li>重新调用（重新调用能完成一种情况的列举）</li>
+<li>去掉这个元素，重新开始另一个循环，一零一个元素为开头<br>总结：循环{加入、递归、去除}<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; element = new ArrayList&lt;&gt;();</span><br><span class="line">        backtrack(result,element,nums);</span><br><span class="line">        <span class="built_in">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void backtrack(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, int[] nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(list.size() == nums.length)&#123;</span><br><span class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!list.contains(num))&#123;</span><br><span class="line">                list.add(num);</span><br><span class="line">                backtrack(result,list,nums);</span><br><span class="line">                list.remove(list.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>字符串长度.length()<br>数组长度.length<br>List长度.size()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckbkxkvju000kwwwzak68uhj1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-链表题" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/17/链表题/" class="article-date">
@@ -141,11 +277,20 @@
 <li>返回head.next<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static ListNode sort(ListNode head)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == null || head.next == null)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = new ListNode();</span><br><span class="line">        newHead.next = head;</span><br><span class="line">        //连表的前后弦</span><br><span class="line">        <span class="built_in">return</span> quickSort(newHead,null);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //这里的head是指头结点</span><br><span class="line">    //用一个临时的结点作为存储小的部分的链表头结点</span><br><span class="line">    static ListNode quickSort(ListNode head, ListNode end)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==end||head.next==end||head.next.next==end)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode tmpHead = new ListNode();</span><br><span class="line">        ListNode pivot = head.next;</span><br><span class="line">        ListNode p = pivot;</span><br><span class="line">        ListNode tp = tmpHead;</span><br><span class="line">        <span class="keyword">while</span>(p.next!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.next.val&lt;pivot.val)&#123;</span><br><span class="line">                tp.next = p.next;</span><br><span class="line">                p.next = p.next.next;</span><br><span class="line">                tp = tp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p = p.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将小串和大串接起来</span><br><span class="line">        tp.next = head.next;</span><br><span class="line">        //头结点归位</span><br><span class="line">        head.next = tmpHead.next;</span><br><span class="line">        quickSort(head,pivot);</span><br><span class="line">        quickSort(pivot,end);</span><br><span class="line">        <span class="built_in">return</span> head.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-
+<p>#ReorderList<br>前面几道题的综合</p>
+<ol>
+<li>快慢指针找中间节点</li>
+<li>分成两个结点</li>
+<li>翻转第二个链表</li>
+<li>合并两个链表<br>ps:任何时候都要注意个数少时（0、1、2）的特殊情况，上来先讨论<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void reorderList(ListNode head) &#123;</span><br><span class="line">        //考虑特殊情况下,0，1，2个元素</span><br><span class="line">        <span class="keyword">if</span>(head==null||head.next==null||head.next.next==null)&#123;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode slowp=head,fastp=head.next.next;</span><br><span class="line">        ListNode tempHead=null;</span><br><span class="line">        <span class="keyword">while</span>(fastp!=null &amp;&amp; fastp.next!=null)&#123;</span><br><span class="line">            slowp = slowp.next;</span><br><span class="line">            fastp = fastp.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tempHead = slowp.next;</span><br><span class="line">        slowp.next = null;</span><br><span class="line"></span><br><span class="line">        ListNode prev = null,temp=null;</span><br><span class="line">        ListNode curr = tempHead;</span><br><span class="line">        <span class="keyword">while</span>(curr != null)&#123;</span><br><span class="line">            temp = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode fakeHead = new ListNode();</span><br><span class="line">        ListNode p1=head,p2=prev,p3=fakeHead;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">            p3.next = p2;</span><br><span class="line">            p2 = p2.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p1 != null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p2 != null)&#123;</span><br><span class="line">            p3.next = p2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="检查链表是否有环"><a href="#检查链表是否有环" class="headerlink" title="检查链表是否有环"></a>检查链表是否有环</h1><h2 id="方法一：使用HashSet检查重复元素"><a href="#方法一：使用HashSet检查重复元素" class="headerlink" title="方法一：使用HashSet检查重复元素"></a>方法一：使用HashSet检查重复元素</h2><p>遍历链表，如果结点不在set中，则加入其中；如果结点在set中，则返回有环<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">        Set&lt;ListNode&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(head != null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(head))&#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                set.add(head);</span><br><span class="line">            &#125;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二：快慢指针同时起跑"><a href="#方法二：快慢指针同时起跑" class="headerlink" title="方法二：快慢指针同时起跑"></a>方法二：快慢指针同时起跑</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbjfizr1000k70wzyoe2x2j1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbkxkvjx000nwwwzvhhmpc4j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +336,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbjfizp7000070wz2y8gsjwq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbkxkvik0000wwwz23n3kj6o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbjfizpu000a70wzffowff9f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbkxkvj8000bwwwzzjjd1kug" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbjfizpo000770wz0aab3gye" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbkxkviz0006wwwzne1ih998" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbjfizpc000170wzzqzt65p6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbkxkvip0001wwwzcbibl7jz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +576,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbjfizq4000e70wzbquqva77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbkxkvje000ewwwzf2difgie" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,135 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbjfizpi000470wzskddpzwr" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-暑假开发踩坑记录" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/26/暑假开发踩坑记录/" class="article-date">
-  <time datetime="2019-06-26T03:06:15.000Z" itemprop="datePublished">2019-06-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-版本更新带来的问题"><a href="#1-版本更新带来的问题" class="headerlink" title="1. 版本更新带来的问题"></a>1. 版本更新带来的问题</h2><p>首先，要将Android Studio、gradle都升级到最新的版本，具体做法可以是<br>help-&gt;check update<br>然后，如果在build的过程中遇到 app:compileDebugJavaWithJavac 的问题，<br>需要将第三方库”react-native”也更新到兼容的版本，具体做法可以是<br>file-&gt;project structure</p>
-<h2 id="2-调试者工具快捷键"><a href="#2-调试者工具快捷键" class="headerlink" title="2. 调试者工具快捷键"></a>2. 调试者工具快捷键</h2><p>Android模式下，ctrl+M</p>
-<h2 id="3-RN-app利用fetch从指定url中获取数据（GET方法）"><a href="#3-RN-app利用fetch从指定url中获取数据（GET方法）" class="headerlink" title="3. RN app利用fetch从指定url中获取数据（GET方法）"></a>3. RN app利用fetch从指定url中获取数据（GET方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url,&#123;method:<span class="string">'GET'</span>&#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;response.text())</span><br><span class="line">      .<span class="keyword">then</span>(responseText=&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">          showText:responseText</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="4-利用fetch向服务器提交数据（POST方法）"><a href="#4-利用fetch向服务器提交数据（POST方法）" class="headerlink" title="4. 利用fetch向服务器提交数据（POST方法）"></a>4. 利用fetch向服务器提交数据（POST方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> data = new FormData()</span><br><span class="line">    data.append(<span class="string">"hello "</span>,<span class="string">"world!"</span>)</span><br><span class="line">    fetch(url,&#123;</span><br><span class="line">      method:<span class="string">'POST'</span>,</span><br><span class="line">      header:&#123;&#125;,</span><br><span class="line">      body:data</span><br><span class="line">  &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.ok)&#123;</span><br><span class="line">          <span class="built_in">return</span> response.json();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(json=&gt;&#123;</span><br><span class="line">          /*this.setState(&#123;</span><br><span class="line">              result:<span class="string">'Congratulation!'</span></span><br><span class="line">          &#125;);*/</span><br><span class="line">          alert(JSON.stringify(json));</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error=&gt;&#123;</span><br><span class="line">          this.setState(&#123;</span><br><span class="line">              //result:JSON.stringify(error)</span><br><span class="line">              result:<span class="string">'What a pity!'</span></span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="5-箭头函数"><a href="#5-箭头函数" class="headerlink" title="5. 箭头函数"></a>5. 箭头函数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X=&gt;X*X</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(X)</span><br><span class="line"><span class="built_in">return</span> X*X</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-使用本机服务器"><a href="#5-使用本机服务器" class="headerlink" title="5. 使用本机服务器"></a>5. 使用本机服务器</h2><p>在项目的根目录下运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br></pre></td></tr></table></figure></p>
-<h2 id="6-解决“app-packageDebug”问题"><a href="#6-解决“app-packageDebug”问题" class="headerlink" title="6. 解决“app:packageDebug”问题"></a>6. 解决“app:packageDebug”问题</h2><p>build-&gt;clean project-&gt;rebuild</p>
-<h2 id="7-当出现“cannot-connect-to-development-server”而无法进行reload时"><a href="#7-当出现“cannot-connect-to-development-server”而无法进行reload时" class="headerlink" title="7. 当出现“cannot connect to development server”而无法进行reload时"></a>7. 当出现“cannot connect to development server”而无法进行reload时</h2><p>在AndroidManifest.xml文件中的application标签中加入一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:usesCleartextTraffic=<span class="string">"true"</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="8-以后查问题别用百度，用bing"><a href="#8-以后查问题别用百度，用bing" class="headerlink" title="8. 以后查问题别用百度，用bing"></a>8. 以后查问题别用百度，用bing</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbjfizqh000j70wzjz2osunp" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/08/python-spider/" class="article-date">
-  <time datetime="2019-05-08T11:40:28.000Z" itemprop="datePublished">2019-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/python-spider/">python spider</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>python注释方法 <code>#</code><br>python函数定义 <code>def function(parameter):</code>。注意缩进</p>
-<h2 id="1-request库的get方法"><a href="#1-request库的get方法" class="headerlink" title="1.request库的get方法"></a>1.request库的get方法</h2><p>获取网页最简单的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r=requests.get(url)</span><br></pre></td></tr></table></figure></p>
-<p>右边是Request对象<br>左边是Response对象，包含所有返回的资源</p>
-<h3 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h3><p>r.status_code 返回状态码，200表示成功，一般都会检测一下<br>r.text 用字符串表示出网页内容</p>
-<h2 id="2-通用代码框架"><a href="#2-通用代码框架" class="headerlink" title="2.通用代码框架"></a>2.通用代码框架</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url,timeout=30)</span><br><span class="line">        r.raise_for_status() <span class="comment">#如果状态不是200，引发HttpError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding <span class="comment">#选择合适的编码方式</span></span><br><span class="line">        <span class="built_in">return</span> r.text</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"产生异常"</span> <span class="comment">#抛出异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:  <span class="comment">#封装</span></span><br><span class="line">    url = <span class="string">"https://www.zhibo8.cc/"</span></span><br><span class="line">    <span class="built_in">print</span>(getHTMLText(url))</span><br></pre></td></tr></table></figure>
-<h2 id="3-request库head方法"><a href="#3-request库head方法" class="headerlink" title="3. request库head方法"></a>3. request库head方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r=requests.head(url)</span><br><span class="line"><span class="built_in">print</span>(r.headers) <span class="comment">#用很小的网络流量获取概要信息</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbjfizqe000h70wzyffnz34f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/03/assemble-language/" class="article-date">
-  <time datetime="2019-05-03T08:27:36.000Z" itemprop="datePublished">2019-05-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/03/assemble-language/">assemble language</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-汇编数据类型"><a href="#1-汇编数据类型" class="headerlink" title="1. 汇编数据类型"></a>1. 汇编数据类型</h2><p>db 字节类型变量，一个字节类型占一个字节，偏移量加1<br>dw 字类型变量，一个字类型变量占两个字节，偏移量加2<br>dd 双字类型变量，一个双字型变量占四个字节，偏移量加4</p>
-<h2 id="2-汇编循环"><a href="#2-汇编循环" class="headerlink" title="2. 汇编循环"></a>2. 汇编循环</h2><p>汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,3</span><br><span class="line">n1:</span><br><span class="line">XXXX</span><br><span class="line">loop n1</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-用堆栈保护复用寄存器"><a href="#3-用堆栈保护复用寄存器" class="headerlink" title="3. 用堆栈保护复用寄存器"></a>3. 用堆栈保护复用寄存器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push AA</span><br><span class="line">XXX    /*中间可以更改AA中的值作为它用*/</span><br><span class="line">pop AA</span><br></pre></td></tr></table></figure>
-<h2 id="4-条件跳转"><a href="#4-条件跳转" class="headerlink" title="4. 条件跳转"></a>4. 条件跳转</h2><p>无条件跳转：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmp n1</span><br><span class="line">n1:</span><br><span class="line">XXX</span><br></pre></td></tr></table></figure></p>
-<p>有条件转移情形一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmp ax,8</span><br><span class="line">jnz n1 //如果不相等，则跳到n1处</span><br><span class="line">jz n1   //如果相等，则跳到n1处</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbjfizq6000f70wz8vcu2ans" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbkxkviu0003wwwzklxi801u" class="article-share-link">Share</a>
       
       
     </footer>
@@ -650,23 +667,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/18/动态规划/">动态规划</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/18/二叉树/">二叉树</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/18/全排列/">全排列</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/17/链表题/">链表题</a>
           </li>
         
           <li>
             <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
           </li>
         
       </ul>
