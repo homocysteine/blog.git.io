@@ -62,6 +62,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-java-foundamental" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/19/java-foundamental/" class="article-date">
+  <time datetime="2020-06-19T03:46:03.000Z" itemprop="datePublished">2020-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/19/java-foundamental/">java foundamental</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java参数传递"><a href="#Java参数传递" class="headerlink" title="Java参数传递"></a>Java参数传递</h1><ol>
+<li>基础数据类型是值传递</li>
+<li>对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参</li>
+<li>指针和引用还是有区别的，指针无法改变指向</li>
+</ol>
+<h1 id="Java继承"><a href="#Java继承" class="headerlink" title="Java继承"></a>Java继承</h1><ol>
+<li>子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的</li>
+<li>Object类是层次结构的根，java所有类都继承自这个类</li>
+<li>构造子类对象前，要先构造父类对象，用super关键字实现</li>
+<li>子类带参要先调父类带参</li>
+<li>子类咔嚓一下就可以转换成父类，这是安全的，转换成谁，谁在左边</li>
+<li>父类转换成子类时，需要用（）来实现强制转换</li>
+<li>接口只有静态常量和抽象方法，十分抽象的类</li>
+<li>定义接口是帮助子类进行扩展</li>
+<li>Java只允许单继承，降低复杂性，但是可以实现多个接口；C++允许多继承</li>
+</ol>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><ol>
+<li>static修饰类，只能修饰内部类</li>
+<li>static修饰的方法可以通过类名来直接调用</li>
+<li>static修饰的变量属于类，可以通过类名直接调用</li>
+<li>类初始化顺序：先父类，后子类；先静态和非静态</li>
+<li>父类静态变量、父类静态代码块、子类静态变量、子类静态代码块、父类非静态变量、父类非静态代码块、父类构造函数、子类非静态变量、子类非静态代码块、子类构造函数</li>
+<li>java的对象放在堆区，线程共享；其它放在栈区，每个线程有一个</li>
+<li>类和静态区存放在静态区，线程共享</li>
+<li>静态随类，非静态随对象，所以静态方法中无法使用this、super</li>
+</ol>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><ol>
+<li>final修饰类，则这个类不能被继承</li>
+<li>final修饰方法，则这个方法不能被重写</li>
+<li>final修饰基础类型变量，必须初始化，且只能初始化一次</li>
+<li>final修饰对象类型变量，地址不能变</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckblw37ak000fggwzpxw907at" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-动态规划" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/18/动态规划/" class="article-date">
@@ -95,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckbkxkvjv000lwwwzjcleq4u2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckblw37at000mggwzrfp6c657" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbkxkvjr000jwwwzm9sqbv9j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckblw37aq000kggwzy866jilu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -188,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckbkxkvju000kwwwzak68uhj1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckblw37as000lggwz95hqseaq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -290,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbkxkvjx000nwwwzvhhmpc4j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckblw37b9000oggwz6u8skfk4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -336,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbkxkvik0000wwwz23n3kj6o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckblw379k0000ggwzvmr8ctv1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -406,7 +474,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbkxkvj8000bwwwzzjjd1kug" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckblw37ad000bggwzswposu46" class="article-share-link">Share</a>
       
       
     </footer>
@@ -469,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbkxkviz0006wwwzne1ih998" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckblw37a20006ggwzmm3xuho5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -514,7 +582,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbkxkvip0001wwwzcbibl7jz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckblw379r0001ggwzwxyqb84p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -576,52 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbkxkvje000ewwwzf2difgie" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HOw-to-use-chrome-developer-tool" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/" class="article-date">
-  <time datetime="2020-02-10T08:40:20.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-打开你的Chrome浏览器，新建标签页"><a href="#1-打开你的Chrome浏览器，新建标签页" class="headerlink" title="1. 打开你的Chrome浏览器，新建标签页"></a>1. 打开你的Chrome浏览器，新建标签页</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/1.png" alt=""></p>
-<h2 id="2-找到选项中的开发者工具"><a href="#2-找到选项中的开发者工具" class="headerlink" title="2. 找到选项中的开发者工具"></a>2. 找到选项中的开发者工具</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/2.png" alt=""></p>
-<h2 id="3-运行便调试JS代码"><a href="#3-运行便调试JS代码" class="headerlink" title="3. 运行便调试JS代码"></a>3. 运行便调试JS代码</h2><ol>
-<li>进入Sources面板</li>
-<li>new一个snippet</li>
-<li>编写源码</li>
-<li>右键snippet条目，单机Run</li>
-<li>在下方Console中查看输出结果<br><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/3.png" alt=""></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbkxkviu0003wwwzklxi801u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckblw37ah000dggwzo86xnjvb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -667,6 +690,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/19/java-foundamental/">java foundamental</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/18/动态规划/">动态规划</a>
           </li>
         
@@ -680,10 +707,6 @@
         
           <li>
             <a href="/2020/06/17/链表题/">链表题</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
           </li>
         
       </ul>
