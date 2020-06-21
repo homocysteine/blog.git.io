@@ -14,12 +14,12 @@
 <meta property="og:site_name" content="Homocysteine">
 <meta property="og:description" content="Java参数传递 基础数据类型是值传递 对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参 指针和引用还是有区别的，指针无法改变指向  Java继承 子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的 Object类是层次结构的根，java所有类都继承自这个类 构造子类对象前，要先构造父类对象，用super关键字实现 子类带参要先调父类带参 子类">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_foundamental/java_Exception.png">
-<meta property="og:updated_time" content="2020-06-21T13:11:02.010Z">
+<meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_Exception.png">
+<meta property="og:updated_time" content="2020-06-21T13:45:41.412Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foundamental">
 <meta name="twitter:description" content="Java参数传递 基础数据类型是值传递 对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参 指针和引用还是有区别的，指针无法改变指向  Java继承 子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的 Object类是层次结构的根，java所有类都继承自这个类 构造子类对象前，要先构造父类对象，用super关键字实现 子类带参要先调父类带参 子类">
-<meta name="twitter:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_foundamental/java_Exception.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_Exception.png">
   
     <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
   
@@ -124,7 +124,7 @@
 <li>java数组为null和空数组是不一样的概念。null表示这个对象引用是一个空引用；空数组表示是一个真正的对象，只不过元素数量为0</li>
 </ol>
 <h1 id="java异常"><a href="#java异常" class="headerlink" title="java异常"></a>java异常</h1><h2 id="java异常体系主要回答的三个问题"><a href="#java异常体系主要回答的三个问题" class="headerlink" title="java异常体系主要回答的三个问题"></a>java异常体系主要回答的三个问题</h2><p>what:异常类型回答了什么被抛出<br>where:异常堆栈跟踪回答了在哪里被抛出<br>why:异常信息回答了为什么会被抛出</p>
-<h2 id="java的异常体系"><a href="#java的异常体系" class="headerlink" title="java的异常体系"></a>java的异常体系</h2><p><img src="/2020/06/19/java-foundamental/java_foundamental/java_Exception.png" alt=""></p>
+<h2 id="java的异常体系"><a href="#java的异常体系" class="headerlink" title="java的异常体系"></a>java的异常体系</h2><p><img src="/2020/06/19/java-foundamental/java_Exception.png" alt=""></p>
 <ol>
 <li>java异常的顶层父类是Throwable类，Throwable继承自Object类</li>
 <li>Error:(JVM负责)程序无法处理的系统错误，编译器不做检查，遇到建议直接让程序终止 e.g. 系统崩溃、虚拟机错误、内存不足、方法调用栈溢出</li>
@@ -135,15 +135,15 @@
 <li>尽量细化异常，不要泛化异常，因为一场本身就是为了方便定位问题的<h2 id="java常见Error和异常"><a href="#java常见Error和异常" class="headerlink" title="java常见Error和异常"></a>java常见Error和异常</h2></li>
 <li>runtimeException<br>NullPointerException:在试图使用的对象是null<br>ClassCastException:不兼容类型之间的转换异常<br>IllegalArgumentException:传递非法参数的异常<br>IndexOutOfBoundsException:下标越界异常<br>NumberFormatException:将String转化成num，但是String确实不满足格式要求<br>ArithmeticException:除0错误</li>
 <li>非runtimeException<br>ClassNotFoundException<br>I/OException</li>
-<li>Error<br>NoClassDefFoundError:找不到class的定义，没有引入jar包<br>StackOverflowError:深递归导致方法调用栈被耗尽<br>OutOfMemoryError:内存溢出异常<h2 id="Java的异常处理机制"><a href="#Java的异常处理机制" class="headerlink" title="Java的异常处理机制"></a>Java的异常处理机制</h2></li>
+<li>Error<br>NoClassDefFoundError:找不到class的定义，没有引入jar包<br>StackOverflowError:深递归导致方法调用栈被耗尽<br>OutOfMemoryError:内存溢出异常<br>##Java的异常处理机制</li>
 <li>抛出异常<br>创建异常对象，交由运行时系统处理</li>
-<li>捕获异常<br>寻找合适的异常处理器进行处理，如果没有找到，则终止程序<h2 id="Java异常处理流程"><a href="#Java异常处理流程" class="headerlink" title="Java异常处理流程"></a>Java异常处理流程</h2></li>
+<li>捕获异常<br>寻找合适的异常处理器进行处理，如果没有找到，则终止程序<br>##Java异常处理流程</li>
 <li>在出现异常时，在堆上创建异常对象</li>
 <li>当异常出现时，当前的执行路径将会被终止（不会执行try块中后续的逻辑代码）</li>
 <li>然后会抛出异常对象的引用</li>
 <li>抛出的异常会被catch捕获，子类在前面就是子类子类捕获</li>
 <li>catch中的return之前，会先执行finally子句中的语句，如果finally子句中出现了return，则不会再回到catch中执行那个return了</li>
-<li>异常至多被一个catch匹配到，且匹配按照先后顺序进行匹配<h2 id="Java异常处理原则"><a href="#Java异常处理原则" class="headerlink" title="Java异常处理原则"></a>Java异常处理原则</h2>具体明确、提早抛出、延迟捕获（让掌握更多信息的作用域去处理异常）<br>try-catch需要创建异常对象实例，保存栈快照，开销较大。所以尽量用try包裹一场出现的代码段</li>
+<li>异常至多被一个catch匹配到，且匹配按照先后顺序进行匹配<br>##Java异常处理原则<br>具体明确、提早抛出、延迟捕获（让掌握更多信息的作用域去处理异常）<br>try-catch需要创建异常对象实例，保存栈快照，开销较大。所以尽量用try包裹一场出现的代码段</li>
 </ol>
 <p>#Java底层</p>
 <p>##平台无关性</p>
