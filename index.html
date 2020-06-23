@@ -62,6 +62,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/23/设计模式/" class="article-date">
+  <time datetime="2020-06-23T02:32:22.000Z" itemprop="datePublished">2020-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/23/设计模式/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#MVP模式<br>M-&gt;Model;V-&gt;View;P-&gt;Presenter<br>MVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示<br>M数据处理（网络操作、数据库操作），V视图层显示，C交互处理<br>MVC中view会直接从Model中读取数据，而不是Controller<br>MVP中View不会直接使用Model，它们之间的通信是使用Presenter进行的</p>
+<p>MVC优点：</p>
+<ol>
+<li>低耦合：降低了M和V的关联程度</li>
+<li>将业务逻辑和界面分离，增强了程序的可维护性和可扩展性。比如待修改界面时，只需要更改V层；当需要新的数据需求时，只需要增加新的接口。</li>
+<li>职责划分比较明确<br>MVC缺点：</li>
+<li>MVC适用于逻辑处理复杂、需要模块化设计的大项目；小项目中使用MVC可能会导致程序过度设计，代码臃肿。</li>
+<li>Activity中有很多关于视图UI的代码，所以在Activity中并不是单纯的C，还包括V的部分</li>
+<li>View和Model还是互相耦合</li>
+</ol>
+<p>MVP模式是MVC模式在Android上的一种变体<br>MVC中Activity还是承担了M和C这两个层的工作，耦合度还是有点高，所以将Activity中的view和controller抽离出来，变成View和Presenter，这就是MVP模式</p>
+<p>MVC模式中Activity的耦合度还是太高，业务逻辑与显示逻辑都写在Activity中，容易增城Activity臃肿。<br>而且写在Activity中的代码意味着不能被复用了</p>
+<p>在MVP架构中，</p>
+<ol>
+<li>Model还是那个Model，Activity的UI逻辑层被抽象成View接口，业务逻辑层被抽象成Presenter接口。</li>
+<li>Model和View之间也不能直接的进行交互</li>
+<li>使代码更加简洁，进一步降低耦合，可以进行逻辑代码的复用</li>
+<li>具体实现，在Activity中主要编写UI逻辑，业务逻辑写在一个接口中，然后去实现这个接口</li>
+</ol>
+<p>##MVVM模式<br>MVVM将MVC的Controller改进成ViewModel<br>在MVVM框架下，View和Model是不能直接通信的<br>ViewModel能够监听两端的变化，“实现数据的双向绑定”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/23/设计模式/" data-id="ckbrz62xb000ok4wz4syzqzrh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-java-foundamental" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/19/java-foundamental/" class="article-date">
@@ -141,7 +197,9 @@
 <li>catch中的return之前，会先执行finally子句中的语句，如果finally子句中出现了return，则不会再回到catch中执行那个return了</li>
 <li>异常至多被一个catch匹配到，且匹配按照先后顺序进行匹配<br>##Java异常处理原则<br>具体明确、提早抛出、延迟捕获（让掌握更多信息的作用域去处理异常）<br>try-catch需要创建异常对象实例，保存栈快照，开销较大。所以尽量用try包裹一场出现的代码段<br>##Java throws和try-catch的区别</li>
 <li>throws是向上抛出，将异常交给方法的调用方来处理异常</li>
-<li>try-catch是捕获异常，自己处理异常</li>
+<li>try-catch是捕获异常，自己处理异常<h2 id="ClassNotFoundException-VS-NotClassDefFundError"><a href="#ClassNotFoundException-VS-NotClassDefFundError" class="headerlink" title="ClassNotFoundException VS NotClassDefFundError"></a>ClassNotFoundException VS NotClassDefFundError</h2></li>
+<li>ClassNotFound是因为在加载类时，找不到定义的class代码段，没有在内存中生成对应的类对象</li>
+<li>NotClassDefFoundError时Error，编译能够通过，但是new对象时找不到类的定义而出错。可能原因：找不到class文件、class文件在不同的域中（在当前的java path下不可用，java path是我们配置环境变量时看到的那个东西）</li>
 </ol>
 <p>#Java底层</p>
 <p>##平台无关性</p>
@@ -182,11 +240,20 @@
 <li>如果要自定义ClassLoader，就需要重写重写findClass找到文件，然后在defineClass中生成class对象</li>
 <li>.java-&gt;.class-&gt;class对象</li>
 </ol>
+<p>##ClassLoader的双亲委派机制<br>先寻找类对象，按照customClassLoader-&gt;AppClassLoader-&gt;ExtClassLoader-&gt;BootsrapClassLoader的顺序查看是否已经加载该类（自底向上找class对象）<br>再找文件，按照BootstrapClassLoader-&gt;ExtClassLoader-&gt;AppClassLoader-&gt;CustomClassLoader<br>目的：防止多份同样字节码的加载</p>
+<p>##类的加载方式</p>
+<ol>
+<li>隐式加载：new，程序在运行过程中使用new隐式调用对应的类加载器</li>
+<li>显式加载，通过loadClass、forName显式加载类，获得类对象，再用newInstance获得实例</li>
+<li>forName得到的类对象是完成了初始化的，loadClass得到的类是完成了链接的</li>
+<li>forName的初始化特性可以帮助我们加载一些具有静态代码块的Driver；loadClass可以加速类的加载，初始化用到再说</li>
+<li>类的装载过程：加载（ClassLoader加载字节码）、链接（校验、类变量分配空间、符号引用转换为直接引用）、初始化（类变量赋值、静态代码块）</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckblw37ak000fggwzpxw907at" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckbrz62x4000ik4wz86auh30w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +309,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckblw37at000mggwzrfp6c657" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckbrz62x9000mk4wzdlfmkgom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -288,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckblw37aq000kggwzy866jilu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbrz62x7000lk4wzx00ejjga" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckblw37as000lggwz95hqseaq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckbrz62x6000kk4wz3b93z3ca" class="article-share-link">Share</a>
       
       
     </footer>
@@ -451,11 +518,14 @@
 <li>将这个数组构造成链表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public static ListNode mergeKLists(ListNode[] lists) &#123;</span><br><span class="line">        //将三个链表的数据都存到一个数组中</span><br><span class="line">        int[] arr = new int[getLength(lists[0])+getLength(lists[1])+getLength(lists[2])];</span><br><span class="line">        int i = 0;</span><br><span class="line">        <span class="keyword">for</span>(int j=0;j&lt;lists.length;j++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(lists[j]!=null)&#123;</span><br><span class="line">                arr[i] = lists[j].val;</span><br><span class="line">                lists[j] = lists[j].next;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //对数组进行排序</span><br><span class="line">        quickSort(arr,0,arr.length-1);</span><br><span class="line">        System.out.println(<span class="string">"数组结果"</span>);</span><br><span class="line">        <span class="keyword">for</span>(int a : arr)&#123;</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        &#125;</span><br><span class="line">        //将数组变成链表</span><br><span class="line">        <span class="built_in">return</span> createList(arr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //获取链表长度</span><br><span class="line">    static int getLength(ListNode list)&#123;</span><br><span class="line">        int length = 0;</span><br><span class="line">        <span class="keyword">while</span>(list != null)&#123;</span><br><span class="line">            length++;</span><br><span class="line">            list = list.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //快速排序</span><br><span class="line">    static void quickSort(int[] data,int low,int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(data,low,high);</span><br><span class="line">            quickSort(data,low,pivotIndex-1);</span><br><span class="line">            quickSort(data,pivotIndex+1,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static int partition(int[] data,int low,int high)&#123;</span><br><span class="line">        int pivot = data[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; data[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            data[low] = data[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; data[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            data[high] = data[low];</span><br><span class="line">        &#125;</span><br><span class="line">        data[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static ListNode createList(int[] data)&#123;</span><br><span class="line">        ListNode head = new ListNode(data[data.length-1]);</span><br><span class="line">        <span class="keyword">for</span>(int i=data.length-2;i&gt;=0;i--)&#123;</span><br><span class="line">            ListNode temp = new ListNode(data[i],head);</span><br><span class="line">            head = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="方法二：常规merge"><a href="#方法二：常规merge" class="headerlink" title="方法二：常规merge"></a>方法二：常规merge</h2><h2 id="方法三：优先队列"><a href="#方法三：优先队列" class="headerlink" title="方法三：优先队列"></a>方法三：优先队列</h2><h2 id="方法四：归并"><a href="#方法四：归并" class="headerlink" title="方法四：归并"></a>方法四：归并</h2>
+<h2 id="方法二：常规merge"><a href="#方法二：常规merge" class="headerlink" title="方法二：常规merge"></a>方法二：常规merge</h2><h2 id="方法三：优先队列"><a href="#方法三：优先队列" class="headerlink" title="方法三：优先队列"></a>方法三：优先队列</h2><h2 id="方法四：归并"><a href="#方法四：归并" class="headerlink" title="方法四：归并"></a>方法四：归并</h2><p>#删除倒数第N个结点<br>也是针对倒数…个的一些方法</p>
+<p>##方法一：求链表长度<br>用while求出length，再用length减去n</p>
+<p>##方法二：匀速间隔指针<br>单向链表，删除一般只需要被删除结点前面的那个节点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public ListNode removeNthFromEnd(ListNode head, int n) &#123;</span><br><span class="line">        ListNode tempHead = new ListNode();</span><br><span class="line">        tempHead.next = head;</span><br><span class="line">        ListNode prev = tempHead;</span><br><span class="line">        ListNode curr = tempHead;</span><br><span class="line">        //指向第n+1个</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;=n;i++)&#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(curr != null)&#123;</span><br><span class="line">            prev = prev.next;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        //此时prev在倒数第n个结点前面那个结点</span><br><span class="line">        prev.next = prev.next.next;</span><br><span class="line">        <span class="built_in">return</span> tempHead.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckblw37b9000oggwz6u8skfk4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbrz62xh000pk4wzffuvbslm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -501,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckblw379k0000ggwzvmr8ctv1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbrz62vp0000k4wzrg37alg9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -571,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckblw37ad000bggwzswposu46" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbrz62wv000ck4wzie8uz6cq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -634,7 +704,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckblw37a20006ggwzmm3xuho5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbrz62w30003k4wzqrn8gf8m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -679,69 +749,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckblw379r0001ggwzwxyqb84p" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Two-Sum" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/13/Two-Sum/" class="article-date">
-  <time datetime="2020-06-13T07:27:57.000Z" itemprop="datePublished">2020-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/13/Two-Sum/">Two Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h1><h2 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length-1;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == target)&#123;</span><br><span class="line">                    <span class="built_in">return</span> new int[] &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总结知识点：</p>
-<ol>
-<li><p>java查看数组长度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums.length</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>java创建匿名数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new int[]&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="解法二：HashMap"><a href="#解法二：HashMap" class="headerlink" title="解法二：HashMap"></a>解法二：HashMap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.get(target-nums[i])!=null)&#123;</span><br><span class="line">                <span class="built_in">return</span> new int[]&#123;map.get(target-nums[i]),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                map.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>算法大意：<br>找到自己的另一半<br>如果另一半还没有出现<br>就先领着自己的号牌，去hashmap中去等待<br>当另一半出现了，返回两个人的号牌</p>
-<p>总结知识点：</p>
-<ol>
-<li>创建HashMap<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;K,V&gt; map = new HashMap&lt;K,V&gt;();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在Java中，K、V都需要是对象类型，不可以是基础数据类型<br>int可以用Integer代替</p>
-<ol start="2">
-<li>取元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.get(K);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>如果K值对应的V不存在，则返回的是null</p>
-<ol start="3">
-<li>放元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.put(K,V);</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckblw37ah000dggwzo86xnjvb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbrz62vy0001k4wzg6j2eth8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -787,6 +795,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/23/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/19/java-foundamental/">java foundamental</a>
           </li>
         
@@ -800,10 +812,6 @@
         
           <li>
             <a href="/2020/06/18/全排列/">全排列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/链表题/">链表题</a>
           </li>
         
       </ul>

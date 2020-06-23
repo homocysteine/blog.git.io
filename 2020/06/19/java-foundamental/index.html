@@ -16,7 +16,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_Exception.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/jvm.png">
-<meta property="og:updated_time" content="2020-06-22T10:40:30.203Z">
+<meta property="og:updated_time" content="2020-06-23T10:35:44.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foundamental">
 <meta name="twitter:description" content="Java参数传递 基础数据类型是值传递 对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参 指针和引用还是有区别的，指针无法改变指向  Java继承 子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的 Object类是层次结构的根，java所有类都继承自这个类 构造子类对象前，要先构造父类对象，用super关键字实现 子类带参要先调父类带参 子类">
@@ -146,7 +146,9 @@
 <li>catch中的return之前，会先执行finally子句中的语句，如果finally子句中出现了return，则不会再回到catch中执行那个return了</li>
 <li>异常至多被一个catch匹配到，且匹配按照先后顺序进行匹配<br>##Java异常处理原则<br>具体明确、提早抛出、延迟捕获（让掌握更多信息的作用域去处理异常）<br>try-catch需要创建异常对象实例，保存栈快照，开销较大。所以尽量用try包裹一场出现的代码段<br>##Java throws和try-catch的区别</li>
 <li>throws是向上抛出，将异常交给方法的调用方来处理异常</li>
-<li>try-catch是捕获异常，自己处理异常</li>
+<li>try-catch是捕获异常，自己处理异常<h2 id="ClassNotFoundException-VS-NotClassDefFundError"><a href="#ClassNotFoundException-VS-NotClassDefFundError" class="headerlink" title="ClassNotFoundException VS NotClassDefFundError"></a>ClassNotFoundException VS NotClassDefFundError</h2></li>
+<li>ClassNotFound是因为在加载类时，找不到定义的class代码段，没有在内存中生成对应的类对象</li>
+<li>NotClassDefFoundError时Error，编译能够通过，但是new对象时找不到类的定义而出错。可能原因：找不到class文件、class文件在不同的域中（在当前的java path下不可用，java path是我们配置环境变量时看到的那个东西）</li>
 </ol>
 <p>#Java底层</p>
 <p>##平台无关性</p>
@@ -187,11 +189,20 @@
 <li>如果要自定义ClassLoader，就需要重写重写findClass找到文件，然后在defineClass中生成class对象</li>
 <li>.java-&gt;.class-&gt;class对象</li>
 </ol>
+<p>##ClassLoader的双亲委派机制<br>先寻找类对象，按照customClassLoader-&gt;AppClassLoader-&gt;ExtClassLoader-&gt;BootsrapClassLoader的顺序查看是否已经加载该类（自底向上找class对象）<br>再找文件，按照BootstrapClassLoader-&gt;ExtClassLoader-&gt;AppClassLoader-&gt;CustomClassLoader<br>目的：防止多份同样字节码的加载</p>
+<p>##类的加载方式</p>
+<ol>
+<li>隐式加载：new，程序在运行过程中使用new隐式调用对应的类加载器</li>
+<li>显式加载，通过loadClass、forName显式加载类，获得类对象，再用newInstance获得实例</li>
+<li>forName得到的类对象是完成了初始化的，loadClass得到的类是完成了链接的</li>
+<li>forName的初始化特性可以帮助我们加载一些具有静态代码块的Driver；loadClass可以加速类的加载，初始化用到再说</li>
+<li>类的装载过程：加载（ClassLoader加载字节码）、链接（校验、类变量分配空间、符号引用转换为直接引用）、初始化（类变量赋值、静态代码块）</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckblw37ak000fggwzpxw907at" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckbrz62x4000ik4wz86auh30w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,6 +210,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/23/设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          设计模式
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/18/动态规划/" id="article-nav-older" class="article-nav-link-wrap">
@@ -240,6 +260,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/23/设计模式/">设计模式</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/19/java-foundamental/">java foundamental</a>
           </li>
         
@@ -253,10 +277,6 @@
         
           <li>
             <a href="/2020/06/18/全排列/">全排列</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/17/链表题/">链表题</a>
           </li>
         
       </ul>

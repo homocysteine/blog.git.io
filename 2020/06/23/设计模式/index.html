@@ -5,19 +5,19 @@
   
 
   
-  <title>review of C++ | Homocysteine</title>
+  <title>设计模式 | Homocysteine</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. The string of C++If you want to use string in c++, you’d better include the .h file You can create a string instance like12String str1=&quot;str&quot;;String str2; You can copy an instance using =1str2=str1;">
+  <meta name="description" content="#MVP模式M-&amp;gt;Model;V-&amp;gt;View;P-&amp;gt;PresenterMVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示M数据处理（网络操作、数据库操作），V视图层显示，C交互处理MVC中view会直接从Model中读取数据，而不是ControllerMVP中View不会直接使用Model，它">
 <meta property="og:type" content="article">
-<meta property="og:title" content="review of C++">
-<meta property="og:url" content="http://yoursite.com/2019/01/25/review-of-C/index.html">
+<meta property="og:title" content="设计模式">
+<meta property="og:url" content="http://yoursite.com/2020/06/23/设计模式/index.html">
 <meta property="og:site_name" content="Homocysteine">
-<meta property="og:description" content="1. The string of C++If you want to use string in c++, you’d better include the .h file You can create a string instance like12String str1=&quot;str&quot;;String str2; You can copy an instance using =1str2=str1;">
+<meta property="og:description" content="#MVP模式M-&amp;gt;Model;V-&amp;gt;View;P-&amp;gt;PresenterMVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示M数据处理（网络操作、数据库操作），V视图层显示，C交互处理MVC中view会直接从Model中读取数据，而不是ControllerMVP中View不会直接使用Model，它">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-25T01:57:55.400Z">
+<meta property="og:updated_time" content="2020-06-23T09:06:23.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="review of C++">
-<meta name="twitter:description" content="1. The string of C++If you want to use string in c++, you’d better include the .h file You can create a string instance like12String str1=&quot;str&quot;;String str2; You can copy an instance using =1str2=str1;">
+<meta name="twitter:title" content="设计模式">
+<meta name="twitter:description" content="#MVP模式M-&amp;gt;Model;V-&amp;gt;View;P-&amp;gt;PresenterMVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示M数据处理（网络操作、数据库操作），V视图层显示，C交互处理MVC中view会直接从Model中读取数据，而不是ControllerMVP中View不会直接使用Model，它">
   
     <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
   
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/01/25/review-of-C/" class="article-date">
-  <time datetime="2019-01-25T01:52:23.000Z" itemprop="datePublished">2019-01-25</time>
+    <a href="/2020/06/23/设计模式/" class="article-date">
+  <time datetime="2020-06-23T02:32:22.000Z" itemprop="datePublished">2020-06-23</time>
 </a>
     
   </div>
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      review of C++
+      设计模式
     </h1>
   
 
@@ -86,14 +86,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-The-string-of-C"><a href="#1-The-string-of-C" class="headerlink" title="1. The string of C++"></a>1. The string of C++</h2><p>If you want to use string in c++, you’d better include the .h file <string><br>You can create a string instance like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="string">"str"</span>;</span><br><span class="line">String str2;</span><br></pre></td></tr></table></figure></string></p>
-<p>You can copy an instance using =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2=str1;</span><br></pre></td></tr></table></figure></p>
-<p>You can concat two instance using +<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str3=str1+str2;</span><br></pre></td></tr></table></figure></p>
+        <p>#MVP模式<br>M-&gt;Model;V-&gt;View;P-&gt;Presenter<br>MVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示<br>M数据处理（网络操作、数据库操作），V视图层显示，C交互处理<br>MVC中view会直接从Model中读取数据，而不是Controller<br>MVP中View不会直接使用Model，它们之间的通信是使用Presenter进行的</p>
+<p>MVC优点：</p>
+<ol>
+<li>低耦合：降低了M和V的关联程度</li>
+<li>将业务逻辑和界面分离，增强了程序的可维护性和可扩展性。比如待修改界面时，只需要更改V层；当需要新的数据需求时，只需要增加新的接口。</li>
+<li>职责划分比较明确<br>MVC缺点：</li>
+<li>MVC适用于逻辑处理复杂、需要模块化设计的大项目；小项目中使用MVC可能会导致程序过度设计，代码臃肿。</li>
+<li>Activity中有很多关于视图UI的代码，所以在Activity中并不是单纯的C，还包括V的部分</li>
+<li>View和Model还是互相耦合</li>
+</ol>
+<p>MVP模式是MVC模式在Android上的一种变体<br>MVC中Activity还是承担了M和C这两个层的工作，耦合度还是有点高，所以将Activity中的view和controller抽离出来，变成View和Presenter，这就是MVP模式</p>
+<p>MVC模式中Activity的耦合度还是太高，业务逻辑与显示逻辑都写在Activity中，容易增城Activity臃肿。<br>而且写在Activity中的代码意味着不能被复用了</p>
+<p>在MVP架构中，</p>
+<ol>
+<li>Model还是那个Model，Activity的UI逻辑层被抽象成View接口，业务逻辑层被抽象成Presenter接口。</li>
+<li>Model和View之间也不能直接的进行交互</li>
+<li>使代码更加简洁，进一步降低耦合，可以进行逻辑代码的复用</li>
+<li>具体实现，在Activity中主要编写UI逻辑，业务逻辑写在一个接口中，然后去实现这个接口</li>
+</ol>
+<p>##MVVM模式<br>MVVM将MVC的Controller改进成ViewModel<br>在MVVM框架下，View和Model是不能直接通信的<br>ViewModel能够监听两端的变化，“实现数据的双向绑定”</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbrz62x5000jk4wzi1q27ogu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/23/设计模式/" data-id="ckbrz62xb000ok4wz4syzqzrh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,19 +119,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2019/03/31/MySQL-Shell/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          MySQL_Shell
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/19/java-foundamental/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Something you should know in run goldbug</div>
+      <div class="article-nav-title">java foundamental</div>
     </a>
   
 </nav>
