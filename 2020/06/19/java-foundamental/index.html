@@ -16,7 +16,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/java_Exception.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/19/java-foundamental/jvm.png">
-<meta property="og:updated_time" content="2020-06-24T14:16:29.564Z">
+<meta property="og:updated_time" content="2020-06-25T07:45:11.602Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java foundamental">
 <meta name="twitter:description" content="Java参数传递 基础数据类型是值传递 对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参 指针和引用还是有区别的，指针无法改变指向  Java继承 子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的 Object类是层次结构的根，java所有类都继承自这个类 构造子类对象前，要先构造父类对象，用super关键字实现 子类带参要先调父类带参 子类">
@@ -114,6 +114,7 @@
 <li>java的对象放在堆区，线程共享；其它放在栈区，每个线程有一个</li>
 <li>类和静态区存放在静态区，线程共享</li>
 <li>静态随类，非静态随对象，所以静态方法中无法使用this、super</li>
+<li>静态变量被所有类实例共享</li>
 </ol>
 <h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><ol>
 <li>final修饰类，则这个类不能被继承</li>
@@ -198,7 +199,7 @@
 <li>forName的初始化特性可以帮助我们加载一些具有静态代码块的Driver；loadClass可以加速类的加载，初始化用到再说</li>
 <li>类的装载过程：加载（ClassLoader加载字节码）、链接（校验、类变量分配空间、符号引用转换为直接引用）、初始化（类变量赋值、静态代码块）</li>
 </ol>
-<p>#JVM内存模型</p>
+<p>#JVM内存模型（JDK8后）</p>
 <ol>
 <li>计算机所有程序都是在内存中运行的</li>
 <li>32位处理器可寻址空间，2^32；64位处理器可寻址空间，2^64</li>
@@ -206,7 +207,7 @@
 </li>
 <li><p>线程私有：程序计数器、虚拟机栈、本地方法栈</p>
 </li>
-<li>所有线程共享：MeataSpace、堆（包含字符串常量池）</li>
+<li>所有线程共享：MeataSpace、堆（包含字符串常量池，String str = “123”;）</li>
 </ol>
 <p>##1.程序计数器</p>
 <ol>
@@ -229,7 +230,7 @@
 <p>##Java为什么会产生stackoverflow的异常？<br>线程调用方法时，会向虚拟机栈中压入栈帧，方法执行完毕，再将栈帧弹出<br>虚拟机栈的深度是固定的，当递归层数过多，栈桢数超过虚拟机栈深度，就会发生stackoverflowError<br>ps:解决方式：减少递归层数；使用循环替代递归</p>
 <p>##虚拟机栈过多引发OutOfMemoryError<br>虚拟机栈的动态扩展时，无法申请到足够多的内存<br>e.g.无限创造线程</p>
 <p>##3.本地方法栈<br>作用与虚拟机栈类似，主要作用于Native方法 e.g. forName0(C++编写)</p>
-<p>##4.MetaSpace(线程共享部分)<br>存放Java类的元数据，包括class对象的field和method<br>元空间使用本地内存，而非jvm内存</p>
+<p>##4.MetaSpace(线程共享部分)<br>存放Java类的元数据，包括class对象的field和method<br>元空间使用本地内存，而非jvm内存<br>替代了原本的方法区，静态变量所在的地方</p>
 <p>##5. Java堆（线程共享部分）</p>
 <ol>
 <li>存放对象实例，为对象实例分配内存，当内存不足时，会抛出outOfMemory的异常</li>
@@ -240,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckbrz62x4000ik4wz86auh30w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckbxbfwmw000l6cwzznevs8f0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -298,23 +299,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/23/设计模式/">设计模式</a>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
           </li>
         
           <li>
-            <a href="/2020/06/19/java-foundamental/">java foundamental</a>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/动态规划/">动态规划</a>
+            <a href="/2020/06/26/树/">树</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/二叉树/">二叉树</a>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/全排列/">全排列</a>
+            <a href="/2020/06/25/singleton/">singleton</a>
           </li>
         
       </ul>

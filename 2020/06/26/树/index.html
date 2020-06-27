@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>树 | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#树的递归定义  有且只有一个结点没有父结点 除根以外，其它结点有且仅有一个父结点 每个结点都构成一个以它为根的子树  ps:前中后指的是根的位置前中后搜索都属于深度优先搜索 #112判断路经总和  采用前序遍历的方式 前序遍历的操作部分改成判断叶子节点是否等于最后相减的值 参数除了树节点外还有一个sum值，雁过拔毛法 在使用树节点遍历时，判断结点为空的处理是必须要有的 Java中虽然没有引用，但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树">
+<meta property="og:url" content="http://yoursite.com/2020/06/26/树/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="#树的递归定义  有且只有一个结点没有父结点 除根以外，其它结点有且仅有一个父结点 每个结点都构成一个以它为根的子树  ps:前中后指的是根的位置前中后搜索都属于深度优先搜索 #112判断路经总和  采用前序遍历的方式 前序遍历的操作部分改成判断叶子节点是否等于最后相减的值 参数除了树节点外还有一个sum值，雁过拔毛法 在使用树节点遍历时，判断结点为空的处理是必须要有的 Java中虽然没有引用，但">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-26T10:47:02.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="树">
+<meta name="twitter:description" content="#树的递归定义  有且只有一个结点没有父结点 除根以外，其它结点有且仅有一个父结点 每个结点都构成一个以它为根的子树  ps:前中后指的是根的位置前中后搜索都属于深度优先搜索 #112判断路经总和  采用前序遍历的方式 前序遍历的操作部分改成判断叶子节点是否等于最后相减的值 参数除了树节点外还有一个sum值，雁过拔毛法 在使用树节点遍历时，判断结点为空的处理是必须要有的 Java中虽然没有引用，但">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-树" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/26/树/" class="article-date">
+  <time datetime="2020-06-26T01:54:28.000Z" itemprop="datePublished">2020-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      树
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#树的递归定义</p>
+<ol>
+<li>有且只有一个结点没有父结点</li>
+<li>除根以外，其它结点有且仅有一个父结点</li>
+<li>每个结点都构成一个以它为根的子树</li>
+</ol>
+<p>ps:前中后指的是根的位置<br>前中后搜索都属于深度优先搜索</p>
+<p>#112判断路经总和</p>
+<ol>
+<li>采用前序遍历的方式</li>
+<li>前序遍历的操作部分改成判断叶子节点是否等于最后相减的值</li>
+<li>参数除了树节点外还有一个sum值，雁过拔毛法</li>
+<li>在使用树节点遍历时，判断结点为空的处理是必须要有的</li>
+<li>Java中虽然没有引用，但是可以用属性（全局变量）来实现相同的效果<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    boolean ans = <span class="literal">false</span>;</span><br><span class="line">    public boolean hasPathSum(TreeNode root, int sum) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root,sum);</span><br><span class="line">        <span class="built_in">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void preorder(TreeNode root,int sum)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root.left==null &amp;&amp; root.right==null &amp;&amp; root.val == sum)&#123;</span><br><span class="line">            ans = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,sum-root.val);</span><br><span class="line">        preorder(root.right,sum-root.val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#113 判断路经总和升级版<br>需要返回的不是true或者false，而是返回一个结果的集合（使用List实现）</p>
+<ol>
+<li>先入栈，加值</li>
+<li><p>叶子节点判断条件，满足则加入最终的结果集，注意要创建一个副本去加入，否则会是空集</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Integer&gt; temp = new ArrayList&lt;&gt;(path);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再出栈，减值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    int currSum = 0;</span><br><span class="line">    public List&lt;List&lt;Integer&gt;&gt; pathSum(TreeNode root, int sum) &#123;</span><br><span class="line">            //存储结果集</span><br><span class="line">            List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();</span><br><span class="line">            //存储单一结果</span><br><span class="line">            List&lt;Integer&gt; path = new ArrayList&lt;&gt;();</span><br><span class="line">            <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">                <span class="built_in">return</span> res;</span><br><span class="line">            &#125;</span><br><span class="line">            preorder(root,sum,path,res);</span><br><span class="line">        <span class="built_in">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void preorder(TreeNode root,int sum,List&lt;Integer&gt; path,List&lt;List&lt;Integer&gt;&gt; res)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        currSum += root.val;</span><br><span class="line">        path.add(root.val);</span><br><span class="line">        <span class="keyword">if</span>(root.left==null &amp;&amp; root.right==null &amp;&amp; currSum == sum )&#123;</span><br><span class="line">            List&lt;Integer&gt; temp = new ArrayList&lt;&gt;(path);</span><br><span class="line">            res.add(temp);</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root.left,sum,path,res);</span><br><span class="line">        preorder(root.right,sum,path,res);</span><br><span class="line">        </span><br><span class="line">        currSum -= root.val;</span><br><span class="line">        path.remove(path.size()-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>ps:ArrayList的部分操作,这几个也是collections体系种类库的共有操作</p>
+<ol>
+<li>add从后向前加入</li>
+<li>get得到指定索引元素</li>
+<li>set替换指定索引元素</li>
+<li>remove可以按元素删除，也可以按索引删除</li>
+</ol>
+<p>#树的最近公共祖先</p>
+<ol>
+<li>找到从根到两个结点的两条路径</li>
+<li>将两条路径的结点存储到List中</li>
+<li>从后向前比较第一个相同的结点</li>
+<li>在深度优先搜索的基础上，前序部分操作为入栈，比较返回；后序部分为出栈</li>
+<li>深度搜索基本框架：判断空树-&gt;前序操作（入栈）-&gt;满足条件-&gt;递归调用-&gt;后续操作（出栈）</li>
+<li>new ArrayList&lt;&gt;(res)可以创建一个结果的副本<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    List&lt;TreeNode&gt; path = new ArrayList&lt;&gt;();</span><br><span class="line">    List&lt;TreeNode&gt; res;</span><br><span class="line">    boolean isFinished;</span><br><span class="line">    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) &#123;</span><br><span class="line">        <span class="keyword">if</span>(root == null)&#123;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line">        preorder(root,p);</span><br><span class="line">        isFinished = <span class="literal">false</span>;</span><br><span class="line">        List&lt;TreeNode&gt; list1 = new ArrayList&lt;&gt;(res);</span><br><span class="line">        preorder(root,q);</span><br><span class="line">        List&lt;TreeNode&gt; list2 = new ArrayList&lt;&gt;(res);</span><br><span class="line">        <span class="keyword">for</span>(int i = Math.min(list1.size(),list2.size())-1;i&gt;=0;i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(list1.get(i) == list2.get(i))&#123;</span><br><span class="line">                <span class="built_in">return</span> list1.get(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> null;        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void preorder(TreeNode root,TreeNode search)&#123;</span><br><span class="line">        //空树判断+结束条件</span><br><span class="line">        <span class="keyword">if</span>(root == null||isFinished == <span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        //前序操作</span><br><span class="line">        path.add(root);</span><br><span class="line">        <span class="keyword">if</span>(root == search)&#123;</span><br><span class="line">            isFinished = <span class="literal">true</span>;</span><br><span class="line">            res = new ArrayList&lt;&gt;(path);</span><br><span class="line">        &#125;</span><br><span class="line">        //递归左右子树</span><br><span class="line">        preorder(root.left,search);</span><br><span class="line">        preorder(root.right,search);</span><br><span class="line">        //后续操作</span><br><span class="line">        path.remove(path.size()-1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/26/树/" data-id="ckbxbfwna000v6cwze9jrp6b8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/26/Android开发屏幕显示/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Android开发屏幕显示
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/25/abstract-class-and-interface/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">abstract class and interface</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/树/">树</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/singleton/">singleton</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

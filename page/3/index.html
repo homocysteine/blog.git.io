@@ -62,6 +62,342 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/08/python-spider/" class="article-date">
+  <time datetime="2019-05-08T11:40:28.000Z" itemprop="datePublished">2019-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/08/python-spider/">python spider</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>python注释方法 <code>#</code><br>python函数定义 <code>def function(parameter):</code>。注意缩进</p>
+<h2 id="1-request库的get方法"><a href="#1-request库的get方法" class="headerlink" title="1.request库的get方法"></a>1.request库的get方法</h2><p>获取网页最简单的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r=requests.get(url)</span><br></pre></td></tr></table></figure></p>
+<p>右边是Request对象<br>左边是Response对象，包含所有返回的资源</p>
+<h3 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h3><p>r.status_code 返回状态码，200表示成功，一般都会检测一下<br>r.text 用字符串表示出网页内容</p>
+<h2 id="2-通用代码框架"><a href="#2-通用代码框架" class="headerlink" title="2.通用代码框架"></a>2.通用代码框架</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url,timeout=30)</span><br><span class="line">        r.raise_for_status() <span class="comment">#如果状态不是200，引发HttpError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding <span class="comment">#选择合适的编码方式</span></span><br><span class="line">        <span class="built_in">return</span> r.text</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"产生异常"</span> <span class="comment">#抛出异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:  <span class="comment">#封装</span></span><br><span class="line">    url = <span class="string">"https://www.zhibo8.cc/"</span></span><br><span class="line">    <span class="built_in">print</span>(getHTMLText(url))</span><br></pre></td></tr></table></figure>
+<h2 id="3-request库head方法"><a href="#3-request库head方法" class="headerlink" title="3. request库head方法"></a>3. request库head方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r=requests.head(url)</span><br><span class="line"><span class="built_in">print</span>(r.headers) <span class="comment">#用很小的网络流量获取概要信息</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbxbfwmx000m6cwzunw52hpn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/05/03/assemble-language/" class="article-date">
+  <time datetime="2019-05-03T08:27:36.000Z" itemprop="datePublished">2019-05-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/03/assemble-language/">assemble language</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-汇编数据类型"><a href="#1-汇编数据类型" class="headerlink" title="1. 汇编数据类型"></a>1. 汇编数据类型</h2><p>db 字节类型变量，一个字节类型占一个字节，偏移量加1<br>dw 字类型变量，一个字类型变量占两个字节，偏移量加2<br>dd 双字类型变量，一个双字型变量占四个字节，偏移量加4</p>
+<h2 id="2-汇编循环"><a href="#2-汇编循环" class="headerlink" title="2. 汇编循环"></a>2. 汇编循环</h2><p>汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,3</span><br><span class="line">n1:</span><br><span class="line">XXXX</span><br><span class="line">loop n1</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-用堆栈保护复用寄存器"><a href="#3-用堆栈保护复用寄存器" class="headerlink" title="3. 用堆栈保护复用寄存器"></a>3. 用堆栈保护复用寄存器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push AA</span><br><span class="line">XXX    /*中间可以更改AA中的值作为它用*/</span><br><span class="line">pop AA</span><br></pre></td></tr></table></figure>
+<h2 id="4-条件跳转"><a href="#4-条件跳转" class="headerlink" title="4. 条件跳转"></a>4. 条件跳转</h2><p>无条件跳转：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmp n1</span><br><span class="line">n1:</span><br><span class="line">XXX</span><br></pre></td></tr></table></figure></p>
+<p>有条件转移情形一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmp ax,8</span><br><span class="line">jnz n1 //如果不相等，则跳到n1处</span><br><span class="line">jz n1   //如果相等，则跳到n1处</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbxbfwms000j6cwz4angjk9y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-MySQL-Shell" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/31/MySQL-Shell/" class="article-date">
+  <time datetime="2019-03-31T11:52:03.000Z" itemprop="datePublished">2019-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-启动mysql服务"><a href="#1-启动mysql服务" class="headerlink" title="1.启动mysql服务"></a>1.启动mysql服务</h2><p>以管理员身份运行cmd，在命令行中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-关闭mysql服务"><a href="#2-关闭mysql服务" class="headerlink" title="2.关闭mysql服务"></a>2.关闭mysql服务</h2><p>与启动类似的操作，只不过命令换成了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
+<p>ps:cmd中的清屏指令为<code>cls</code></p>
+<h2 id="3-查看mysql版本"><a href="#3-查看mysql版本" class="headerlink" title="3.查看mysql版本"></a>3.查看mysql版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -V</span><br></pre></td></tr></table></figure>
+<p>注意V要大写</p>
+<h2 id="4-mysql登录"><a href="#4-mysql登录" class="headerlink" title="4.mysql登录"></a>4.mysql登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p -P3306 -h127.0.0.1</span><br></pre></td></tr></table></figure>
+<p>如果使用的是默认端口和本地服务器，则-P和-h参数是不用加的<br>输入完密码后便成功登录了mysql</p>
+<h2 id="5-mysql退出"><a href="#5-mysql退出" class="headerlink" title="5.mysql退出"></a>5.mysql退出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>;</span><br><span class="line">quit;</span><br><span class="line">\q;</span><br></pre></td></tr></table></figure>
+<p>任意一个都可以<br>ps:登录到mysql后，记得句句有分号。</p>
+<h2 id="6-mysql编码规范"><a href="#6-mysql编码规范" class="headerlink" title="6.mysql编码规范"></a>6.mysql编码规范</h2><p>(1) 关键字 与 函数名 全部大写<br>(2) 数据库名、表名、字段名 全部小写<br>(3) SQL语句必须以分号结尾</p>
+<h2 id="7-mysql中中的交操作"><a href="#7-mysql中中的交操作" class="headerlink" title="7.mysql中中的交操作"></a>7.mysql中中的交操作</h2><p>mysql中没有INTERSECT关键字，所以用自然连接+选出公有属性代替</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbxbfwmf00096cwzu7tskhlw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/25/review-of-C/" class="article-date">
+  <time datetime="2019-01-25T01:52:23.000Z" itemprop="datePublished">2019-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/25/review-of-C/">review of C++</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-The-string-of-C"><a href="#1-The-string-of-C" class="headerlink" title="1. The string of C++"></a>1. The string of C++</h2><p>If you want to use string in c++, you’d better include the .h file <string><br>You can create a string instance like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="string">"str"</span>;</span><br><span class="line">String str2;</span><br></pre></td></tr></table></figure></string></p>
+<p>You can copy an instance using =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2=str1;</span><br></pre></td></tr></table></figure></p>
+<p>You can concat two instance using +<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str3=str1+str2;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbxbfwmz000n6cwzxhdf8nul" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Something-you-should-know-in-run-goldbug" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/" class="article-date">
+  <time datetime="2018-12-29T06:34:43.000Z" itemprop="datePublished">2018-12-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Install-the-react-viro"><a href="#Install-the-react-viro" class="headerlink" title="Install the react-viro"></a>Install the react-viro</h2><p>execute the order in the root directory of your current project with<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-viro</span><br></pre></td></tr></table></figure></p>
+<h2 id="execute-android-setup-sh"><a href="#execute-android-setup-sh" class="headerlink" title="execute android-setup.sh"></a>execute android-setup.sh</h2><p>Find the script named android-setup.sh in node_modules-&gt;react-viro<br>Then , most importantly,you must move the script to the root directory of your project!!!!<br>In this way, you can either open the file with gitbash or cygwin64.</p>
+<h2 id="try-to-compile-your-project-in-Android-Studio"><a href="#try-to-compile-your-project-in-Android-Studio" class="headerlink" title="try to compile your project in Android Studio"></a>try to compile your project in Android Studio</h2><p>one thing you should know in any time:<br>the version of buildtool,the version of gradle and the version of plugin must match each other.<br>You can modify your plugin version in<br>android-&gt;build.gradle<br>You can modify your gradle version in android-&gt;gradle-&gt;wrapper-&gt;gradle-&gt;wrapper.properties<br>You can modify your buildtool version in<br>android-&gt;app-&gt;build.gradle</p>
+<p>The matching relationship<br><img src="/2018/12/29/Something-you-should-know-in-run-goldbug/1.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbxbfwmh000a6cwz6umq29ug" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-GaoDe-component" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/21/GaoDe-component/" class="article-date">
+  <time datetime="2018-12-21T01:36:23.000Z" itemprop="datePublished">2018-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/21/GaoDe-component/">GaoDe component</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="更多详细内容"><a href="#更多详细内容" class="headerlink" title="更多详细内容"></a>更多详细内容</h2><p><a href="https://github.com/qiuxiang/react-native-amap3d" target="_blank" rel="noopener">地图配置</a></p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-native-amap3d</span><br></pre></td></tr></table></figure>
+<h2 id="获取key"><a href="#获取key" class="headerlink" title="获取key"></a>获取key</h2><ol>
+<li>先用android studio创建一个android项目</li>
+<li>在高德开放平台上注册一个号</li>
+<li>点击 控制台-&gt;应用管理-&gt;我的应用-&gt;创建一个应用</li>
+<li>点击添加key</li>
+<li><p>在控制台输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .android</span><br><span class="line">keyrool -list -v -keystore debug.keystore</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>默认口令为android</p>
+</li>
+<li>将SHA1值复制到第一个必填框内</li>
+<li>在创建的安卓项目文件夹内找到android-&gt;app-&gt;src-&gt;main-&gt;用记事本打开那个.xml文件，复制package值到第二个必填框</li>
+<li>至此,key添加工作完成</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbxbfwm100036cwzhm1e1fck" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-The-Tough-Road-in-learning-React-2" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/" class="article-date">
+  <time datetime="2018-12-16T05:26:11.000Z" itemprop="datePublished">2018-12-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or C/C++)</p>
+<h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Define the entry of the program</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ComponentName/&gt;,document.getElementById(<span class="string">'id'</span>));</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The id content may be different but you can check it in index.html.</p>
+<h2 id="import-outside-component"><a href="#import-outside-component" class="headerlink" title="import outside component"></a>import outside component</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentName from <span class="string">'filepath'</span>;</span><br></pre></td></tr></table></figure>
+<p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
+<h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Use-arguments-to-pass-the-components"><a href="#Use-arguments-to-pass-the-components" class="headerlink" title="Use arguments to pass the components"></a>Use arguments to pass the components</h2><p>Using arguments to pass the components can help you return the value according to user’s current state.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    var component;</span><br><span class="line">    <span class="function"><span class="title">if</span></span>()&#123;</span><br><span class="line">        component=&lt;ComonentLogin&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        component=&lt;CompenentHeader&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>(&#123;component&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="JSX-expression"><a href="#JSX-expression" class="headerlink" title="JSX expression"></a>JSX expression</h2><ol>
+<li>You can use ? expression for help.</li>
+<li>You can deisgn a button in the following way. Value is the content which will be displayed in the button. Disabled decide whether you can click the button.</li>
+</ol>
+<p>You can use arguments {} to control above all.<br>e.g.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png" alt=""> </p>
+<h2 id="Life-cycle-methods"><a href="#Life-cycle-methods" class="headerlink" title="Life-cycle methods"></a>Life-cycle methods</h2><p>Override the original methods<br>You can carry on your logical in the different stage of a program.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png" alt=""></p>
+<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ol>
+<li>State represents the state of the component.</li>
+<li>State’s effective scope is its class.So you can implement the change in a local area instead of refreshing all the page.</li>
+<li>All the class have the poperty of State. So you can call it use this.state.</li>
+<li><p>Initialize the state:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.state=&#123;argument1:value1,argument2:value2...&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Display the state:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.state.argument1&#125;&#123;this.state.argument2&#125;&lt;/p&gt;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Set the state</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Time method</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;operation,waiting time);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state=&#123;username:<span class="string">"Bob"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br><span class="line">        &#125;,5000);</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p>Similar with State, every class has its own props,you can use this.props two call it.<br>The crucial difference btwween state and props is the spot they areinitialized.State is initialized in the constructor,props is initialized where you call the component.<br>Use blank two divide props.<br>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ComponentHeader userid=&#123;123456&#125; username=&#123;<span class="string">"Jack"</span>&#125;/&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.props.username&#125;&#123;this.props.userid&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="ckbxbfwmo000f6cwzii3e50uf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-React-Native-1" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/12/09/React-Native-1/" class="article-date">
@@ -118,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="ckbrz62wb0008k4wzuznlrbou" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="ckbxbfwmi000b6cwzlg8gfr1f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="ckbrz62w80006k4wzo1l6v2h5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="ckbxbfwmd00076cwzhwr1fu17" class="article-share-link">Share</a>
       
       
     </footer>
@@ -219,146 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbrz62ws000ak4wzgm383lgt" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-React(1)" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/02/The-Tough-Road-in-learning-React(1)/" class="article-date">
-  <time datetime="2018-12-02T06:31:49.000Z" itemprop="datePublished">2018-12-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/02/The-Tough-Road-in-learning-React(1)/">The Tough Road in learning React(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="install-the-React"><a href="#install-the-React" class="headerlink" title="install the React"></a>install the React</h2><p>just execute the instruction<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br><span class="line">$ npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org</span><br><span class="line">$ cnpm install [name]</span><br></pre></td></tr></table></figure></p>
-<h2 id="create-a-project"><a href="#create-a-project" class="headerlink" title="create a project"></a>create a project</h2><p>just input following code<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cnpm install -g create-react-app</span><br><span class="line">$ create-react-app my-app</span><br></pre></td></tr></table></figure></p>
-<p>By the way, if you want to preview the effect of your web page,you can visit the domainname “localhost:3000”.<br>Before you visit local:3000,you must input the<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> my-app/</span><br><span class="line">$ npm start</span><br></pre></td></tr></table></figure></p>
-<p>Otherwise, you can’t open the webpage.<br>Then you can modify the index.js file, to create your own webpage based on React.</p>
-<h2 id="Add-component-to-the-website"><a href="#Add-component-to-the-website" class="headerlink" title="Add component to the website"></a>Add component to the website</h2><p>one way to add a component is using javascript function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props) &#123;</span><br><span class="line">  <span class="built_in">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line">const element = &lt;Welcome name=<span class="string">"Sara"</span> /&gt;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  element,</span><br><span class="line">  document.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
-<p>In this section, we define an element <code>&lt;welcome name=&quot;Sara&quot;&gt;</code>and call the element in the ReactDom.render function.<br>React use {name: ‘Sara’} as props(the argument of Welcome)<br>Welcome function return a value <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code><br>React DOM refreshes the DOM, the DOM become <code>&lt;h1&gt;Hello, {props.name}&lt;/h1&gt;</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Welcome(props)&#123;</span><br><span class="line">    <span class="built_in">return</span> &lt;h1&gt;Hello world again,&#123;props.name&#125;&lt;/h1&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Combine</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Sara"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Cahal"</span> /&gt;</span><br><span class="line">        &lt;Welcome name=<span class="string">"Edite"</span> /&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">ReactDOM.render(&lt;Combine /&gt;, </span><br><span class="line">    document.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
-<p>Use div to show more than one components at one time.</p>
-<h2 id="！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase"><a href="#！！！！！Warning-the-first-letter-of-the-component’s-name-must-be-uppercase" class="headerlink" title="！！！！！Warning:the first letter of the component’s name must be uppercase."></a>！！！！！Warning:the first letter of the component’s name must be uppercase.</h2><h2 id="something-you-should-know"><a href="#something-you-should-know" class="headerlink" title="something you should  know"></a>something you should  know</h2><p>The big parenthesis ‘{}’ means extracting the content.<br>You can show a component use element or component name(<welcome>)</welcome></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/02/The-Tough-Road-in-learning-React(1)/" data-id="ckbrz62wu000bk4wzb74f7fog" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-How-to-edit-Hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/How-to-edit-Hexo/" class="article-date">
-  <time datetime="2018-11-23T06:29:12.000Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/How-to-edit-Hexo/">How to edit Hexo</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="can-you-hear-me"><a href="#can-you-hear-me" class="headerlink" title="can you hear me?"></a>can you hear me?</h2><h3 id="This-is-my-first-blog"><a href="#This-is-my-first-blog" class="headerlink" title="This is my first blog."></a>This is my first blog.</h3><h5 id="I’m-wondering-how-to-edit-it"><a href="#I’m-wondering-how-to-edit-it" class="headerlink" title="I’m wondering how to edit it."></a>I’m wondering how to edit it.</h5><h4 id="It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be"><a href="#It-seems-that-the-more-‘-’-is-the-smaller-the-character-will-be" class="headerlink" title="It seems that the more ‘#’ is, the smaller the character will be."></a>It seems that the more ‘#’ is, the smaller the character will be.</h4><p>what if i type without ‘#’?<br>It become the content of text!!</p>
-<p>Different with html,the key enter is also work here.</p>
-<p>So what if i want to type a line of system call like ‘hexo s’?<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
-<p>And what if i want to put a website address in my blog page?<br><a href="https:www.baidu.com" target="_blank" rel="noopener">Try</a><br>In this way ‘try’ becomes a hyperlink.</p>
-<p>Let’s think about the pictures.<br><img src="/2018/11/23/How-to-edit-Hexo/gf.jpg" alt=""><br>since nobody will see the blog, i use my girlfriend’s picture as a test.</p>
-<p>If you want to load your post,just use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>By the way:if you want to check the effect of your edition,you must set up your hexo first,use the order like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hexo</span> s</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-title"><a href="#1-title" class="headerlink" title="1.title"></a>1.title</h3><p>If you want to write a title,you should type several ‘#’ before your content, the less ‘#’ there are, the highest priorty the title possesses.<br>Be careful that there must be a blank between the ‘#’ character and your title content.</p>
-<h3 id="2-enter"><a href="#2-enter" class="headerlink" title="2.enter"></a>2.enter</h3><p>when you edit your blog, it is similar to edit a text in word. The enter and blank are also work.</p>
-<h3 id="3-order"><a href="#3-order" class="headerlink" title="3.order"></a>3.order</h3><p>If you want to show a code use special call to enclose your content.</p>
-<h3 id="4-website-address"><a href="#4-website-address" class="headerlink" title="4.website address"></a>4.website address</h3><p>If you want to put on a website address, use the formal like<br>“[describe]”+”(the address)”.</p>
-<h3 id="5-picture"><a href="#5-picture" class="headerlink" title="5.picture"></a>5.picture</h3><p>You have to modify the property of your deployment at first.<br>Change the “post_asset_folder” to true.<br>then use<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$npm</span> install hexo-asset-image --save</span><br></pre></td></tr></table></figure></p>
-<p>Then create a new folder in source, the folder’s name must be consistent with your .md file.<br>put a picture into the folder, then use the formal like<br>“![]”+”(foldername/picturename.pictureformat)” to create it in the web page.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/How-to-edit-Hexo/" data-id="ckbrz62w60005k4wzat5l5yne" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/11/23/hello-world/" class="article-date">
-  <time datetime="2018-11-23T05:55:33.873Z" itemprop="datePublished">2018-11-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/23/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/11/23/hello-world/" data-id="ckbrz62x1000gk4wzkyhhn4z0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbxbfwml000c6cwz0p7chtxb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -372,7 +569,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -404,23 +601,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/23/设计模式/">设计模式</a>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
           </li>
         
           <li>
-            <a href="/2020/06/19/java-foundamental/">java foundamental</a>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/动态规划/">动态规划</a>
+            <a href="/2020/06/26/树/">树</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/二叉树/">二叉树</a>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/全排列/">全排列</a>
+            <a href="/2020/06/25/singleton/">singleton</a>
           </li>
         
       </ul>

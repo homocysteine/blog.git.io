@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>java-memory-model | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#JVM三大性能调优参数-Xms -Xmx -Xss的含义-Xss规定了每个线程虚拟机栈的大小（stack）-Xms规定了堆的初始容量-Xmx规定了堆的最大容量（一般和-Xms设置成一样的，防止内存抖动） #内存分配的三种策略：  静态存储：在编译时确定每个数据目标运行时的内存需求（不能有可变数据结构、嵌套、递归） 栈式存储：编译时未知，运行时模块入口前确定 对是存储：编译时未知，运行时模块入口时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-memory-model">
+<meta property="og:url" content="http://yoursite.com/2020/06/24/java-memory-model/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="#JVM三大性能调优参数-Xms -Xmx -Xss的含义-Xss规定了每个线程虚拟机栈的大小（stack）-Xms规定了堆的初始容量-Xmx规定了堆的最大容量（一般和-Xms设置成一样的，防止内存抖动） #内存分配的三种策略：  静态存储：在编译时确定每个数据目标运行时的内存需求（不能有可变数据结构、嵌套、递归） 栈式存储：编译时未知，运行时模块入口前确定 对是存储：编译时未知，运行时模块入口时">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/06/24/java-memory-model/three-parameter.png">
+<meta property="og:updated_time" content="2020-06-25T00:47:53.962Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-memory-model">
+<meta name="twitter:description" content="#JVM三大性能调优参数-Xms -Xmx -Xss的含义-Xss规定了每个线程虚拟机栈的大小（stack）-Xms规定了堆的初始容量-Xmx规定了堆的最大容量（一般和-Xms设置成一样的，防止内存抖动） #内存分配的三种策略：  静态存储：在编译时确定每个数据目标运行时的内存需求（不能有可变数据结构、嵌套、递归） 栈式存储：编译时未知，运行时模块入口前确定 对是存储：编译时未知，运行时模块入口时">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/24/java-memory-model/three-parameter.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java-memory-model" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/java-memory-model/" class="article-date">
+  <time datetime="2020-06-24T14:18:20.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java-memory-model
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#JVM三大性能调优参数-Xms -Xmx -Xss的含义<br><img src="/2020/06/24/java-memory-model/three-parameter.png" alt=""><br>-Xss规定了每个线程虚拟机栈的大小（stack）<br>-Xms规定了堆的初始容量<br>-Xmx规定了堆的最大容量（一般和-Xms设置成一样的，防止内存抖动）</p>
+<p>#内存分配的三种策略：</p>
+<ol>
+<li>静态存储：在编译时确定每个数据目标运行时的内存需求（不能有可变数据结构、嵌套、递归）</li>
+<li>栈式存储：编译时未知，运行时模块入口前确定</li>
+<li>对是存储：编译时未知，运行时模块入口时也未知，动态分配内存</li>
+</ol>
+<p>#Java内存模型中堆和栈的区别<br>数组、对象实例都保存在堆中，在栈中定义变量保存堆中实例的首地址（引用变量）</p>
+<ol>
+<li>所以，引用变量会自动释放，而实例本身不会，实例对象本身存储在堆中，等待GC处理</li>
+<li>所以当我们用String str = new String(“123”)创建对象时，会在栈中创建一个引用对象（地址），在对中创建一个实例对象。<br>new出来的在堆里</li>
+<li>区别一：栈自动释放，堆GC管理</li>
+<li>区别二：栈一般比堆要小</li>
+<li>区别三：堆活动量较大，GC的非实时性，产生的碎片量较多</li>
+<li>区别四：栈支持静态和动态，对仅支持动态（是堆的优点，更灵活）</li>
+<li>区别五：栈的效率要比堆要搞</li>
+</ol>
+<p>#equals VS ==</p>
+<ol>
+<li>equals比较的是两个对象实例在内存中的内容</li>
+<li>==比较的则是两个引用变量的值，即实例变量在堆中的首地址</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/24/java-memory-model/" data-id="ckbxbfwmt000k6cwzyl8hlls8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/25/Internal-class/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Internal-class
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/23/设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/树/">树</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/singleton/">singleton</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

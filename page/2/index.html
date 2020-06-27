@@ -62,6 +62,446 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-二叉树" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/二叉树/" class="article-date">
+  <time datetime="2020-06-18T10:40:46.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/二叉树/">二叉树</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#二叉树遍历<br>前序遍历：从根节点开始，默念“中左右”，对于每一个结点都同样适用，第一个是根节点<br>中序遍历：从根节点开始，默念“左中右”，对于每一个结点都同样适用<br>后序遍历：从根节点开始，默念“左右中”，对于每一个结点都同样适用，最后一个是根节点</p>
+<p>#二叉树的结点与深度的关系<br>深度h，结点数n<br>对于满二叉树：2^h-1=n<br>对于完全二叉树：n=floor(log(n)/log(2))+1</p>
+<p>ps:Scanner的next和nextLine的区别<br>next:从第一个有效字符开始，到非有效字符结束<br>nextLine:Enter之前的全部字符</p>
+<p>#获取二叉树的深度</p>
+<ol>
+<li>使用前序遍历的架构</li>
+<li>如果当前的结点是null，直接返回0</li>
+<li>当前结点不是null，左右分别递归调用</li>
+<li>返回的是这一层回溯中的最大值+1，这样回溯了几层就加了几<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">static int getDepth(TreeNode root)&#123;</span><br><span class="line">        <span class="keyword">if</span>(root==null)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            int left = getDepth(root.left);</span><br><span class="line">            int right = getDepth(root.right);</span><br><span class="line">            //每层回溯+1</span><br><span class="line">            <span class="built_in">return</span> Math.max(left,right)+1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbxbfwn2000p6cwz7q0wsckv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-全排列" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/全排列/" class="article-date">
+  <time datetime="2020-06-18T08:16:23.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/全排列/">全排列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="全排列"><a href="#全排列" class="headerlink" title="全排列"></a>全排列</h1><p>回溯法的应用，因为排列要求不能重复，只是位置更换<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">backtrack&#123;</span><br><span class="line">    <span class="keyword">if</span> 满足条件</span><br><span class="line">       结果.add(路径)</span><br><span class="line">       <span class="built_in">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(选择:选择列表)&#123;</span><br><span class="line">        做出选择</span><br><span class="line">        backtrack(路径，选择列表)</span><br><span class="line">        撤销选择</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>list的add方法，参数是元素，加在最后面<br>list的remove方法，参数是索引</p>
+<ol>
+<li>如果list的长度到位，则将这次的结果交给res</li>
+<li>从选择列表中选择元素，加一个条件，对列表中没有的元素才执行操作</li>
+<li>选择方式：加到列表中</li>
+<li>重新调用（重新调用能完成一种情况的列举）</li>
+<li>去掉这个元素，重新开始另一个循环，一零一个元素为开头<br>总结：循环{加入、递归、去除}<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; element = new ArrayList&lt;&gt;();</span><br><span class="line">        backtrack(result,element,nums);</span><br><span class="line">        <span class="built_in">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void backtrack(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, int[] nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(list.size() == nums.length)&#123;</span><br><span class="line">            result.add(new ArrayList&lt;Integer&gt;(list));</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!list.contains(num))&#123;</span><br><span class="line">                list.add(num);</span><br><span class="line">                backtrack(result,list,nums);</span><br><span class="line">                list.remove(list.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>字符串长度.length()<br>数组长度.length<br>List长度.size()</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckbxbfwn3000q6cwz4g893ijq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-链表题" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/链表题/" class="article-date">
+  <time datetime="2020-06-17T13:57:37.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/链表题/">链表题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>链表题随时要清楚，每一个操作的节点都不能丢,从这一点出发去设计指针，考虑先后顺序</p>
+<h1 id="ReverseList"><a href="#ReverseList" class="headerlink" title="ReverseList"></a>ReverseList</h1><ol>
+<li>设置三个指针，prev指向null,curr指向第一个节点,temp指向第二个节点</li>
+<li>curr的next指向prev</li>
+<li>prev指向curr</li>
+<li>curr指向temp</li>
+<li>temp指向temp.next<br>相当于从一个链表向另一个链表中迁移<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ListNode prev = null;</span><br><span class="line">        //用指针curr记住第一个</span><br><span class="line">        ListNode curr = list;</span><br><span class="line">        ListNode temp = null;</span><br><span class="line">        <span class="keyword">while</span>(curr!=null)&#123;</span><br><span class="line">            temp = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> prev;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="mergeList"><a href="#mergeList" class="headerlink" title="mergeList"></a>mergeList</h1><ol>
+<li>设置一个头结点，用head、p3分别指着</li>
+<li>输入的两个链表分别用p1、p2指着</li>
+<li>之后是类似于归并排序一样，进行三个while的操作</li>
+<li>链表的归并最后的单独讨论不需要用while，if就好，并且只要让一处的指针只想完毕就好，后续不必重复执行动作<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">static ListNode mergeList(ListNode list1, ListNode list2)&#123;</span><br><span class="line">        ListNode p1=null,p2=null;</span><br><span class="line">        p1=list1;p2=list2;</span><br><span class="line">        //设置一个头结点解决问题</span><br><span class="line">        ListNode head = new ListNode();</span><br><span class="line">        ListNode p3 =head;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p1.val&lt;=p2.val)&#123;</span><br><span class="line">                p3.next = p1;</span><br><span class="line">                p1=p1.next;</span><br><span class="line">                p3=p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p3.next = p2;</span><br><span class="line">                p2 = p2.next;</span><br><span class="line">                p3 = p3.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p1!=null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p2!=null)&#123;</span><br><span class="line">            p3.next=p2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> head.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#相交链表</p>
+<p>##解法一：暴力法</p>
+<ol>
+<li>分别用链表A的每一个元素去扫描链表B的每一个元素，发现相同的就返回，这种方式复杂度为O(n^2)</li>
+<li>需要注意的一点是，链表的遍历是一趟的，所以为了让链表B能够多趟遍历，要在外层循环中手动把指针指向链表B的头<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ListNode pa = headA,pb = headB;</span><br><span class="line">        <span class="keyword">while</span>(pa!=null)&#123;</span><br><span class="line">            <span class="keyword">while</span>(pb!=null)&#123;</span><br><span class="line">                <span class="keyword">if</span>(pa == pb)&#123;</span><br><span class="line">                    <span class="built_in">return</span> pa;</span><br><span class="line">                &#125;</span><br><span class="line">                pb = pb.next;</span><br><span class="line">            &#125;</span><br><span class="line">            pb = headB;</span><br><span class="line">            pa=pa.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> null;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##解法二：gap法</p>
+<ol>
+<li>先统计两个链表的长度</li>
+<li>通过长度做差，使得两个指针指向等长的位置</li>
+<li>齐头并进往前遍历，相同就返回<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public ListNode getIntersectionNode(ListNode headA, ListNode headB) &#123;</span><br><span class="line">        ListNode pa = headA, pb = headB;</span><br><span class="line">        int lenA = getLength(headA);</span><br><span class="line">        int lenB = getLength(headB);</span><br><span class="line">        <span class="keyword">if</span>(lenA&gt;=lenB)&#123;</span><br><span class="line">            int gap = lenA-lenB;</span><br><span class="line">            <span class="keyword">while</span>(gap &gt; 0)&#123;</span><br><span class="line">            pa = pa.next;</span><br><span class="line">            gap--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            int gap = lenB - lenA;</span><br><span class="line">            <span class="keyword">while</span>(gap&gt;0)&#123;</span><br><span class="line">                pb = pb.next;</span><br><span class="line">                gap--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(pa!=null &amp;&amp; pb!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(pa==pb)&#123;</span><br><span class="line">                <span class="built_in">return</span> pa;</span><br><span class="line">            &#125;</span><br><span class="line">            pa = pa.next;</span><br><span class="line">            pb = pb.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> null;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int getLength(ListNode head)&#123;</span><br><span class="line">        int count=0;</span><br><span class="line">        <span class="keyword">while</span>(head!=null)&#123;</span><br><span class="line">            count++;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#链表归并排序</p>
+<ol>
+<li>只接受一个链表作为参数，首先排除特殊情况：链表为空和链表只有一个元素时，直接返回head</li>
+<li>通过快慢指针找到链表的中间结点（满指针一次过一个，快指针一次过两个；快指针的循环截止体哦阿健要考虑到两种情况）</li>
+<li>对右侧进行递归</li>
+<li>中间一刀两段 slowp.next = null;</li>
+<li>对左侧进行递归</li>
+<li>将左右两边merge并返回</li>
+<li>merge就是普通的链表merge，定义一个头结点，一个while两个if，完美解决<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public static ListNode sortList(ListNode head) &#123;</span><br><span class="line">        //快速处理特殊情况</span><br><span class="line">        <span class="keyword">if</span>(head == null || head.next == null)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode slowp = head;</span><br><span class="line">        ListNode fastp = head.next.next;</span><br><span class="line">        ListNode left=null,right=null;</span><br><span class="line">        //找到链表的中间结点</span><br><span class="line">        <span class="keyword">while</span>(fastp != null &amp;&amp; fastp.next != null)&#123;</span><br><span class="line">            slowp = slowp.next;</span><br><span class="line">            fastp = fastp.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        right = sortList(slowp.next);</span><br><span class="line">        slowp.next = null;</span><br><span class="line">        left = sortList(head);</span><br><span class="line">        <span class="built_in">return</span> merge(left,right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static ListNode merge(ListNode left, ListNode right)&#123;</span><br><span class="line">        //头结点</span><br><span class="line">        ListNode tempHead = new ListNode();</span><br><span class="line">        ListNode p1=left,p2=right,p3=tempHead;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p1.val&lt;=p2.val)&#123;</span><br><span class="line">                p3.next = p1;</span><br><span class="line">                p1 = p1.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p3.next = p2;</span><br><span class="line">                p2 = p2.next;</span><br><span class="line">            &#125;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p1 != null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p2 != null)&#123;</span><br><span class="line">            p3.next = p2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> tempHead.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#链表快速排序</p>
+<ol>
+<li>先排除特殊情况，再定义一个头结点，调用quickSort方法</li>
+<li>quickSort方法接收head和end两种参数</li>
+<li>先规定好basecase，包括head、head.next、head.next.next等于end的情况</li>
+<li>然后创建一个临时头结点，用来暂管较小部分的链表</li>
+<li>选择头结点后面的结点（第一个有效结点作为主元），用pivot指针指着</li>
+<li>定义一个p指针作为主链扫描指针，p先指着主元</li>
+<li>以p.next!=null作为循环条件（主元扫描指针下一个元素不等于空）。主元的下一个元素，如果比主元小，就接到临时链上，由临时链上的扫描指针指着</li>
+<li>如果比主元大，那么p扫描指针就向前一步</li>
+<li>小链接大链 tp.next = head.next</li>
+<li>头结点归位 head.next=tmpHead.next</li>
+<li>递归调用 head pivot; pivot end</li>
+<li>返回head.next<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static ListNode sort(ListNode head)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == null || head.next == null)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = new ListNode();</span><br><span class="line">        newHead.next = head;</span><br><span class="line">        //连表的前后弦</span><br><span class="line">        <span class="built_in">return</span> quickSort(newHead,null);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //这里的head是指头结点</span><br><span class="line">    //用一个临时的结点作为存储小的部分的链表头结点</span><br><span class="line">    static ListNode quickSort(ListNode head, ListNode end)&#123;</span><br><span class="line">        <span class="keyword">if</span>(head==end||head.next==end||head.next.next==end)&#123;</span><br><span class="line">            <span class="built_in">return</span> head;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode tmpHead = new ListNode();</span><br><span class="line">        ListNode pivot = head.next;</span><br><span class="line">        ListNode p = pivot;</span><br><span class="line">        ListNode tp = tmpHead;</span><br><span class="line">        <span class="keyword">while</span>(p.next!=null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p.next.val&lt;pivot.val)&#123;</span><br><span class="line">                tp.next = p.next;</span><br><span class="line">                p.next = p.next.next;</span><br><span class="line">                tp = tp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                p = p.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将小串和大串接起来</span><br><span class="line">        tp.next = head.next;</span><br><span class="line">        //头结点归位</span><br><span class="line">        head.next = tmpHead.next;</span><br><span class="line">        quickSort(head,pivot);</span><br><span class="line">        quickSort(pivot,end);</span><br><span class="line">        <span class="built_in">return</span> head.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#ReorderList<br>前面几道题的综合</p>
+<ol>
+<li>快慢指针找中间节点</li>
+<li>分成两个结点</li>
+<li>翻转第二个链表</li>
+<li>合并两个链表<br>ps:任何时候都要注意个数少时（0、1、2）的特殊情况，上来先讨论<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public void reorderList(ListNode head) &#123;</span><br><span class="line">        //考虑特殊情况下,0，1，2个元素</span><br><span class="line">        <span class="keyword">if</span>(head==null||head.next==null||head.next.next==null)&#123;</span><br><span class="line">            <span class="built_in">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode slowp=head,fastp=head.next.next;</span><br><span class="line">        ListNode tempHead=null;</span><br><span class="line">        <span class="keyword">while</span>(fastp!=null &amp;&amp; fastp.next!=null)&#123;</span><br><span class="line">            slowp = slowp.next;</span><br><span class="line">            fastp = fastp.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tempHead = slowp.next;</span><br><span class="line">        slowp.next = null;</span><br><span class="line"></span><br><span class="line">        ListNode prev = null,temp=null;</span><br><span class="line">        ListNode curr = tempHead;</span><br><span class="line">        <span class="keyword">while</span>(curr != null)&#123;</span><br><span class="line">            temp = curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode fakeHead = new ListNode();</span><br><span class="line">        ListNode p1=head,p2=prev,p3=fakeHead;</span><br><span class="line">        <span class="keyword">while</span>(p1!=null &amp;&amp; p2!=null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">            p3.next = p2;</span><br><span class="line">            p2 = p2.next;</span><br><span class="line">            p3 = p3.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p1 != null)&#123;</span><br><span class="line">            p3.next = p1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(p2 != null)&#123;</span><br><span class="line">            p3.next = p2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="检查链表是否有环"><a href="#检查链表是否有环" class="headerlink" title="检查链表是否有环"></a>检查链表是否有环</h1><h2 id="方法一：使用HashSet检查重复元素"><a href="#方法一：使用HashSet检查重复元素" class="headerlink" title="方法一：使用HashSet检查重复元素"></a>方法一：使用HashSet检查重复元素</h2><p>遍历链表，如果结点不在set中，则加入其中；如果结点在set中，则返回有环<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">        Set&lt;ListNode&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span>(head != null)&#123;</span><br><span class="line">            <span class="keyword">if</span>(set.contains(head))&#123;</span><br><span class="line">                <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                set.add(head);</span><br><span class="line">            &#125;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="方法二：快慢指针同时起跑"><a href="#方法二：快慢指针同时起跑" class="headerlink" title="方法二：快慢指针同时起跑"></a>方法二：快慢指针同时起跑</h2><h1 id="链表以k为分组进行反转"><a href="#链表以k为分组进行反转" class="headerlink" title="链表以k为分组进行反转"></a>链表以k为分组进行反转</h1><p>ps：注意java中的对象参数类似于指针，java没有引用</p>
+<ol>
+<li>设置四个指针tempHead、prev、curr、next</li>
+<li>tempHead是整个链表的头结点指针，prev相当于是每个分组的头结点指针</li>
+<li>curr指向每个分组的第一个结点，next指向curr结点之后的结点</li>
+<li>首先获得链表的长度</li>
+<li>设置两层for循环，第一层循环的上限分组数</li>
+<li>内层循环是反转一个分组所需要的操作数，k=1时0，k=2时1，所以最多执行k-1次</li>
+<li>具体操作是让next先指向curr之后的位置，curr指向next之后的结点防止断链，next插入到prev后面<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">int length = 0;</span><br><span class="line">        //设置一个头结点</span><br><span class="line">        ListNode tempHead = new ListNode();</span><br><span class="line">        tempHead.next = head;</span><br><span class="line">        //设置每个分组的头结点指针</span><br><span class="line">        ListNode prev = tempHead;</span><br><span class="line">        //设置当前结点指针</span><br><span class="line">        ListNode curr = prev.next;</span><br><span class="line">        //设置后续指针</span><br><span class="line">        ListNode next = null;</span><br><span class="line">        //为了方便分组，需要知道数组的长度</span><br><span class="line">        <span class="keyword">while</span>(curr!=null)&#123;</span><br><span class="line">            length++;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        //记得指针归位</span><br><span class="line">        curr = prev.next;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;length/k;i++)&#123;</span><br><span class="line">            //外层循环分组</span><br><span class="line">            <span class="keyword">for</span>(int j=0;j&lt;k-1;j++)&#123;</span><br><span class="line">                //内层规定操作次数</span><br><span class="line">                //在这个区域内做一个反转</span><br><span class="line">                next = curr.next;</span><br><span class="line">                curr.next = next.next;</span><br><span class="line">                next.next = prev.next;</span><br><span class="line">                prev.next = next;</span><br><span class="line">            &#125;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = prev.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> tempHead.next;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这也为普通的重排链表提供了新思路，设置一个头结点、并获取到链表长度，将第一个节点后面的节点不断的插入到头结点的后面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ListNode tempHead = new ListNode();</span><br><span class="line">        tempHead.next = head;</span><br><span class="line">        ListNode curr = head;</span><br><span class="line">        ListNode next = null;</span><br><span class="line">        int length = 0;</span><br><span class="line">        <span class="keyword">while</span>(curr!=null)&#123;</span><br><span class="line">            length++;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;length-1;i++)&#123;</span><br><span class="line">            next = curr.next;</span><br><span class="line">            curr.next = next.next;</span><br><span class="line">            next.next = tempHead.next;</span><br><span class="line">            tempHead.next = next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> tempHead.next;</span><br></pre></td></tr></table></figure></p>
+<h1 id="MergeKSortedList"><a href="#MergeKSortedList" class="headerlink" title="MergeKSortedList"></a>MergeKSortedList</h1><h2 id="方法一：暴力法"><a href="#方法一：暴力法" class="headerlink" title="方法一：暴力法"></a>方法一：暴力法</h2><ol>
+<li>将输入链表的值都存储到一个数组中</li>
+<li>对这个数组进行快排操作</li>
+<li>将这个数组构造成链表<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">public static ListNode mergeKLists(ListNode[] lists) &#123;</span><br><span class="line">        //将三个链表的数据都存到一个数组中</span><br><span class="line">        int[] arr = new int[getLength(lists[0])+getLength(lists[1])+getLength(lists[2])];</span><br><span class="line">        int i = 0;</span><br><span class="line">        <span class="keyword">for</span>(int j=0;j&lt;lists.length;j++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(lists[j]!=null)&#123;</span><br><span class="line">                arr[i] = lists[j].val;</span><br><span class="line">                lists[j] = lists[j].next;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //对数组进行排序</span><br><span class="line">        quickSort(arr,0,arr.length-1);</span><br><span class="line">        System.out.println(<span class="string">"数组结果"</span>);</span><br><span class="line">        <span class="keyword">for</span>(int a : arr)&#123;</span><br><span class="line">            System.out.println(a);</span><br><span class="line">        &#125;</span><br><span class="line">        //将数组变成链表</span><br><span class="line">        <span class="built_in">return</span> createList(arr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //获取链表长度</span><br><span class="line">    static int getLength(ListNode list)&#123;</span><br><span class="line">        int length = 0;</span><br><span class="line">        <span class="keyword">while</span>(list != null)&#123;</span><br><span class="line">            length++;</span><br><span class="line">            list = list.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //快速排序</span><br><span class="line">    static void quickSort(int[] data,int low,int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(data,low,high);</span><br><span class="line">            quickSort(data,low,pivotIndex-1);</span><br><span class="line">            quickSort(data,pivotIndex+1,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static int partition(int[] data,int low,int high)&#123;</span><br><span class="line">        int pivot = data[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; data[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            data[low] = data[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; data[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            data[high] = data[low];</span><br><span class="line">        &#125;</span><br><span class="line">        data[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static ListNode createList(int[] data)&#123;</span><br><span class="line">        ListNode head = new ListNode(data[data.length-1]);</span><br><span class="line">        <span class="keyword">for</span>(int i=data.length-2;i&gt;=0;i--)&#123;</span><br><span class="line">            ListNode temp = new ListNode(data[i],head);</span><br><span class="line">            head = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="方法二：常规merge"><a href="#方法二：常规merge" class="headerlink" title="方法二：常规merge"></a>方法二：常规merge</h2><h2 id="方法三：优先队列"><a href="#方法三：优先队列" class="headerlink" title="方法三：优先队列"></a>方法三：优先队列</h2><h2 id="方法四：归并"><a href="#方法四：归并" class="headerlink" title="方法四：归并"></a>方法四：归并</h2><p>#删除倒数第N个结点<br>也是针对倒数…个的一些方法</p>
+<p>##方法一：求链表长度<br>用while求出length，再用length减去n</p>
+<p>##方法二：匀速间隔指针<br>单向链表，删除一般只需要被删除结点前面的那个节点<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public ListNode removeNthFromEnd(ListNode head, int n) &#123;</span><br><span class="line">        ListNode tempHead = new ListNode();</span><br><span class="line">        tempHead.next = head;</span><br><span class="line">        ListNode prev = tempHead;</span><br><span class="line">        ListNode curr = tempHead;</span><br><span class="line">        //指向第n+1个</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;=n;i++)&#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(curr != null)&#123;</span><br><span class="line">            prev = prev.next;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line">        //此时prev在倒数第n个结点前面那个结点</span><br><span class="line">        prev.next = prev.next.next;</span><br><span class="line">        <span class="built_in">return</span> tempHead.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbxbfwnb000w6cwzl0rntk3n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-5-最长回文子串" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/5-最长回文子串/" class="article-date">
+  <time datetime="2020-06-17T11:51:59.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#解法一：暴力法</p>
+<ol>
+<li>列举出所有可能的子串</li>
+<li>专门写一个函数，检查子串和它的逆序是否相等</li>
+<li>使用hashmap将最大的长度和字符串对应起来</li>
+<li>反转字符串可以使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new StringBuilder(str).reverse().toString()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>StringBuilder和StringBuffer很相似，StringBuffer线程安全；StringBuilder速度更快<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static String longestPalindrome(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">""</span>))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxlength=0;</span><br><span class="line">        HashMap&lt;Integer,String&gt; map = new HashMap();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(s.substring(i,j)))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(j-i&gt;maxlength)&#123;</span><br><span class="line">                        maxlength = j-i;</span><br><span class="line">                        map.put(maxlength,s.substring(i,j));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> map.get(maxlength);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean check(String substring)&#123;</span><br><span class="line">        <span class="keyword">if</span>(substring.equals(new StringBuilder(substring).reverse().toString()))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>#动态规划法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbxbfwll00006cwz9lystjpn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
+  <time datetime="2020-06-17T03:38:09.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#快速排序</p>
+<ol>
+<li>在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &lt; high</li>
+<li>先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法；</li>
+<li>划分部分，先选择主元；</li>
+<li>以一个大的while循环作为主要部分，限制条件是low &lt; high</li>
+<li>在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情况</li>
+<li>partition最终返回的是主元的索引</li>
+<li>最坏情况是O(n^2)，发生在数组有序时；最好情况和一般情况都是O(nlogn)，最好情况发生在划分后主元两端元素相同时<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static int partition(int[] list, int low, int high)&#123;</span><br><span class="line">        int pivot = list[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            list[low] = list[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[high] = list[low];</span><br><span class="line">        &#125;</span><br><span class="line">        list[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void quickSort(int[] list, int low, int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(list,low,high);</span><br><span class="line">            quickSort(list,pivotIndex+1,high);</span><br><span class="line">            quickSort(list,low,pivotIndex-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#归并排序</p>
+<ol>
+<li>主要部分采用递归分治策略，递归条件是low &lt; high，之后算出中点左右分别递归调用函数，最终用merge函数实现合并</li>
+<li>merge函数中需要定义一个与输入数组等长的辅助数组；</li>
+<li>定义三个指针分别指向数组前半段、数组后半段，辅助数组</li>
+<li>使用三个while进行操作，按照出牌的方式。两边轮流打擂台，比大小，较小的先进入辅助数组</li>
+<li>之所以使用三个while是因为还要考虑一边出完牌，另一边还没有出完的情况</li>
+<li>辅助数组中的元素要重新赋值给原数组，注意赋值时的low、high界限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">static void merge(int[] current, int low, int mid, int high)&#123;</span><br><span class="line">        //合并连个数组（一个数组的前后两端，需要三个指针）</span><br><span class="line">        int[] targetTemp = new int[current.length];</span><br><span class="line">        int i=mid+1,j=low,k=low;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high &amp;&amp; j&lt;=mid) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current[i]&lt;=current[j])&#123;</span><br><span class="line">                targetTemp[k]=current[i];</span><br><span class="line">                k++;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                targetTemp[k]=current[j];</span><br><span class="line">                k++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high)&#123;</span><br><span class="line">            targetTemp[k]=current[i];</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=mid)&#123;</span><br><span class="line">            targetTemp[k]=current[j];</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int n=low;n&lt;=high;n++)&#123;</span><br><span class="line">            current[n] = targetTemp[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //low、high对应的是index</span><br><span class="line">    static void mergeSort(int[] current,int low, int high)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            mergeSort(current,low,mid);</span><br><span class="line">            mergeSort(current,mid+1,high);</span><br><span class="line">            merge(current,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#堆排序</p>
+<ol>
+<li>主要分为两部分：总体部分、调整部分</li>
+<li>总体部分接收一个list作为参数。首先从第一个非叶子节点开始，初建大顶堆；然后用一个for循环，先交换第一个和最后一个，然后再从第一个结点开始调整，范围不包括最后一个</li>
+<li>调整部分接受三个参数：list、调整范围、调整结点编号</li>
+<li>先将调整结点的值赋给临时变量</li>
+<li>然后用一个while循环，限制条件是左子节点不越界</li>
+<li>在while循环内先判断一下右子节点是否越界，在不越界且右子节点比左子节点大的情况下，指向右子节点</li>
+<li>然后将当前指向的结点和临时变量的值进行比较，如果比临时变量大，则用子结点覆盖当前节点，并进一步指向子结点的左子节点</li>
+<li>在while结束之后，将临时变量赋给它最终的位置处<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">static void sort(int[] list)&#123;</span><br><span class="line">        //从第一个非叶子节点开始调整</span><br><span class="line">        int temp=0;</span><br><span class="line">        //初建大顶堆</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length/2-1;i&gt;=0;i--)&#123;</span><br><span class="line">            //从第一个非叶子节点开始，调整范围是整个数组</span><br><span class="line">            heapAdjust(list,list.length,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length-1;i&gt;=1;i--)&#123;</span><br><span class="line">            //交换第一个和最后一个</span><br><span class="line">            temp = list[0];</span><br><span class="line">            list[0] = list[i];</span><br><span class="line">            list[i] = temp;</span><br><span class="line">            //从第一个开始，调整范围不包括最后一个</span><br><span class="line">            heapAdjust(list,i,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //参数1是list，参数2是调整范围长度，参数3是调整结点</span><br><span class="line">    static void heapAdjust(int[] list, int len, int i)&#123;</span><br><span class="line">        //临时变量存储</span><br><span class="line">        int temp = list[i];</span><br><span class="line">        int index = 2*i+1;</span><br><span class="line">        //当左子节点结点没有超过调整范围</span><br><span class="line">        <span class="keyword">while</span>(index&lt;len)&#123;</span><br><span class="line">            //比较左右子节点</span><br><span class="line">            <span class="keyword">if</span>(index+1&lt;len &amp;&amp; list[index]&lt;list[index+1])</span><br><span class="line">                //如果右子节点没有超过范围，且右子节点比较大,则指向右子节点</span><br><span class="line">                index++;</span><br><span class="line">            <span class="keyword">if</span>(list[index]&gt;temp)&#123;</span><br><span class="line">                list[i] = list[index];</span><br><span class="line">                i = index;</span><br><span class="line">                index = 2*index+1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将临时存储的变量交给最终确定的位置</span><br><span class="line">        list[i] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：快速排序是不稳定的，归并排序是稳定的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbxbfwmm000d6cwztgeqtu0e" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
+  <time datetime="2020-06-17T01:11:44.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Leetcode problem-3</p>
+<h1 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h1><ol>
+<li>利用两个for循环列举出string中所有可能的substring的情况；</li>
+<li>再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static class Solution &#123;</span><br><span class="line">        public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">            //考虑从一个字母到所有字母都上的情况</span><br><span class="line">            int maxlength=0;</span><br><span class="line">            //String maxstr = null;</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                    String temp = s.substring(i,j);</span><br><span class="line">                    <span class="keyword">if</span>(check(temp))&#123;</span><br><span class="line">                        //没有重复字符</span><br><span class="line">                        <span class="keyword">if</span>(temp.length()&gt;maxlength)&#123;</span><br><span class="line">                            maxlength = temp.length();</span><br><span class="line">                            //maxstr = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        //有重复字符</span><br><span class="line">                        <span class="built_in">continue</span>;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean check(String substring)&#123;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;substring.length();i++)&#123;</span><br><span class="line">                Character ch = substring.charAt(i);</span><br><span class="line">                <span class="keyword">if</span>(set.contains(ch))</span><br><span class="line">                    //说明有重复</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                //在不包括的情况下要加进去</span><br><span class="line">                set.add(ch);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>总结：<br>在检查是否有重复字母时，使用到了HashSet；</p>
+<ol>
+<li>HashSet基于HashMap，组合了Hash在迭代时不能保证顺序；</li>
+<li>具有add、remove、contains、size操作，时间复杂度都是O(1)级别</li>
+<li>线程不安全</li>
+<li>HashSet是为了快速查找而设计的set，set是一种特殊的collection,不保存重复的元素</li>
+<li>Map适合存储键值对数据，常用操作get、put；Set检索能力低下，但是删除和插入效率高，常用操作add、remove、contains；List与数组类似，可以动态增长，插入删除效率低。</li>
+</ol>
+<h1 id="解法二：Sliding-windows"><a href="#解法二：Sliding-windows" class="headerlink" title="解法二：Sliding windows"></a>解法二：Sliding windows</h1><p>（本题能使用滑动窗口，原因是因为：要求连续、且连续部分有内部的限制）</p>
+<ol>
+<li>形成一个字符串的滑动窗口</li>
+<li>设定坐标i、j，当新加入的成员满足要求时，增长j</li>
+<li>当新加入的成员不满足要求时，增加i，进行缩减检查<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int maxlength = 0;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;s.length() &amp;&amp; j&lt;s.length())&#123;</span><br><span class="line">                <span class="keyword">if</span>(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                    //如果集合中已经包含了新加进来的字符，则去掉，然后更改索引</span><br><span class="line">                    set.remove(s.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    //如果不包含最左侧的字符</span><br><span class="line">                    set.add(s.charAt(j));</span><br><span class="line">                    j++;</span><br><span class="line">                    maxlength = Math.max(maxlength,j-i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>HashSet和HashMap的参数都要求是对象int对应Integer，char对应Character</li>
+<li>String获取指定索引字符的方式：str.charAt(i)</li>
+<li>快速比大小：Math.max(a,b)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbxbfwme00086cwz5rok5etf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Add-two-numbers" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/14/Add-two-numbers/" class="article-date">
+  <time datetime="2020-06-14T12:27:08.000Z" itemprop="datePublished">2020-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h1><h1 id="基本数学解法，要考虑到多种意外情况"><a href="#基本数学解法，要考虑到多种意外情况" class="headerlink" title="基本数学解法，要考虑到多种意外情况"></a>基本数学解法，要考虑到多种意外情况</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     <span class="function"><span class="title">ListNode</span></span>() &#123;&#125;</span><br><span class="line"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="line"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">import static java.lang.Integer.max;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        int count1 = 0;</span><br><span class="line">            int count2 = 0;</span><br><span class="line">            ListNode temp;</span><br><span class="line">            ListNode list1 = l1;</span><br><span class="line">            ListNode list2 = l2;</span><br><span class="line">            temp = l1;</span><br><span class="line">            <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">                count1++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = l2;</span><br><span class="line">            <span class="keyword">while</span>(temp!= null)&#123;</span><br><span class="line">                count2++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            //ListNode result = new</span><br><span class="line">            int size = max(count1,count2)+1;</span><br><span class="line">            int[] result = new int[size];</span><br><span class="line">            <span class="keyword">for</span>(int i=0;list1!=null||list2!=null;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list1==null||list2==null)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(list1==null)&#123;</span><br><span class="line">                        result[i]=result[i]+list2.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        result[i]=result[i]+list1.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i]=result[i]+list1.val+list2.val;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(result[i]&gt;=10)&#123;</span><br><span class="line">                    result[i+1]=result[i]/10;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i+1]=0;</span><br><span class="line">                &#125;</span><br><span class="line">                result[i]=result[i]%10;</span><br><span class="line">                <span class="keyword">if</span>(list1 == null)&#123;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(list2 == null)&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ListNode first = null;</span><br><span class="line">            ListNode second = null;</span><br><span class="line">            <span class="keyword">if</span>(result[size-1]!=0)&#123;</span><br><span class="line">                first = new ListNode(result[size-1]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-2;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                first = new ListNode(result[size-2]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-3;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结知识点</p>
+<ol>
+<li><p>Java中的链表数据结构<br>使用类来表示链表结点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ListNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="title">ListNode</span></span>()&#123;&#125;;</span><br><span class="line">    ListNode(int val)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(int val,ListNode next)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">        this.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对链表进行遍历的方式<br>使用一个temp指针指向一个结点，然后temp=temp.next这样的去遍历</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static void displayList(ListNode list)&#123;</span><br><span class="line">        ListNode temp = list;</span><br><span class="line">        <span class="keyword">if</span>(temp == null)&#123;</span><br><span class="line">            System.out.println(<span class="string">"链表为空\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">            System.out.print(temp.val+<span class="string">" "</span>);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbxbfwls00016cwzdr7cnqyv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Two-Sum" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/13/Two-Sum/" class="article-date">
@@ -114,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbrz62wz000ek4wzdtzi2t84" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbxbfwmp000g6cwznf5raxb0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +599,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbrz62w50004k4wzbxha29tr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbxbfwm700046cwzniv9ixln" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,343 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbrz62xa000nk4wzxdyml0xd" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/08/python-spider/" class="article-date">
-  <time datetime="2019-05-08T11:40:28.000Z" itemprop="datePublished">2019-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/08/python-spider/">python spider</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>python注释方法 <code>#</code><br>python函数定义 <code>def function(parameter):</code>。注意缩进</p>
-<h2 id="1-request库的get方法"><a href="#1-request库的get方法" class="headerlink" title="1.request库的get方法"></a>1.request库的get方法</h2><p>获取网页最简单的方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">r=requests.get(url)</span><br></pre></td></tr></table></figure></p>
-<p>右边是Request对象<br>左边是Response对象，包含所有返回的资源</p>
-<h3 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h3><p>r.status_code 返回状态码，200表示成功，一般都会检测一下<br>r.text 用字符串表示出网页内容</p>
-<h2 id="2-通用代码框架"><a href="#2-通用代码框架" class="headerlink" title="2.通用代码框架"></a>2.通用代码框架</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">def getHTMLText(url):</span><br><span class="line">    try:</span><br><span class="line">        r = requests.get(url,timeout=30)</span><br><span class="line">        r.raise_for_status() <span class="comment">#如果状态不是200，引发HttpError异常</span></span><br><span class="line">        r.encoding = r.apparent_encoding <span class="comment">#选择合适的编码方式</span></span><br><span class="line">        <span class="built_in">return</span> r.text</span><br><span class="line">    except:</span><br><span class="line">        <span class="built_in">return</span> <span class="string">"产生异常"</span> <span class="comment">#抛出异常</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:  <span class="comment">#封装</span></span><br><span class="line">    url = <span class="string">"https://www.zhibo8.cc/"</span></span><br><span class="line">    <span class="built_in">print</span>(getHTMLText(url))</span><br></pre></td></tr></table></figure>
-<h2 id="3-request库head方法"><a href="#3-request库head方法" class="headerlink" title="3. request库head方法"></a>3. request库head方法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r=requests.head(url)</span><br><span class="line"><span class="built_in">print</span>(r.headers) <span class="comment">#用很小的网络流量获取概要信息</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbrz62x3000hk4wzpnfvnxcf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-assemble-language" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/05/03/assemble-language/" class="article-date">
-  <time datetime="2019-05-03T08:27:36.000Z" itemprop="datePublished">2019-05-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/03/assemble-language/">assemble language</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-汇编数据类型"><a href="#1-汇编数据类型" class="headerlink" title="1. 汇编数据类型"></a>1. 汇编数据类型</h2><p>db 字节类型变量，一个字节类型占一个字节，偏移量加1<br>dw 字类型变量，一个字类型变量占两个字节，偏移量加2<br>dd 双字类型变量，一个双字型变量占四个字节，偏移量加4</p>
-<h2 id="2-汇编循环"><a href="#2-汇编循环" class="headerlink" title="2. 汇编循环"></a>2. 汇编循环</h2><p>汇编的循环语句用关键词loop实现，同时要在寄存器CX中预存循环变量值。在之后的每一轮循环后CX中的值会自减1<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mov cx,3</span><br><span class="line">n1:</span><br><span class="line">XXXX</span><br><span class="line">loop n1</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-用堆栈保护复用寄存器"><a href="#3-用堆栈保护复用寄存器" class="headerlink" title="3. 用堆栈保护复用寄存器"></a>3. 用堆栈保护复用寄存器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">push AA</span><br><span class="line">XXX    /*中间可以更改AA中的值作为它用*/</span><br><span class="line">pop AA</span><br></pre></td></tr></table></figure>
-<h2 id="4-条件跳转"><a href="#4-条件跳转" class="headerlink" title="4. 条件跳转"></a>4. 条件跳转</h2><p>无条件跳转：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jmp n1</span><br><span class="line">n1:</span><br><span class="line">XXX</span><br></pre></td></tr></table></figure></p>
-<p>有条件转移情形一：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmp ax,8</span><br><span class="line">jnz n1 //如果不相等，则跳到n1处</span><br><span class="line">jz n1   //如果相等，则跳到n1处</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbrz62x0000fk4wzybdyxrxc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-MySQL-Shell" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/31/MySQL-Shell/" class="article-date">
-  <time datetime="2019-03-31T11:52:03.000Z" itemprop="datePublished">2019-03-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/MySQL-Shell/">MySQL_Shell</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-启动mysql服务"><a href="#1-启动mysql服务" class="headerlink" title="1.启动mysql服务"></a>1.启动mysql服务</h2><p>以管理员身份运行cmd，在命令行中输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-关闭mysql服务"><a href="#2-关闭mysql服务" class="headerlink" title="2.关闭mysql服务"></a>2.关闭mysql服务</h2><p>与启动类似的操作，只不过命令换成了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop 你注册的mysql服务名</span><br></pre></td></tr></table></figure></p>
-<p>ps:cmd中的清屏指令为<code>cls</code></p>
-<h2 id="3-查看mysql版本"><a href="#3-查看mysql版本" class="headerlink" title="3.查看mysql版本"></a>3.查看mysql版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -V</span><br></pre></td></tr></table></figure>
-<p>注意V要大写</p>
-<h2 id="4-mysql登录"><a href="#4-mysql登录" class="headerlink" title="4.mysql登录"></a>4.mysql登录</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p -P3306 -h127.0.0.1</span><br></pre></td></tr></table></figure>
-<p>如果使用的是默认端口和本地服务器，则-P和-h参数是不用加的<br>输入完密码后便成功登录了mysql</p>
-<h2 id="5-mysql退出"><a href="#5-mysql退出" class="headerlink" title="5.mysql退出"></a>5.mysql退出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">exit</span>;</span><br><span class="line">quit;</span><br><span class="line">\q;</span><br></pre></td></tr></table></figure>
-<p>任意一个都可以<br>ps:登录到mysql后，记得句句有分号。</p>
-<h2 id="6-mysql编码规范"><a href="#6-mysql编码规范" class="headerlink" title="6.mysql编码规范"></a>6.mysql编码规范</h2><p>(1) 关键字 与 函数名 全部大写<br>(2) 数据库名、表名、字段名 全部小写<br>(3) SQL语句必须以分号结尾</p>
-<h2 id="7-mysql中中的交操作"><a href="#7-mysql中中的交操作" class="headerlink" title="7.mysql中中的交操作"></a>7.mysql中中的交操作</h2><p>mysql中没有INTERSECT关键字，所以用自然连接+选出公有属性代替</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbrz62wa0007k4wzypf0qqst" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/review-of-C/" class="article-date">
-  <time datetime="2019-01-25T01:52:23.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/review-of-C/">review of C++</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-The-string-of-C"><a href="#1-The-string-of-C" class="headerlink" title="1. The string of C++"></a>1. The string of C++</h2><p>If you want to use string in c++, you’d better include the .h file <string><br>You can create a string instance like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="string">"str"</span>;</span><br><span class="line">String str2;</span><br></pre></td></tr></table></figure></string></p>
-<p>You can copy an instance using =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2=str1;</span><br></pre></td></tr></table></figure></p>
-<p>You can concat two instance using +<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str3=str1+str2;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbrz62x5000jk4wzi1q27ogu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Something-you-should-know-in-run-goldbug" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/" class="article-date">
-  <time datetime="2018-12-29T06:34:43.000Z" itemprop="datePublished">2018-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Install-the-react-viro"><a href="#Install-the-react-viro" class="headerlink" title="Install the react-viro"></a>Install the react-viro</h2><p>execute the order in the root directory of your current project with<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-viro</span><br></pre></td></tr></table></figure></p>
-<h2 id="execute-android-setup-sh"><a href="#execute-android-setup-sh" class="headerlink" title="execute android-setup.sh"></a>execute android-setup.sh</h2><p>Find the script named android-setup.sh in node_modules-&gt;react-viro<br>Then , most importantly,you must move the script to the root directory of your project!!!!<br>In this way, you can either open the file with gitbash or cygwin64.</p>
-<h2 id="try-to-compile-your-project-in-Android-Studio"><a href="#try-to-compile-your-project-in-Android-Studio" class="headerlink" title="try to compile your project in Android Studio"></a>try to compile your project in Android Studio</h2><p>one thing you should know in any time:<br>the version of buildtool,the version of gradle and the version of plugin must match each other.<br>You can modify your plugin version in<br>android-&gt;build.gradle<br>You can modify your gradle version in android-&gt;gradle-&gt;wrapper-&gt;gradle-&gt;wrapper.properties<br>You can modify your buildtool version in<br>android-&gt;app-&gt;build.gradle</p>
-<p>The matching relationship<br><img src="/2018/12/29/Something-you-should-know-in-run-goldbug/1.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbrz62wo0009k4wzxp0po684" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-GaoDe-component" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/21/GaoDe-component/" class="article-date">
-  <time datetime="2018-12-21T01:36:23.000Z" itemprop="datePublished">2018-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/21/GaoDe-component/">GaoDe component</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="更多详细内容"><a href="#更多详细内容" class="headerlink" title="更多详细内容"></a>更多详细内容</h2><p><a href="https://github.com/qiuxiang/react-native-amap3d" target="_blank" rel="noopener">地图配置</a></p>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-native-amap3d</span><br></pre></td></tr></table></figure>
-<h2 id="获取key"><a href="#获取key" class="headerlink" title="获取key"></a>获取key</h2><ol>
-<li>先用android studio创建一个android项目</li>
-<li>在高德开放平台上注册一个号</li>
-<li>点击 控制台-&gt;应用管理-&gt;我的应用-&gt;创建一个应用</li>
-<li>点击添加key</li>
-<li><p>在控制台输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .android</span><br><span class="line">keyrool -list -v -keystore debug.keystore</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>默认口令为android</p>
-</li>
-<li>将SHA1值复制到第一个必填框内</li>
-<li>在创建的安卓项目文件夹内找到android-&gt;app-&gt;src-&gt;main-&gt;用记事本打开那个.xml文件，复制package值到第二个必填框</li>
-<li>至此,key添加工作完成</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbrz62w20002k4wzbg08839n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-React-2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/" class="article-date">
-  <time datetime="2018-12-16T05:26:11.000Z" itemprop="datePublished">2018-12-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or C/C++)</p>
-<h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Define the entry of the program</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ComponentName/&gt;,document.getElementById(<span class="string">'id'</span>));</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>The id content may be different but you can check it in index.html.</p>
-<h2 id="import-outside-component"><a href="#import-outside-component" class="headerlink" title="import outside component"></a>import outside component</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentName from <span class="string">'filepath'</span>;</span><br></pre></td></tr></table></figure>
-<p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
-<h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Use-arguments-to-pass-the-components"><a href="#Use-arguments-to-pass-the-components" class="headerlink" title="Use arguments to pass the components"></a>Use arguments to pass the components</h2><p>Using arguments to pass the components can help you return the value according to user’s current state.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    var component;</span><br><span class="line">    <span class="function"><span class="title">if</span></span>()&#123;</span><br><span class="line">        component=&lt;ComonentLogin&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        component=&lt;CompenentHeader&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>(&#123;component&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="JSX-expression"><a href="#JSX-expression" class="headerlink" title="JSX expression"></a>JSX expression</h2><ol>
-<li>You can use ? expression for help.</li>
-<li>You can deisgn a button in the following way. Value is the content which will be displayed in the button. Disabled decide whether you can click the button.</li>
-</ol>
-<p>You can use arguments {} to control above all.<br>e.g.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png" alt=""> </p>
-<h2 id="Life-cycle-methods"><a href="#Life-cycle-methods" class="headerlink" title="Life-cycle methods"></a>Life-cycle methods</h2><p>Override the original methods<br>You can carry on your logical in the different stage of a program.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png" alt=""></p>
-<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ol>
-<li>State represents the state of the component.</li>
-<li>State’s effective scope is its class.So you can implement the change in a local area instead of refreshing all the page.</li>
-<li>All the class have the poperty of State. So you can call it use this.state.</li>
-<li><p>Initialize the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.state=&#123;argument1:value1,argument2:value2...&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Display the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.state.argument1&#125;&#123;this.state.argument2&#125;&lt;/p&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Set the state</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Time method</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;operation,waiting time);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state=&#123;username:<span class="string">"Bob"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br><span class="line">        &#125;,5000);</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p>Similar with State, every class has its own props,you can use this.props two call it.<br>The crucial difference btwween state and props is the spot they areinitialized.State is initialized in the constructor,props is initialized where you call the component.<br>Use blank two divide props.<br>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ComponentHeader userid=&#123;123456&#125; username=&#123;<span class="string">"Jack"</span>&#125;/&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.props.username&#125;&#123;this.props.userid&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="ckbrz62wx000dk4wzldydfcme" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbxbfwn7000s6cwz3msq2uu4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -554,7 +658,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -586,23 +690,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/23/设计模式/">设计模式</a>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
           </li>
         
           <li>
-            <a href="/2020/06/19/java-foundamental/">java foundamental</a>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/动态规划/">动态规划</a>
+            <a href="/2020/06/26/树/">树</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/二叉树/">二叉树</a>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
           </li>
         
           <li>
-            <a href="/2020/06/18/全排列/">全排列</a>
+            <a href="/2020/06/25/singleton/">singleton</a>
           </li>
         
       </ul>

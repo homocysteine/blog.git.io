@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Internal-class | Homocysteine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#成员内部类  直接定义在另一个类中的类 内部类可以使用外部类的所有成员 当内部类成员和外部类成员同名时，内部类默认使用的是内部成员。如果要使用外部成员 1外部类.this.成员  外部类如果想访问内部成员，需要创建一个内部类对象，再通过这个对象引用内部类的成员  内部类对象是依附于外部类对象存在的，创建内部类对象的方式 12Outter otter = new Outter();Outter.I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Internal-class">
+<meta property="og:url" content="http://yoursite.com/2020/06/25/Internal-class/index.html">
+<meta property="og:site_name" content="Homocysteine">
+<meta property="og:description" content="#成员内部类  直接定义在另一个类中的类 内部类可以使用外部类的所有成员 当内部类成员和外部类成员同名时，内部类默认使用的是内部成员。如果要使用外部成员 1外部类.this.成员  外部类如果想访问内部成员，需要创建一个内部类对象，再通过这个对象引用内部类的成员  内部类对象是依附于外部类对象存在的，创建内部类对象的方式 12Outter otter = new Outter();Outter.I">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-25T03:36:17.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Internal-class">
+<meta name="twitter:description" content="#成员内部类  直接定义在另一个类中的类 内部类可以使用外部类的所有成员 当内部类成员和外部类成员同名时，内部类默认使用的是内部成员。如果要使用外部成员 1外部类.this.成员  外部类如果想访问内部成员，需要创建一个内部类对象，再通过这个对象引用内部类的成员  内部类对象是依附于外部类对象存在的，创建内部类对象的方式 12Outter otter = new Outter();Outter.I">
+  
+    <link rel="alternate" href="/atom.xml" title="Homocysteine" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Homocysteine</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Internal-class" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/25/Internal-class/" class="article-date">
+  <time datetime="2020-06-25T02:11:12.000Z" itemprop="datePublished">2020-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Internal-class
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#成员内部类</p>
+<ol>
+<li>直接定义在另一个类中的类</li>
+<li>内部类可以使用外部类的所有成员</li>
+<li><p>当内部类成员和外部类成员同名时，内部类默认使用的是内部成员。如果要使用外部成员</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外部类.this.成员</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部类如果想访问内部成员，需要创建一个内部类对象，再通过这个对象引用内部类的成员</p>
+</li>
+<li><p>内部类对象是依附于外部类对象存在的，创建内部类对象的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Outter otter = new Outter();</span><br><span class="line">Outter.Inner inner = outter.new Inner();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部类访问权限：<br>public(可以被本项目的其它类使用，类名必须要和文件名相同)；<br>default（只能被同一个包中的类访问）</p>
+</li>
+<li><p>内部类访问权限：<br>public:任何地方都可以被访问；<br>protected:同一个包下或者外部类的子类可以访问<br>default:同一个包下的类可以访问<br>private：只能在所在外部类中被访问</p>
+</li>
+</ol>
+<p>#局部内部类<br>定义在一个方法或者作用域中的类，访问仅限于方法内或者作用域内<br>不能有修饰符，像一个局部变量一样</p>
+<p>#匿名内部类<br>经典：Android设置按钮监听器<br>创建匿名内部类时能够实现父类或者接口中的方法<br>匿名内部类也无法修饰<br>匿名内部类没有构造器，编译器自动起名</p>
+<p>#静态内部类<br>不依赖于外部类，类似于静态成员<br>不能使用外部类的非静态成员<br>创建静态内部类对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner inner = new Outter.Inner();</span><br></pre></td></tr></table></figure></p>
+<p>内部类会被单独编译成一个字节码文件outter$inner.class<br>内部类方便了类的组合<br>内部类使用外部控件，加final修饰，目的是为了防止button被修改</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/25/Internal-class/" data-id="ckbxbfwmb00066cwz93wq6533" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/25/singleton/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          singleton
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/24/java-memory-model/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">java-memory-model</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/27/每日一题/">每日一题</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/26/树/">树</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/25/singleton/">singleton</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
