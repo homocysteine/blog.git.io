@@ -62,6 +62,382 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-5-最长回文子串" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/5-最长回文子串/" class="article-date">
+  <time datetime="2020-06-17T11:51:59.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#解法一：暴力法</p>
+<ol>
+<li>列举出所有可能的子串</li>
+<li>专门写一个函数，检查子串和它的逆序是否相等</li>
+<li>使用hashmap将最大的长度和字符串对应起来</li>
+<li>反转字符串可以使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new StringBuilder(str).reverse().toString()</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>StringBuilder和StringBuffer很相似，StringBuffer线程安全；StringBuilder速度更快<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static String longestPalindrome(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">""</span>))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxlength=0;</span><br><span class="line">        HashMap&lt;Integer,String&gt; map = new HashMap();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(s.substring(i,j)))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(j-i&gt;maxlength)&#123;</span><br><span class="line">                        maxlength = j-i;</span><br><span class="line">                        map.put(maxlength,s.substring(i,j));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> map.get(maxlength);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean check(String substring)&#123;</span><br><span class="line">        <span class="keyword">if</span>(substring.equals(new StringBuilder(substring).reverse().toString()))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>#动态规划法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckc4v5z0z00007wwzy8wxxdzi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
+  <time datetime="2020-06-17T03:38:09.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#快速排序</p>
+<ol>
+<li>在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &lt; high</li>
+<li>先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法；</li>
+<li>划分部分，先选择主元；</li>
+<li>以一个大的while循环作为主要部分，限制条件是low &lt; high</li>
+<li>在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情况</li>
+<li>partition最终返回的是主元的索引</li>
+<li>最坏情况是O(n^2)，发生在数组有序时；最好情况和一般情况都是O(nlogn)，最好情况发生在划分后主元两端元素相同时<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static int partition(int[] list, int low, int high)&#123;</span><br><span class="line">        int pivot = list[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            list[low] = list[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[high] = list[low];</span><br><span class="line">        &#125;</span><br><span class="line">        list[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void quickSort(int[] list, int low, int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(list,low,high);</span><br><span class="line">            quickSort(list,pivotIndex+1,high);</span><br><span class="line">            quickSort(list,low,pivotIndex-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#归并排序</p>
+<ol>
+<li>主要部分采用递归分治策略，递归条件是low &lt; high，之后算出中点左右分别递归调用函数，最终用merge函数实现合并</li>
+<li>merge函数中需要定义一个与输入数组等长的辅助数组；</li>
+<li>定义三个指针分别指向数组前半段、数组后半段，辅助数组</li>
+<li>使用三个while进行操作，按照出牌的方式。两边轮流打擂台，比大小，较小的先进入辅助数组</li>
+<li>之所以使用三个while是因为还要考虑一边出完牌，另一边还没有出完的情况</li>
+<li>辅助数组中的元素要重新赋值给原数组，注意赋值时的low、high界限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">static void merge(int[] current, int low, int mid, int high)&#123;</span><br><span class="line">        //合并连个数组（一个数组的前后两端，需要三个指针）</span><br><span class="line">        int[] targetTemp = new int[current.length];</span><br><span class="line">        int i=mid+1,j=low,k=low;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high &amp;&amp; j&lt;=mid) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current[i]&lt;=current[j])&#123;</span><br><span class="line">                targetTemp[k]=current[i];</span><br><span class="line">                k++;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                targetTemp[k]=current[j];</span><br><span class="line">                k++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high)&#123;</span><br><span class="line">            targetTemp[k]=current[i];</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=mid)&#123;</span><br><span class="line">            targetTemp[k]=current[j];</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int n=low;n&lt;=high;n++)&#123;</span><br><span class="line">            current[n] = targetTemp[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //low、high对应的是index</span><br><span class="line">    static void mergeSort(int[] current,int low, int high)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            mergeSort(current,low,mid);</span><br><span class="line">            mergeSort(current,mid+1,high);</span><br><span class="line">            merge(current,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>#堆排序</p>
+<ol>
+<li>主要分为两部分：总体部分、调整部分</li>
+<li>总体部分接收一个list作为参数。首先从第一个非叶子节点开始，初建大顶堆；然后用一个for循环，先交换第一个和最后一个，然后再从第一个结点开始调整，范围不包括最后一个</li>
+<li>调整部分接受三个参数：list、调整范围、调整结点编号</li>
+<li>先将调整结点的值赋给临时变量</li>
+<li>然后用一个while循环，限制条件是左子节点不越界</li>
+<li>在while循环内先判断一下右子节点是否越界，在不越界且右子节点比左子节点大的情况下，指向右子节点</li>
+<li>然后将当前指向的结点和临时变量的值进行比较，如果比临时变量大，则用子结点覆盖当前节点，并进一步指向子结点的左子节点</li>
+<li>在while结束之后，将临时变量赋给它最终的位置处<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">static void sort(int[] list)&#123;</span><br><span class="line">        //从第一个非叶子节点开始调整</span><br><span class="line">        int temp=0;</span><br><span class="line">        //初建大顶堆</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length/2-1;i&gt;=0;i--)&#123;</span><br><span class="line">            //从第一个非叶子节点开始，调整范围是整个数组</span><br><span class="line">            heapAdjust(list,list.length,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length-1;i&gt;=1;i--)&#123;</span><br><span class="line">            //交换第一个和最后一个</span><br><span class="line">            temp = list[0];</span><br><span class="line">            list[0] = list[i];</span><br><span class="line">            list[i] = temp;</span><br><span class="line">            //从第一个开始，调整范围不包括最后一个</span><br><span class="line">            heapAdjust(list,i,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //参数1是list，参数2是调整范围长度，参数3是调整结点</span><br><span class="line">    static void heapAdjust(int[] list, int len, int i)&#123;</span><br><span class="line">        //临时变量存储</span><br><span class="line">        int temp = list[i];</span><br><span class="line">        int index = 2*i+1;</span><br><span class="line">        //当左子节点结点没有超过调整范围</span><br><span class="line">        <span class="keyword">while</span>(index&lt;len)&#123;</span><br><span class="line">            //比较左右子节点</span><br><span class="line">            <span class="keyword">if</span>(index+1&lt;len &amp;&amp; list[index]&lt;list[index+1])</span><br><span class="line">                //如果右子节点没有超过范围，且右子节点比较大,则指向右子节点</span><br><span class="line">                index++;</span><br><span class="line">            <span class="keyword">if</span>(list[index]&gt;temp)&#123;</span><br><span class="line">                list[i] = list[index];</span><br><span class="line">                i = index;</span><br><span class="line">                index = 2*index+1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将临时存储的变量交给最终确定的位置</span><br><span class="line">        list[i] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注：快速排序是不稳定的，归并排序是稳定的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckc4v5z23000i7wwzm2ja0f14" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
+  <time datetime="2020-06-17T01:11:44.000Z" itemprop="datePublished">2020-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Leetcode problem-3</p>
+<h1 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h1><ol>
+<li>利用两个for循环列举出string中所有可能的substring的情况；</li>
+<li>再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static class Solution &#123;</span><br><span class="line">        public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">            //考虑从一个字母到所有字母都上的情况</span><br><span class="line">            int maxlength=0;</span><br><span class="line">            //String maxstr = null;</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                    String temp = s.substring(i,j);</span><br><span class="line">                    <span class="keyword">if</span>(check(temp))&#123;</span><br><span class="line">                        //没有重复字符</span><br><span class="line">                        <span class="keyword">if</span>(temp.length()&gt;maxlength)&#123;</span><br><span class="line">                            maxlength = temp.length();</span><br><span class="line">                            //maxstr = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        //有重复字符</span><br><span class="line">                        <span class="built_in">continue</span>;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean check(String substring)&#123;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;substring.length();i++)&#123;</span><br><span class="line">                Character ch = substring.charAt(i);</span><br><span class="line">                <span class="keyword">if</span>(set.contains(ch))</span><br><span class="line">                    //说明有重复</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                //在不包括的情况下要加进去</span><br><span class="line">                set.add(ch);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>总结：<br>在检查是否有重复字母时，使用到了HashSet；</p>
+<ol>
+<li>HashSet基于HashMap，组合了Hash在迭代时不能保证顺序；</li>
+<li>具有add、remove、contains、size操作，时间复杂度都是O(1)级别</li>
+<li>线程不安全</li>
+<li>HashSet是为了快速查找而设计的set，set是一种特殊的collection,不保存重复的元素</li>
+<li>Map适合存储键值对数据，常用操作get、put；Set检索能力低下，但是删除和插入效率高，常用操作add、remove、contains；List与数组类似，可以动态增长，插入删除效率低。</li>
+</ol>
+<h1 id="解法二：Sliding-windows"><a href="#解法二：Sliding-windows" class="headerlink" title="解法二：Sliding windows"></a>解法二：Sliding windows</h1><p>（本题能使用滑动窗口，原因是因为：要求连续、且连续部分有内部的限制）</p>
+<ol>
+<li>形成一个字符串的滑动窗口</li>
+<li>设定坐标i、j，当新加入的成员满足要求时，增长j</li>
+<li>当新加入的成员不满足要求时，增加i，进行缩减检查<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int maxlength = 0;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;s.length() &amp;&amp; j&lt;s.length())&#123;</span><br><span class="line">                <span class="keyword">if</span>(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                    //如果集合中已经包含了新加进来的字符，则去掉，然后更改索引</span><br><span class="line">                    set.remove(s.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    //如果不包含最左侧的字符</span><br><span class="line">                    set.add(s.charAt(j));</span><br><span class="line">                    j++;</span><br><span class="line">                    maxlength = Math.max(maxlength,j-i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>HashSet和HashMap的参数都要求是对象int对应Integer，char对应Character</li>
+<li>String获取指定索引字符的方式：str.charAt(i)</li>
+<li>快速比大小：Math.max(a,b)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckc4v5z20000f7wwzpmx8ngbj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Add-two-numbers" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/14/Add-two-numbers/" class="article-date">
+  <time datetime="2020-06-14T12:27:08.000Z" itemprop="datePublished">2020-06-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h1><h1 id="基本数学解法，要考虑到多种意外情况"><a href="#基本数学解法，要考虑到多种意外情况" class="headerlink" title="基本数学解法，要考虑到多种意外情况"></a>基本数学解法，要考虑到多种意外情况</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     <span class="function"><span class="title">ListNode</span></span>() &#123;&#125;</span><br><span class="line"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="line"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">import static java.lang.Integer.max;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        int count1 = 0;</span><br><span class="line">            int count2 = 0;</span><br><span class="line">            ListNode temp;</span><br><span class="line">            ListNode list1 = l1;</span><br><span class="line">            ListNode list2 = l2;</span><br><span class="line">            temp = l1;</span><br><span class="line">            <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">                count1++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = l2;</span><br><span class="line">            <span class="keyword">while</span>(temp!= null)&#123;</span><br><span class="line">                count2++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            //ListNode result = new</span><br><span class="line">            int size = max(count1,count2)+1;</span><br><span class="line">            int[] result = new int[size];</span><br><span class="line">            <span class="keyword">for</span>(int i=0;list1!=null||list2!=null;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list1==null||list2==null)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(list1==null)&#123;</span><br><span class="line">                        result[i]=result[i]+list2.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        result[i]=result[i]+list1.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i]=result[i]+list1.val+list2.val;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(result[i]&gt;=10)&#123;</span><br><span class="line">                    result[i+1]=result[i]/10;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i+1]=0;</span><br><span class="line">                &#125;</span><br><span class="line">                result[i]=result[i]%10;</span><br><span class="line">                <span class="keyword">if</span>(list1 == null)&#123;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(list2 == null)&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ListNode first = null;</span><br><span class="line">            ListNode second = null;</span><br><span class="line">            <span class="keyword">if</span>(result[size-1]!=0)&#123;</span><br><span class="line">                first = new ListNode(result[size-1]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-2;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                first = new ListNode(result[size-2]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-3;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结知识点</p>
+<ol>
+<li><p>Java中的链表数据结构<br>使用类来表示链表结点</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ListNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="title">ListNode</span></span>()&#123;&#125;;</span><br><span class="line">    ListNode(int val)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(int val,ListNode next)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">        this.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对链表进行遍历的方式<br>使用一个temp指针指向一个结点，然后temp=temp.next这样的去遍历</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static void displayList(ListNode list)&#123;</span><br><span class="line">        ListNode temp = list;</span><br><span class="line">        <span class="keyword">if</span>(temp == null)&#123;</span><br><span class="line">            System.out.println(<span class="string">"链表为空\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">            System.out.print(temp.val+<span class="string">" "</span>);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckc4v5z1700017wwzskvtrpa5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Two-Sum" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/13/Two-Sum/" class="article-date">
+  <time datetime="2020-06-13T07:27:57.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/Two-Sum/">Two Sum</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h1><h2 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length-1;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == target)&#123;</span><br><span class="line">                    <span class="built_in">return</span> new int[] &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总结知识点：</p>
+<ol>
+<li><p>java查看数组长度</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums.length</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>java创建匿名数组</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new int[]&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="解法二：HashMap"><a href="#解法二：HashMap" class="headerlink" title="解法二：HashMap"></a>解法二：HashMap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.get(target-nums[i])!=null)&#123;</span><br><span class="line">                <span class="built_in">return</span> new int[]&#123;map.get(target-nums[i]),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                map.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算法大意：<br>找到自己的另一半<br>如果另一半还没有出现<br>就先领着自己的号牌，去hashmap中去等待<br>当另一半出现了，返回两个人的号牌</p>
+<p>总结知识点：</p>
+<ol>
+<li>创建HashMap<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;K,V&gt; map = new HashMap&lt;K,V&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>在Java中，K、V都需要是对象类型，不可以是基础数据类型<br>int可以用Integer代替</p>
+<ol start="2">
+<li>取元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.get(K);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果K值对应的V不存在，则返回的是null</p>
+<ol start="3">
+<li>放元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.put(K,V);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckc4v5z29000l7wwzp7nomm4g" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-HOw-to-use-chrome-developer-tool" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/" class="article-date">
+  <time datetime="2020-02-10T08:40:20.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-打开你的Chrome浏览器，新建标签页"><a href="#1-打开你的Chrome浏览器，新建标签页" class="headerlink" title="1. 打开你的Chrome浏览器，新建标签页"></a>1. 打开你的Chrome浏览器，新建标签页</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/1.png" alt=""></p>
+<h2 id="2-找到选项中的开发者工具"><a href="#2-找到选项中的开发者工具" class="headerlink" title="2. 找到选项中的开发者工具"></a>2. 找到选项中的开发者工具</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/2.png" alt=""></p>
+<h2 id="3-运行便调试JS代码"><a href="#3-运行便调试JS代码" class="headerlink" title="3. 运行便调试JS代码"></a>3. 运行便调试JS代码</h2><ol>
+<li>进入Sources面板</li>
+<li>new一个snippet</li>
+<li>编写源码</li>
+<li>右键snippet条目，单机Run</li>
+<li>在下方Console中查看输出结果<br><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/3.png" alt=""></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckc4v5z1l00067wwzq6v33jlc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-暑假开发踩坑记录" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/暑假开发踩坑记录/" class="article-date">
+  <time datetime="2019-06-26T03:06:15.000Z" itemprop="datePublished">2019-06-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-版本更新带来的问题"><a href="#1-版本更新带来的问题" class="headerlink" title="1. 版本更新带来的问题"></a>1. 版本更新带来的问题</h2><p>首先，要将Android Studio、gradle都升级到最新的版本，具体做法可以是<br>help-&gt;check update<br>然后，如果在build的过程中遇到 app:compileDebugJavaWithJavac 的问题，<br>需要将第三方库”react-native”也更新到兼容的版本，具体做法可以是<br>file-&gt;project structure</p>
+<h2 id="2-调试者工具快捷键"><a href="#2-调试者工具快捷键" class="headerlink" title="2. 调试者工具快捷键"></a>2. 调试者工具快捷键</h2><p>Android模式下，ctrl+M</p>
+<h2 id="3-RN-app利用fetch从指定url中获取数据（GET方法）"><a href="#3-RN-app利用fetch从指定url中获取数据（GET方法）" class="headerlink" title="3. RN app利用fetch从指定url中获取数据（GET方法）"></a>3. RN app利用fetch从指定url中获取数据（GET方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url,&#123;method:<span class="string">'GET'</span>&#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;response.text())</span><br><span class="line">      .<span class="keyword">then</span>(responseText=&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">          showText:responseText</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="4-利用fetch向服务器提交数据（POST方法）"><a href="#4-利用fetch向服务器提交数据（POST方法）" class="headerlink" title="4. 利用fetch向服务器提交数据（POST方法）"></a>4. 利用fetch向服务器提交数据（POST方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> data = new FormData()</span><br><span class="line">    data.append(<span class="string">"hello "</span>,<span class="string">"world!"</span>)</span><br><span class="line">    fetch(url,&#123;</span><br><span class="line">      method:<span class="string">'POST'</span>,</span><br><span class="line">      header:&#123;&#125;,</span><br><span class="line">      body:data</span><br><span class="line">  &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.ok)&#123;</span><br><span class="line">          <span class="built_in">return</span> response.json();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(json=&gt;&#123;</span><br><span class="line">          /*this.setState(&#123;</span><br><span class="line">              result:<span class="string">'Congratulation!'</span></span><br><span class="line">          &#125;);*/</span><br><span class="line">          alert(JSON.stringify(json));</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error=&gt;&#123;</span><br><span class="line">          this.setState(&#123;</span><br><span class="line">              //result:JSON.stringify(error)</span><br><span class="line">              result:<span class="string">'What a pity!'</span></span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="5-箭头函数"><a href="#5-箭头函数" class="headerlink" title="5. 箭头函数"></a>5. 箭头函数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X=&gt;X*X</span><br></pre></td></tr></table></figure>
+<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(X)</span><br><span class="line"><span class="built_in">return</span> X*X</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-使用本机服务器"><a href="#5-使用本机服务器" class="headerlink" title="5. 使用本机服务器"></a>5. 使用本机服务器</h2><p>在项目的根目录下运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br></pre></td></tr></table></figure></p>
+<h2 id="6-解决“app-packageDebug”问题"><a href="#6-解决“app-packageDebug”问题" class="headerlink" title="6. 解决“app:packageDebug”问题"></a>6. 解决“app:packageDebug”问题</h2><p>build-&gt;clean project-&gt;rebuild</p>
+<h2 id="7-当出现“cannot-connect-to-development-server”而无法进行reload时"><a href="#7-当出现“cannot-connect-to-development-server”而无法进行reload时" class="headerlink" title="7. 当出现“cannot connect to development server”而无法进行reload时"></a>7. 当出现“cannot connect to development server”而无法进行reload时</h2><p>在AndroidManifest.xml文件中的application标签中加入一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:usesCleartextTraffic=<span class="string">"true"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="8-以后查问题别用百度，用bing"><a href="#8-以后查问题别用百度，用bing" class="headerlink" title="8. 以后查问题别用百度，用bing"></a>8. 以后查问题别用百度，用bing</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckc4v5z2s000y7wwzr8ord3nd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-python-spider" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/05/08/python-spider/" class="article-date">
@@ -94,7 +470,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckbxbfwmx000m6cwzunw52hpn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/08/python-spider/" data-id="ckc4v5z2l000s7wwz79t7oim9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -135,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckbxbfwms000j6cwz4angjk9y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/05/03/assemble-language/" data-id="ckc4v5z2i000q7wwzmi7knwv2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,380 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckbxbfwmf00096cwzu7tskhlw" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-review-of-C" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/01/25/review-of-C/" class="article-date">
-  <time datetime="2019-01-25T01:52:23.000Z" itemprop="datePublished">2019-01-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/25/review-of-C/">review of C++</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-The-string-of-C"><a href="#1-The-string-of-C" class="headerlink" title="1. The string of C++"></a>1. The string of C++</h2><p>If you want to use string in c++, you’d better include the .h file <string><br>You can create a string instance like<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1=<span class="string">"str"</span>;</span><br><span class="line">String str2;</span><br></pre></td></tr></table></figure></string></p>
-<p>You can copy an instance using =<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str2=str1;</span><br></pre></td></tr></table></figure></p>
-<p>You can concat two instance using +<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String str3=str1+str2;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/01/25/review-of-C/" data-id="ckbxbfwmz000n6cwzxhdf8nul" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Something-you-should-know-in-run-goldbug" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/29/Something-you-should-know-in-run-goldbug/" class="article-date">
-  <time datetime="2018-12-29T06:34:43.000Z" itemprop="datePublished">2018-12-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/29/Something-you-should-know-in-run-goldbug/">Something you should know in run goldbug</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Install-the-react-viro"><a href="#Install-the-react-viro" class="headerlink" title="Install the react-viro"></a>Install the react-viro</h2><p>execute the order in the root directory of your current project with<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-viro</span><br></pre></td></tr></table></figure></p>
-<h2 id="execute-android-setup-sh"><a href="#execute-android-setup-sh" class="headerlink" title="execute android-setup.sh"></a>execute android-setup.sh</h2><p>Find the script named android-setup.sh in node_modules-&gt;react-viro<br>Then , most importantly,you must move the script to the root directory of your project!!!!<br>In this way, you can either open the file with gitbash or cygwin64.</p>
-<h2 id="try-to-compile-your-project-in-Android-Studio"><a href="#try-to-compile-your-project-in-Android-Studio" class="headerlink" title="try to compile your project in Android Studio"></a>try to compile your project in Android Studio</h2><p>one thing you should know in any time:<br>the version of buildtool,the version of gradle and the version of plugin must match each other.<br>You can modify your plugin version in<br>android-&gt;build.gradle<br>You can modify your gradle version in android-&gt;gradle-&gt;wrapper-&gt;gradle-&gt;wrapper.properties<br>You can modify your buildtool version in<br>android-&gt;app-&gt;build.gradle</p>
-<p>The matching relationship<br><img src="/2018/12/29/Something-you-should-know-in-run-goldbug/1.png" alt=""></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/29/Something-you-should-know-in-run-goldbug/" data-id="ckbxbfwmh000a6cwz6umq29ug" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-GaoDe-component" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/21/GaoDe-component/" class="article-date">
-  <time datetime="2018-12-21T01:36:23.000Z" itemprop="datePublished">2018-12-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/21/GaoDe-component/">GaoDe component</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="更多详细内容"><a href="#更多详细内容" class="headerlink" title="更多详细内容"></a>更多详细内容</h2><p><a href="https://github.com/qiuxiang/react-native-amap3d" target="_blank" rel="noopener">地图配置</a></p>
-<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-native-amap3d</span><br></pre></td></tr></table></figure>
-<h2 id="获取key"><a href="#获取key" class="headerlink" title="获取key"></a>获取key</h2><ol>
-<li>先用android studio创建一个android项目</li>
-<li>在高德开放平台上注册一个号</li>
-<li>点击 控制台-&gt;应用管理-&gt;我的应用-&gt;创建一个应用</li>
-<li>点击添加key</li>
-<li><p>在控制台输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .android</span><br><span class="line">keyrool -list -v -keystore debug.keystore</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>默认口令为android</p>
-</li>
-<li>将SHA1值复制到第一个必填框内</li>
-<li>在创建的安卓项目文件夹内找到android-&gt;app-&gt;src-&gt;main-&gt;用记事本打开那个.xml文件，复制package值到第二个必填框</li>
-<li>至此,key添加工作完成</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/21/GaoDe-component/" data-id="ckbxbfwm100036cwzhm1e1fck" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-React-2" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/16/The-Tough-Road-in-learning-React-2/" class="article-date">
-  <time datetime="2018-12-16T05:26:11.000Z" itemprop="datePublished">2018-12-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/16/The-Tough-Road-in-learning-React-2/">The Tough Road in learning React(2)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Component is one of the most important things in React. With the help of component, you can divide the page into separated part and reuse them in a convenient way.(similar with the function in java or C/C++)</p>
-<h2 id="Two-important-part-that-you-have-to-write-in-every-React-program"><a href="#Two-important-part-that-you-have-to-write-in-every-React-program" class="headerlink" title="Two important part that you have to write in every React program"></a>Two important part that you have to write in every React program</h2><ol>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Define the entry of the program</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render(&lt;ComponentName/&gt;,document.getElementById(<span class="string">'id'</span>));</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>The id content may be different but you can check it in index.html.</p>
-<h2 id="import-outside-component"><a href="#import-outside-component" class="headerlink" title="import outside component"></a>import outside component</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import ComponentName from <span class="string">'filepath'</span>;</span><br></pre></td></tr></table></figure>
-<p>If the file is in the same directory of index.js,you can use <code>./</code> to describe.<br>If you import the component, you can just use it with &lt;/&gt;.</p>
-<h2 id="Define-a-component"><a href="#Define-a-component" class="headerlink" title="Define a component"></a>Define a component</h2><p>If you want to define a component, you can create a .js file. Then create a function(You can find more details in “The Touggh Road in learning React(1)”) or, more commonly,you can define a class which extends from React.Component.Override the render method in it and return one html node.(You can only return one node,so use div or nesting signature for help if you want to return multiple node).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Index extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;ComponentHeader/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>By the way, if you want the component can be accessed in other file,you must add “export default” at the begin of the component class.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;header&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/header&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Use-arguments-to-pass-the-components"><a href="#Use-arguments-to-pass-the-components" class="headerlink" title="Use arguments to pass the components"></a>Use arguments to pass the components</h2><p>Using arguments to pass the components can help you return the value according to user’s current state.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    var component;</span><br><span class="line">    <span class="function"><span class="title">if</span></span>()&#123;</span><br><span class="line">        component=&lt;ComonentLogin&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        component=&lt;CompenentHeader&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span>(&#123;component&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="JSX-expression"><a href="#JSX-expression" class="headerlink" title="JSX expression"></a>JSX expression</h2><ol>
-<li>You can use ? expression for help.</li>
-<li>You can deisgn a button in the following way. Value is the content which will be displayed in the button. Disabled decide whether you can click the button.</li>
-</ol>
-<p>You can use arguments {} to control above all.<br>e.g.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/jsx.png" alt=""> </p>
-<h2 id="Life-cycle-methods"><a href="#Life-cycle-methods" class="headerlink" title="Life-cycle methods"></a>Life-cycle methods</h2><p>Override the original methods<br>You can carry on your logical in the different stage of a program.<br><img src="/2018/12/16/The-Tough-Road-in-learning-React-2/life-cycle.png" alt=""></p>
-<h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><ol>
-<li>State represents the state of the component.</li>
-<li>State’s effective scope is its class.So you can implement the change in a local area instead of refreshing all the page.</li>
-<li>All the class have the poperty of State. So you can call it use this.state.</li>
-<li><p>Initialize the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.state=&#123;argument1:value1,argument2:value2...&#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Display the state:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.state.argument1&#125;&#123;this.state.argument2&#125;&lt;/p&gt;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Set the state</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Time method</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(()=&gt;operation,waiting time);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> default class ComponentHeader extends React.Component&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">        super();</span><br><span class="line">        this.state=&#123;username:<span class="string">"Bob"</span>&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">        setTimeout(()=&gt;&#123;</span><br><span class="line">            this.setState(&#123;username:<span class="string">"Johnson"</span>&#125;);</span><br><span class="line">        &#125;,5000);</span><br><span class="line">        <span class="built_in">return</span>(</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;h1&gt;Here is the head&lt;/h1&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><p>Similar with State, every class has its own props,you can use this.props two call it.<br>The crucial difference btwween state and props is the spot they areinitialized.State is initialized in the constructor,props is initialized where you call the component.<br>Use blank two divide props.<br>e.g.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;ComponentHeader userid=&#123;123456&#125; username=&#123;<span class="string">"Jack"</span>&#125;/&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;this.props.username&#125;&#123;this.props.userid&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/16/The-Tough-Road-in-learning-React-2/" data-id="ckbxbfwmo000f6cwzii3e50uf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-React-Native-1" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/09/React-Native-1/" class="article-date">
-  <time datetime="2018-12-09T01:46:24.000Z" itemprop="datePublished">2018-12-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/09/React-Native-1/">React Native(1)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Step1-install-Node-js"><a href="#Step1-install-Node-js" class="headerlink" title="Step1:install Node.js"></a>Step1:install Node.js</h2><h2 id="Step2-install-React-Native"><a href="#Step2-install-React-Native" class="headerlink" title="Step2:install React Native"></a>Step2:install React Native</h2><p>ps:If you develop in Linux environment, install Homebrew and watchman at first.</p>
-<ol>
-<li><p>The command that install react native</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g react-native-cli</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Init a React Native project</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init HelloReact</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Install Android Stuido<br><a href="https://www.cnblogs.com/xiadewang/p/7820377.html" target="_blank" rel="noopener">tutorial</a><br>(Including Hello world instance)</p>
-</li>
-<li>Open the android file in the project with andriod studio</li>
-<li><p>After compiling, use <code>cd</code> go to the root directory of your project,then input</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>bug set<br>If you unfortunately meet the problem <code>unable to load script from assets index.android.bundle on windows</code>,then use the following steps to solve:<br>step 1: construct a folder in the “main” directory.<br>step 2: input the order</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform android --dev <span class="literal">false</span> --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>step 3: restart your program,until you see<br><img src="/2018/12/09/React-Native-1/1.png" alt=""></p>
-<p>If you meet the problem <code>app:installDebug</code>, it means you have to open the virtual mobile first ,then input the order <code>react-native run-android</code></p>
-<p>If you meet the problem <code>could not connect to development server</code>, just input the order in current directory<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure></p>
-<p>If you meet the problem <code>execution failed for task &#39;:app:transformClassesWithDexForDebug&#39;</code><br>Find the app build.gradle file, modify the following function<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.tabbar"</span></span><br><span class="line">        minSdkVersion rootProject.ext.minSdkVersion</span><br><span class="line">        targetSdkVersion rootProject.ext.targetSdkVersion</span><br><span class="line">        versionCode 1</span><br><span class="line">        versionName <span class="string">"1.0"</span></span><br><span class="line">        ndk &#123;</span><br><span class="line">            abiFilters <span class="string">"armeabi-v7a"</span>, <span class="string">"x86"</span></span><br><span class="line">        &#125;</span><br><span class="line">        multiDexEnabled <span class="literal">true</span> //add this one</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>bunble-&gt;open VM-&gt;run-android-&gt;restart the VM</p>
-<ol start="7">
-<li>Then modify the App.js two create your own react-native work,double press the ‘R’ two watch the effect.</li>
-</ol>
-<h2 id="My-first-react-native-work"><a href="#My-first-react-native-work" class="headerlink" title="My first react-native work"></a>My first react-native work</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import React,&#123;Component&#125; from <span class="string">'react'</span>;</span><br><span class="line">import &#123;Platform,StyleSheet,Text,View&#125; from <span class="string">'react-native'</span>;</span><br><span class="line">//import components</span><br><span class="line"><span class="built_in">export</span> default class App extends Component&lt; &#123;&#125; &gt;&#123;//define your components</span><br><span class="line">  <span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">    <span class="built_in">return</span>(&lt;View style=&#123;styles.rootView&#125;&gt;</span><br><span class="line">    &lt;View style=&#123;styles.viewOne&#125;/&gt;</span><br><span class="line">    &lt;View style=&#123;styles.viewTwo&#125;/&gt;</span><br><span class="line">    &lt;/View&gt;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//use styles variable to <span class="built_in">set</span> the style property of all components</span><br><span class="line">const styles=StyleSheet.create(&#123;</span><br><span class="line">  rootView: &#123;</span><br><span class="line">    flexDirection: <span class="string">'row'</span>,</span><br><span class="line">    height: 100,</span><br><span class="line">    marginTop: 40</span><br><span class="line">  &#125;,</span><br><span class="line">  viewOne: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'blue'</span>,</span><br><span class="line">    flex: 0.4</span><br><span class="line">  &#125;,</span><br><span class="line">  viewTwo: &#123;</span><br><span class="line">    backgroundColor: <span class="string">'red'</span>,</span><br><span class="line">    flex: 0.6</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="TabBar-instance"><a href="#TabBar-instance" class="headerlink" title="TabBar instance"></a>TabBar instance</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from <span class="string">'react'</span>;</span><br><span class="line">import &#123;</span><br><span class="line">  Platform,</span><br><span class="line">  StyleSheet,</span><br><span class="line">  Text,</span><br><span class="line">  View,</span><br><span class="line">  Image</span><br><span class="line">&#125; from <span class="string">'react-native'</span>;</span><br><span class="line">import TabNavigator from <span class="string">'react-native-tab-navigator'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default class App extends Component&lt;&#123;&#125;&gt; &#123;//这是APP的一整个组件</span><br><span class="line">//开局先对这个组件的state进行初始化</span><br><span class="line">  state = &#123;</span><br><span class="line">    selectedTab: <span class="string">'home'</span>, //selectedTab是设置默认选定的tab</span><br><span class="line">  &#125;;</span><br><span class="line">//_renderContent是页面渲染函数，这里设置颜色和页面文字内容</span><br><span class="line">//tab切换时，使用此函数生成对应元素</span><br><span class="line">  _renderContent = (color: string, pageText: string) =&gt; &#123;//总体内容</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      &lt;View style=&#123;[styles.tabContent, &#123;backgroundColor: color&#125;]&#125;&gt;&#123;/**/&#125;</span><br><span class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;&#123;pageText&#125;&lt;/Text&gt;</span><br><span class="line">      &lt;/View&gt;//Text内容采用参数传递的方式</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line">  /*尖括号里面是一个组件，同一个尖括号里可以设置这些组建的属性*/</span><br><span class="line">  /*页面切换时改变文字*/</span><br><span class="line">  //以下是底部选框内容</span><br><span class="line">  <span class="function"><span class="title">render</span></span>() &#123;//主要函数</span><br><span class="line">    <span class="built_in">return</span> (</span><br><span class="line">      //TabNavigator.Item是TabNavigator的子组件</span><br><span class="line">      //badgeText是设置TabNavigator右上角的角标内容</span><br><span class="line">      //onPress是设置TabNavigator.Item在受到点击后的反应，可以用一个事件函数来设置组件状态的改变</span><br><span class="line">      //renderIcon设置图标静态样式</span><br><span class="line">      //renderSelectedIcon设置图标选中时的样式</span><br><span class="line">      //在选中框中对渲染函数进行传参，改变整体样式</span><br><span class="line">      //selected判断当前的选中框是否被选中</span><br><span class="line">      //===相当于==</span><br><span class="line">      //Image组件可以设置style和<span class="built_in">source</span>属性</span><br><span class="line">      &lt;TabNavigator&gt;</span><br><span class="line">        &lt;TabNavigator.Item  </span><br><span class="line">          selected=&#123;this.state.selectedTab === <span class="string">'home'</span>&#125;</span><br><span class="line">          title=<span class="string">"首页"</span></span><br><span class="line">          renderIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./flux.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          renderSelectedIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./relay.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          badgeText=<span class="string">"1"</span></span><br><span class="line">          onPress=&#123;() =&gt; this.setState(&#123; selectedTab: <span class="string">'home'</span> &#125;)&#125;&gt;</span><br><span class="line">          &#123;this._renderContent(<span class="string">'#414A8C'</span>, <span class="string">'首页 Tab - 1'</span>)&#125;</span><br><span class="line">        &lt;/TabNavigator.Item&gt;</span><br><span class="line">        &lt;TabNavigator.Item</span><br><span class="line">          selected=&#123;this.state.selectedTab === <span class="string">'profile'</span>&#125;</span><br><span class="line">          title=<span class="string">"个人中心"</span></span><br><span class="line">          renderIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./flux.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          renderSelectedIcon=&#123;() =&gt; &lt;Image style=&#123;&#123;width: 25, height: 25&#125;&#125; <span class="built_in">source</span>=&#123;require(<span class="string">'./relay.png'</span>)&#125; /&gt;&#125;</span><br><span class="line">          badgeText=<span class="string">"2"</span></span><br><span class="line">          onPress=&#123;() =&gt; this.setState(&#123; selectedTab: <span class="string">'profile'</span> &#125;)&#125;&gt;</span><br><span class="line">           &#123;this._renderContent(<span class="string">'#783E33'</span>, <span class="string">'个人中心 Tab - 2'</span>)&#125;</span><br><span class="line">        &lt;/TabNavigator.Item&gt;</span><br><span class="line">      &lt;/TabNavigator&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">//以下设置页面渲染函数中tab部分的样式</span><br><span class="line">var styles = StyleSheet.create(&#123;</span><br><span class="line">  tabContent: &#123;</span><br><span class="line">    flex: 1,//伸缩因子</span><br><span class="line">    alignItems: <span class="string">'center'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  tabText: &#123;</span><br><span class="line">    color: <span class="string">'white'</span>,</span><br><span class="line">    margin: 50,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<h2 id="Alert"><a href="#Alert" class="headerlink" title="Alert"></a>Alert</h2><p>箭头函数类似于lamda表达式，用于事件处理  ()=&gt;{ , }<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">onPress=&#123;()=&gt;Alert.alert(<span class="string">'hhh'</span>,<span class="string">'没啥事'</span>,[&#123;text:<span class="string">'OK'</span>,onPress:()=&gt;console.log(<span class="string">'这有啥用？'</span>)&#125;])&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="登录界面-懒得写了"><a href="#登录界面-懒得写了" class="headerlink" title="登录界面 懒得写了"></a>登录界面 懒得写了</h2><p><img src="/2018/12/09/React-Native-1/signup.jpg" alt=""><br>The string in js must use ‘’ to enclose the content.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/09/React-Native-1/" data-id="ckbxbfwmi000b6cwzlg8gfr1f" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Knowledge-points" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/04/Knowledge-points/" class="article-date">
-  <time datetime="2018-12-04T12:32:18.000Z" itemprop="datePublished">2018-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/Knowledge-points/">Knowledge points</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><h3 id="winter-vacation-goal"><a href="#winter-vacation-goal" class="headerlink" title="winter vacation goal"></a>winter vacation goal</h3><p>use UDP to imitate TCP</p>
-<h3 id="1-1-The-convertion-between-int-double-string"><a href="#1-1-The-convertion-between-int-double-string" class="headerlink" title="1.1 The convertion between int,double,string"></a>1.1 The convertion between int,double,string</h3><p>int to String<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=String.valueOf(int variable);</span><br><span class="line">String s2=Integer.toString(int variable);</span><br></pre></td></tr></table></figure></p>
-<p>String to int<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int i1=Integer.valueOf(String).intValue();</span><br><span class="line">int i2=Integer.parseInt(string);</span><br></pre></td></tr></table></figure></p>
-<p>double to String<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String s1=String.valueOf(double variable);</span><br><span class="line">String s2=Double.toString(double variable);</span><br></pre></td></tr></table></figure></p>
-<p>String to double<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">double d1=Double.valueOf(String).doubleValue;</span><br><span class="line">double d2=Double.parseDouble(string);</span><br></pre></td></tr></table></figure></p>
-<h3 id="1-2-UDP"><a href="#1-2-UDP" class="headerlink" title="1.2 UDP"></a>1.2 UDP</h3><p>Compared with TCP</p>
-<p>TCP ServerSocket        Socket           use “stream” to transfer<br>UDP Datagram Socket    Datagram Packet   </p>
-<h2 id="Data-Structure"><a href="#Data-Structure" class="headerlink" title="Data Structure"></a>Data Structure</h2><h2 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h2><p>What is algorithm?<br>Algorithm is the finite sequence of the operation for solving problems.</p>
-<p>What do D and S in “(D,S)” represent?<br>D represents data element.<br>S represents relationship.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/Knowledge-points/" data-id="ckbxbfwmd00076cwzhwr1fu17" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-The-Tough-Road-in-learning-Graph" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/04/The-Tough-Road-in-learning-Graph/" class="article-date">
-  <time datetime="2018-12-04T05:22:13.000Z" itemprop="datePublished">2018-12-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/04/The-Tough-Road-in-learning-Graph/">The Tough Road in learning Graph</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="王林琛牛逼"><a href="#王林琛牛逼" class="headerlink" title="王林琛牛逼"></a>王林琛牛逼</h1><h1 id="Traversing-Graph"><a href="#Traversing-Graph" class="headerlink" title="Traversing Graph"></a>Traversing Graph</h1><h2 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h2><p>DFS is similar with the preorder traverse in tree.</p>
-<h3 id="Descirbe"><a href="#Descirbe" class="headerlink" title="Descirbe"></a>Descirbe</h3><ol>
-<li>Choose a node as the start node.</li>
-<li>Then, visit the adjNode of the start node , regard the one of its adjNodes as a new start node.</li>
-<li>repeat the step2, until we find that all the adjNodes of current node has been visisted.</li>
-<li>return to the pre node,repeat step2 and step3.</li>
-<li>Eventually, if there are still some modes remained,add them to the tail of the sequence.</li>
-</ol>
-<h3 id="implementation-ALGraph"><a href="#implementation-ALGraph" class="headerlink" title="implementation(ALGraph)"></a>implementation(ALGraph)</h3><ol>
-<li>Use a for-loop to initialize the Visited Array.</li>
-<li>Use a for-loop,judging the visited property at first. If the node has not been visited yet,call the DFS</li>
-<li>DFS: <ol>
-<li>assign the visited property with true.</li>
-<li>visit operation</li>
-<li>FirstAdhVex</li>
-<li>NextAdjVex<h4 id="Firstadj"><a href="#Firstadj" class="headerlink" title="Firstadj"></a>Firstadj</h4></li>
-</ol>
-</li>
-</ol>
-<h2 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h2><p>find children recursively, assisted</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/12/04/The-Tough-Road-in-learning-Graph/" data-id="ckbxbfwml000c6cwz0p7chtxb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/31/MySQL-Shell/" data-id="ckc4v5z1y000e7wwzhbkv4e8z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -588,7 +591,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -601,23 +604,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/27/每日一题/">每日一题</a>
+            <a href="/2020/07/02/Java-I-O/">Java-I/O</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+            <a href="/2020/07/01/Android提升/">Android提升</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/树/">树</a>
+            <a href="/2020/06/30/KMP算法/">KMP算法</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+            <a href="/2020/06/28/Java常用类库/">Java常用类库</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/singleton/">singleton</a>
+            <a href="/2020/06/28/Android总结/">Android总结</a>
           </li>
         
       </ul>

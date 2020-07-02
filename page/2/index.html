@@ -62,6 +62,557 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-abstract-class-and-interface" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/25/abstract-class-and-interface/" class="article-date">
+  <time datetime="2020-06-25T07:00:35.000Z" itemprop="datePublished">2020-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#抽象方法<br>使用abstract关键字修饰，只有声明，没有具体实现；<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abstract void run();</span><br></pre></td></tr></table></figure></p>
+<p>抽象方法必须为public或者protected</p>
+<p>#抽象类</p>
+<ol>
+<li>一个类含有抽象方法，则为抽象类，需要用abstarct修饰class</li>
+<li>抽象类不能创建对象</li>
+<li>一个类继承了抽象类，则必须实现抽象方法，否则这个子类也将变成抽象类</li>
+</ol>
+<p>#接口<br>在软件工程中，接口泛指提供给别人调用的方法或函数</p>
+<ol>
+<li>Java接口中的变量默认为public static final变量</li>
+<li>方法默认是public abstract</li>
+<li>非抽象类实现某个接口，【就必须实现该接口中的所有方法】</li>
+</ol>
+<p>抽象类是对事物的抽象，接口是对行为的抽象<br>飞机、鸟、飞</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/25/abstract-class-and-interface/" data-id="ckc4v5z2b000m7wwz9nhwbbkm" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-singleton" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/25/singleton/" class="article-date">
+  <time datetime="2020-06-25T03:45:03.000Z" itemprop="datePublished">2020-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/25/singleton/">singleton</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#要点</p>
+<ol>
+<li>某个类只能有一个实例<br>实现：构造函数私有化</li>
+<li>类必须自行创建实例<br>实现：含有一个类的静态变量来保存这个唯一实例</li>
+</ol>
+<p>最简单的一种方式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Singleton&#123;</span><br><span class="line">    public static final singleton = new Singleton();</span><br><span class="line">    private <span class="function"><span class="title">Singleton</span></span>()&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/25/singleton/" data-id="ckc4v5z2p000v7wwzc4hp2f4l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Internal-class" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/25/Internal-class/" class="article-date">
+  <time datetime="2020-06-25T02:11:12.000Z" itemprop="datePublished">2020-06-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/25/Internal-class/">Internal-class</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#成员内部类</p>
+<ol>
+<li>直接定义在另一个类中的类</li>
+<li>内部类可以使用外部类的所有成员</li>
+<li><p>当内部类成员和外部类成员同名时，内部类默认使用的是内部成员。如果要使用外部成员</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">外部类.this.成员</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部类如果想访问内部成员，需要创建一个内部类对象，再通过这个对象引用内部类的成员</p>
+</li>
+<li><p>内部类对象是依附于外部类对象存在的，创建内部类对象的方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Outter otter = new Outter();</span><br><span class="line">Outter.Inner inner = outter.new Inner();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部类访问权限：<br>public(可以被本项目的其它类使用，类名必须要和文件名相同)；<br>default（只能被同一个包中的类访问）</p>
+</li>
+<li><p>内部类访问权限：<br>public:任何地方都可以被访问；<br>protected:同一个包下或者外部类的子类可以访问<br>default:同一个包下的类可以访问<br>private：只能在所在外部类中被访问</p>
+</li>
+</ol>
+<p>#局部内部类<br>定义在一个方法或者作用域中的类，访问仅限于方法内或者作用域内<br>不能有修饰符，像一个局部变量一样</p>
+<p>#匿名内部类<br>经典：Android设置按钮监听器<br>创建匿名内部类时能够实现父类或者接口中的方法<br>匿名内部类也无法修饰<br>匿名内部类没有构造器，编译器自动起名</p>
+<p>#静态内部类<br>不依赖于外部类，类似于静态成员<br>不能使用外部类的非静态成员<br>创建静态内部类对象<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Outter.Inner inner = new Outter.Inner();</span><br></pre></td></tr></table></figure></p>
+<p>内部类会被单独编译成一个字节码文件outter$inner.class<br>内部类方便了类的组合<br>内部类使用外部控件，加final修饰，目的是为了防止button被修改</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/25/Internal-class/" data-id="ckc4v5z1p00087wwzfju9pxq8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-memory-model" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/24/java-memory-model/" class="article-date">
+  <time datetime="2020-06-24T14:18:20.000Z" itemprop="datePublished">2020-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/24/java-memory-model/">java-memory-model</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#JVM三大性能调优参数-Xms -Xmx -Xss的含义<br><img src="/2020/06/24/java-memory-model/three-parameter.png" alt=""><br>-Xss规定了每个线程虚拟机栈的大小（stack）<br>-Xms规定了堆的初始容量<br>-Xmx规定了堆的最大容量（一般和-Xms设置成一样的，防止内存抖动）</p>
+<p>#内存分配的三种策略：</p>
+<ol>
+<li>静态存储：在编译时确定每个数据目标运行时的内存需求（不能有可变数据结构、嵌套、递归）</li>
+<li>栈式存储：编译时未知，运行时模块入口前确定</li>
+<li>对是存储：编译时未知，运行时模块入口时也未知，动态分配内存</li>
+</ol>
+<p>#Java内存模型中堆和栈的区别<br>数组、对象实例都保存在堆中，在栈中定义变量保存堆中实例的首地址（引用变量）</p>
+<ol>
+<li>所以，引用变量会自动释放，而实例本身不会，实例对象本身存储在堆中，等待GC处理</li>
+<li>所以当我们用String str = new String(“123”)创建对象时，会在栈中创建一个引用对象（地址），在对中创建一个实例对象。<br>new出来的在堆里</li>
+<li>区别一：栈自动释放，堆GC管理</li>
+<li>区别二：栈一般比堆要小</li>
+<li>区别三：堆活动量较大，GC的非实时性，产生的碎片量较多</li>
+<li>区别四：栈支持静态和动态，对仅支持动态（是堆的优点，更灵活）</li>
+<li>区别五：栈的效率要比堆要搞</li>
+</ol>
+<p>#equals VS ==</p>
+<ol>
+<li>equals比较的是两个对象实例在内存中的内容</li>
+<li>==比较的则是两个引用变量的值，即实例变量在堆中的首地址</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/24/java-memory-model/" data-id="ckc4v5z2g000p7wwzru0s4gza" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-设计模式" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/23/设计模式/" class="article-date">
+  <time datetime="2020-06-23T02:32:22.000Z" itemprop="datePublished">2020-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/23/设计模式/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#MVP模式<br>M-&gt;Model;V-&gt;View;P-&gt;Presenter<br>MVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示<br>M数据处理（网络操作、数据库操作），V视图层显示，C交互处理<br>MVC中view会直接从Model中读取数据，而不是Controller<br>MVP中View不会直接使用Model，它们之间的通信是使用Presenter进行的</p>
+<p>MVC优点：</p>
+<ol>
+<li>低耦合：降低了M和V的关联程度</li>
+<li>将业务逻辑和界面分离，增强了程序的可维护性和可扩展性。比如待修改界面时，只需要更改V层；当需要新的数据需求时，只需要增加新的接口。</li>
+<li>职责划分比较明确<br>MVC缺点：</li>
+<li>MVC适用于逻辑处理复杂、需要模块化设计的大项目；小项目中使用MVC可能会导致程序过度设计，代码臃肿。</li>
+<li>Activity中有很多关于视图UI的代码，所以在Activity中并不是单纯的C，还包括V的部分</li>
+<li>View和Model还是互相耦合</li>
+</ol>
+<p>MVP模式是MVC模式在Android上的一种变体<br>MVC中Activity还是承担了M和C这两个层的工作，耦合度还是有点高，所以将Activity中的view和controller抽离出来，变成View和Presenter，这就是MVP模式</p>
+<p>MVC模式中Activity的耦合度还是太高，业务逻辑与显示逻辑都写在Activity中，容易增城Activity臃肿。<br>而且写在Activity中的代码意味着不能被复用了</p>
+<p>在MVP架构中，</p>
+<ol>
+<li>Model还是那个Model，Activity的UI逻辑层被抽象成View接口，业务逻辑层被抽象成Presenter接口。</li>
+<li>Model和View之间也不能直接的进行交互</li>
+<li>使代码更加简洁，进一步降低耦合，可以进行逻辑代码的复用</li>
+<li>具体实现，在Activity中主要编写UI逻辑，业务逻辑写在一个接口中，然后去实现这个接口</li>
+</ol>
+<p>##MVVM模式<br>MVVM将MVC的Controller改进成ViewModel<br>在MVVM框架下，View和Model是不能直接通信的<br>ViewModel能够监听两端的变化，“实现数据的双向绑定”</p>
+<p>重制</p>
+<p>#不用框架<br>所以逻辑代码都写在一个Activity中，Activity承担过多的任务<br>当项目代码增加时，activity将会变得愈发的臃肿，难以维护</p>
+<p>使用架构的目的是为了优化代码，提高开发和维护效率</p>
+<p>#MVC<br>对代码进行解耦，将数据的获取、页面的展示分隔开来<br>M-&gt;V-&gt;C-&gt;M 形成一个三角循环<br>Controller:Activity、Fragment 处理外部请求、处理业务逻辑<br>View：layout、View控件<br>Model：数据库、网络数据获取</p>
+<p>controller-&gt;Model 通过引用，Controller可以创建Model层的引用，来进行两层之间的通信<br>model-&gt;View 注册监听</p>
+<p>优点：一定程度上实现实现了Model和View的分离，增强了可维护性，降低耦合性<br>缺点：</p>
+<ol>
+<li>适合大项目，小项目容易过度开发</li>
+<li>Model和View并没有完全的实现隔离</li>
+<li>Controller与View没有完全解耦，随着业务量增加，Controller将会变得更加臃肿（Controlller通常指Activity，Activity兼顾了视图和业务量部分的工作）</li>
+</ol>
+<p>#MVP<br>Model<-->Presenter<-->View</--></--></p>
+<ol>
+<li>Model与View不再进行直接的通信，Presenter是两层通信的桥梁</li>
+<li>Activity充当view，主要负责视图层逻辑</li>
+<li>业务逻辑处理交给Presenter，Presenter持有Model和View的引用来进行通信</li>
+<li>通过重写接口函数来展示页面，方便每个Activity进行编写</li>
+<li>View通过Presenter的引用和Presenter进行通信<br>e.g. View层通过Presenter的引用调用Presenter的获取数据的方法，Presenter在方法中通过model的引用获取数据，在通过view的引用更新页面</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>使Model和View完全隔离</li>
+<li>解决了MVC中View和Controller过度耦合的缺点</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>需要编写很多的接口</li>
+<li>随着项目复杂度提高，Presenter将变得臃肿</li>
+</ol>
+<p>#MVVM</p>
+<ol>
+<li>通信图相同，只不过将Presenter改成了ViewModel</li>
+<li>在MVP的基础上，实现了数据的绑定（当数据发生变化时，视图自动更新；当视图发生变化时，数据也自动更新）</li>
+<li>减少了接口数量、控件引用数量</li>
+</ol>
+<p>#数据绑定<br>DataBinding是谷歌官方发布的一个数据绑定框架，实现数据与视图的数据绑定</p>
+<p>优点：实现双向绑定，极大简化了代码。减少了接口、引用数量。<br>缺点：数据绑定还不成熟</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/23/设计模式/" data-id="ckc4v5z2v00127wwzilumi519" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java-foundamental" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/19/java-foundamental/" class="article-date">
+  <time datetime="2020-06-19T03:46:03.000Z" itemprop="datePublished">2020-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/19/java-foundamental/">java foundamental</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java参数传递"><a href="#Java参数传递" class="headerlink" title="Java参数传递"></a>Java参数传递</h1><ol>
+<li>基础数据类型是值传递</li>
+<li>对象类型，实参和形参指向同一片内存，但是如果更改形参指向，不会影响实参</li>
+<li>指针和引用还是有区别的，指针无法改变指向</li>
+</ol>
+<h1 id="Java继承"><a href="#Java继承" class="headerlink" title="Java继承"></a>Java继承</h1><ol>
+<li>子类可以继承父类的 所有 属性和方法，还可以重写父类的方法，但是私有的是不能调用的</li>
+<li>Object类是层次结构的根，java所有类都继承自这个类</li>
+<li>构造子类对象前，要先构造父类对象，用super关键字实现</li>
+<li>子类带参要先调父类带参</li>
+<li>子类咔嚓一下就可以转换成父类，这是安全的，转换成谁，谁在左边</li>
+<li>父类转换成子类时，需要用（）来实现强制转换</li>
+<li>接口只有静态常量和抽象方法，十分抽象的类</li>
+<li>定义接口是帮助子类进行扩展</li>
+<li>Java只允许单继承，降低复杂性，但是可以实现多个接口；C++允许多继承</li>
+</ol>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><ol>
+<li>static修饰类，只能修饰内部类</li>
+<li>static修饰的方法可以通过类名来直接调用</li>
+<li>static修饰的变量属于类，可以通过类名直接调用</li>
+<li>类初始化顺序：先父类，后子类；先静态和非静态</li>
+<li>父类静态变量、父类静态代码块、子类静态变量、子类静态代码块、父类非静态变量、父类非静态代码块、父类构造函数、子类非静态变量、子类非静态代码块、子类构造函数</li>
+<li>java的对象放在堆区，线程共享；其它放在栈区，每个线程有一个</li>
+<li>类和静态区存放在静态区，线程共享</li>
+<li>静态随类，非静态随对象，所以静态方法中无法使用this、super</li>
+<li>静态变量被所有类实例共享</li>
+</ol>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><ol>
+<li>final修饰类，则这个类不能被继承</li>
+<li>final修饰方法，则这个方法不能被重写</li>
+<li>final修饰基础类型变量，必须初始化，且只能初始化一次</li>
+<li>final修饰对象类型变量，地址不能变</li>
+</ol>
+<h1 id="java编程知识积累"><a href="#java编程知识积累" class="headerlink" title="java编程知识积累"></a>java编程知识积累</h1><ol>
+<li>java数组为null和空数组是不一样的概念。null表示这个对象引用是一个空引用；空数组表示是一个真正的对象，只不过元素数量为0</li>
+</ol>
+<h1 id="java异常"><a href="#java异常" class="headerlink" title="java异常"></a>java异常</h1><h2 id="java异常体系主要回答的三个问题"><a href="#java异常体系主要回答的三个问题" class="headerlink" title="java异常体系主要回答的三个问题"></a>java异常体系主要回答的三个问题</h2><p>what:异常类型回答了什么被抛出<br>where:异常堆栈跟踪回答了在哪里被抛出<br>why:异常信息回答了为什么会被抛出</p>
+<h2 id="java的异常体系"><a href="#java的异常体系" class="headerlink" title="java的异常体系"></a>java的异常体系</h2><p><img src="/2020/06/19/java-foundamental/java_Exception.png" alt=""></p>
+<ol>
+<li>java异常的顶层父类是Throwable类，Throwable继承自Object类</li>
+<li>Error:(JVM负责)程序无法处理的系统错误，编译器不做检查，遇到建议直接让程序终止 e.g. 系统崩溃、虚拟机错误、内存不足、方法调用栈溢出</li>
+<li>Exception:程序可以处理的异常，捕获后可能修复，遇到应该尽可能去处理</li>
+<li>Exception又可以分为runtimeException和非runtimeException</li>
+<li>RuntimeException（程序负责）表示不可预知的，编译器不校验，程序应当进行避免 e.g.数组下标越界（outofIndex）、访问控制针(NullPointerException)</li>
+<li>非runtimeException，（编译器负责）可以预知的错误，编译器校验的异常，不处理，程序不能被编译通过 I/OException、SQLException、ClassNotFound、EOFException<br>ps:java不能一个继承多个，但是可以一个被多个继承</li>
+<li>尽量细化异常，不要泛化异常，因为一场本身就是为了方便定位问题的<h2 id="java常见Error和异常"><a href="#java常见Error和异常" class="headerlink" title="java常见Error和异常"></a>java常见Error和异常</h2></li>
+<li>runtimeException<br>NullPointerException:在试图使用的对象是null<br>ClassCastException:不兼容类型之间的转换异常<br>IllegalArgumentException:传递非法参数的异常<br>IndexOutOfBoundsException:下标越界异常<br>NumberFormatException:将String转化成num，但是String确实不满足格式要求<br>ArithmeticException:除0错误</li>
+<li>非runtimeException<br>ClassNotFoundException<br>I/OException</li>
+<li>Error<br>NoClassDefFoundError:找不到class的定义，没有引入jar包<br>StackOverflowError:深递归导致方法调用栈被耗尽<br>OutOfMemoryError:内存溢出异常<br>##Java的异常处理机制</li>
+<li>抛出异常<br>创建异常对象，交由运行时系统处理</li>
+<li>捕获异常<br>寻找合适的异常处理器进行处理，如果没有找到，则终止程序<br>##Java异常处理流程</li>
+<li>在出现异常时，在堆上创建异常对象</li>
+<li>当异常出现时，当前的执行路径将会被终止（不会执行try块中后续的逻辑代码）</li>
+<li>然后会抛出异常对象的引用</li>
+<li>抛出的异常会被catch捕获，子类在前面就是子类子类捕获</li>
+<li>catch中的return之前，会先执行finally子句中的语句，如果finally子句中出现了return，则不会再回到catch中执行那个return了</li>
+<li>异常至多被一个catch匹配到，且匹配按照先后顺序进行匹配<br>##Java异常处理原则<br>具体明确、提早抛出、延迟捕获（让掌握更多信息的作用域去处理异常）<br>try-catch需要创建异常对象实例，保存栈快照，开销较大。所以尽量用try包裹一场出现的代码段<br>##Java throws和try-catch的区别</li>
+<li>throws是向上抛出，将异常交给方法的调用方来处理异常</li>
+<li>try-catch是捕获异常，自己处理异常<h2 id="ClassNotFoundException-VS-NotClassDefFundError"><a href="#ClassNotFoundException-VS-NotClassDefFundError" class="headerlink" title="ClassNotFoundException VS NotClassDefFundError"></a>ClassNotFoundException VS NotClassDefFundError</h2></li>
+<li>ClassNotFound是因为在加载类时，找不到定义的class代码段，没有在内存中生成对应的类对象</li>
+<li>NotClassDefFoundError时Error，编译能够通过，但是new对象时找不到类的定义而出错。可能原因：找不到class文件、class文件在不同的域中（在当前的java path下不可用，java path是我们配置环境变量时看到的那个东西）</li>
+</ol>
+<p>#Java底层</p>
+<p>##平台无关性</p>
+<ol>
+<li>一次编译，到处运行，可以使用javac指令将java代码编译成.class字节码，让后用java指令运行程序</li>
+<li>不同平台的JVM会解析字节码，将其转化成不同平台上的指令</li>
+<li>引入字节码：防止每一次词法、语法、语义的检查工作，多次执行不需要做重复工作，提高性能</li>
+<li>引入字节码还可以兼容别的语言，例如Ruby，也是可以编译成字节码，然后在JVM中执行</li>
+</ol>
+<p>##Java虚拟机</p>
+<ol>
+<li>屏蔽底层的不同，让程序员可以专注写java代码</li>
+<li>JVM是内存中的虚拟机，JVM的存储就是内存<br><img src="/2020/06/19/java-foundamental/jvm.png" alt=""></li>
+<li>JVM大致可以分为4个部分，class Loader、Runtime Data Area、Execution Engine、Native Interface</li>
+<li>ClassLoader的作用是将编译好的class文件加载到内存，加载时依据特定的文件格式</li>
+<li>Execution起到解释器的作用，解析class文件中的字节码，并提交给操作系统去执行</li>
+<li>Native Interface融合不同开发语言的原生库来提供给Java使用，避免重复造轮子、提高执行效率<br>ps:Java在大多数情况下执行效率没有原生的C高，forName函数就是通过字符串来找到指定的类，调用了native接口</li>
+<li>Runtime Data Area:JVM内存模型</li>
+</ol>
+<p>##Java反射</p>
+<ol>
+<li>动态获取信息、动态调用对象方法</li>
+<li>在运行状态中，对于任意一个类，能够知道这个类的所有属性和方法；对于任意一个对象，能够知道调用这个对象中的任意属性和方法</li>
+<li>java反射就是将java中的各种函数映射成对象：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//先用forName获取到class对象</span><br><span class="line">Class rc = Class.forName(<span class="string">"..."</span>);</span><br><span class="line">rc.getName();</span><br><span class="line">Method myMethod = rc.getMethod();</span><br><span class="line">Field myField = rc.getDeclaredField();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##类从编译到执行的过程</p>
+<ol>
+<li>编译器：编译器将Student.java编译成Student.class字节码</li>
+<li>ClassLoader:ClassLoader将字节码转换为JVM中的Class<student>对象</student></li>
+<li>JVM:JVM利用Class<student>对象实例化Student对象</student></li>
+</ol>
+<p>##ClassLoader</p>
+<ol>
+<li>ClassLoader是一个抽象类，比较重要的方法是loadClass</li>
+<li>loadClass接收字符串参数，返回class实例；如果找不到类，就向上抛出一个ClassNotFound的Exception</li>
+<li>ClassLoader种类<br>3.1 BootStrapClassLoader:C++编写，用于加载核心库java.<em><br>3.2 ExtClassLoader:Java编写，用于加载扩展库javax.</em><br>3.3 AppClassLoader:Java编写，用于加载程序所在目录<br>3.4 自定义ClassLoader:Java编写，定制化加载</li>
+<li>如果要自定义ClassLoader，就需要重写重写findClass找到文件，然后在defineClass中生成class对象</li>
+<li>.java-&gt;.class-&gt;class对象</li>
+</ol>
+<p>##ClassLoader的双亲委派机制<br>先寻找类对象，按照customClassLoader-&gt;AppClassLoader-&gt;ExtClassLoader-&gt;BootsrapClassLoader的顺序查看是否已经加载该类（自底向上找class对象）<br>再找文件，按照BootstrapClassLoader-&gt;ExtClassLoader-&gt;AppClassLoader-&gt;CustomClassLoader<br>目的：防止多份同样字节码的加载</p>
+<p>##类的加载方式</p>
+<ol>
+<li>隐式加载：new，程序在运行过程中使用new隐式调用对应的类加载器</li>
+<li>显式加载，通过loadClass、forName显式加载类，获得类对象，再用newInstance获得实例</li>
+<li>forName得到的类对象是完成了初始化的，loadClass得到的类是完成了链接的</li>
+<li>forName的初始化特性可以帮助我们加载一些具有静态代码块的Driver；loadClass可以加速类的加载，初始化用到再说</li>
+<li>类的装载过程：加载（ClassLoader加载字节码）、链接（校验、类变量分配空间、符号引用转换为直接引用）、初始化（类变量赋值、静态代码块）</li>
+</ol>
+<p>#JVM内存模型（JDK8后）</p>
+<ol>
+<li>计算机所有程序都是在内存中运行的</li>
+<li>32位处理器可寻址空间，2^32；64位处理器可寻址空间，2^64</li>
+<li><p>内存需要将物理地址映射为逻辑地址；内存寻址空间的划分：内核空间、用户空间。JVM运行在用户空间。</p>
+</li>
+<li><p>线程私有：程序计数器、虚拟机栈、本地方法栈</p>
+</li>
+<li>所有线程共享：MeataSpace、堆（包含字符串常量池，String str = “123”;）</li>
+</ol>
+<p>##1.程序计数器</p>
+<ol>
+<li>JVM的多线程是通过线程轮流切换，分配处理器的方式进行的，所以程序计数器和线程是一对一的关系</li>
+<li>程序计数器是当前线程所执行的字节码指令的行号指示器</li>
+<li>改变计数器的值来选取下一条需要执行的字节码指令</li>
+<li>说白了，程序计数器告诉对应的线程要去执行哪一条字节码指令</li>
+<li>只对线程执行的java方法计数，不对Native方法计数</li>
+<li>不会发生内存泄漏的问题</li>
+<li>程序计数器是逻辑计数器，帮助线程执行完成后能够恢复到正确的位置</li>
+</ol>
+<p>##2.Java虚拟机栈<br>包含单个线程每个方法执行的栈帧，栈帧中包含了局部变量表、操作数栈、动态连接、返回地址</p>
+<ol>
+<li>局部变量表：包含方法执行过程中的所有变量（this引用、所有方法参数、局部变量）</li>
+<li>操作数栈：在执行字节码指令过程中会用到，展现赋值、计算过程中的操作数的出入栈过程</li>
+<li>istore弹出操作数栈，iload压入操作数栈</li>
+<li>虚拟机栈是JVM自动管理的，有固定容量的，里面存储栈帧</li>
+<li>调用方法时栈帧自动压栈，调用结束，栈帧自动释放出栈，所以栈中内存不需要GC去回收，而会自动释放。</li>
+</ol>
+<p>##Java为什么会产生stackoverflow的异常？<br>线程调用方法时，会向虚拟机栈中压入栈帧，方法执行完毕，再将栈帧弹出<br>虚拟机栈的深度是固定的，当递归层数过多，栈桢数超过虚拟机栈深度，就会发生stackoverflowError<br>ps:解决方式：减少递归层数；使用循环替代递归</p>
+<p>##虚拟机栈过多引发OutOfMemoryError<br>虚拟机栈的动态扩展时，无法申请到足够多的内存<br>e.g.无限创造线程</p>
+<p>##3.本地方法栈<br>作用与虚拟机栈类似，主要作用于Native方法 e.g. forName0(C++编写)</p>
+<p>##4.MetaSpace(线程共享部分)<br>存放Java类的元数据，包括class对象的field和method<br>元空间使用本地内存，而非jvm内存<br>替代了原本的方法区，静态变量所在的地方</p>
+<p>##5. Java堆（线程共享部分）</p>
+<ol>
+<li>存放对象实例，为对象实例分配内存，当内存不足时，会抛出outOfMemory的异常</li>
+<li>GC的主要管理区域</li>
+<li>还包含常量池，内含字面量和符号引用量</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/19/java-foundamental/" data-id="ckc4v5z2k000r7wwz8a0941aa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-动态规划" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/18/动态规划/" class="article-date">
+  <time datetime="2020-06-18T15:09:02.000Z" itemprop="datePublished">2020-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/动态规划/">动态规划</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#爬楼梯</p>
+<ol>
+<li>动态规划实质上就是一个递推的过程</li>
+<li>先研究基本情况，再找出基本情况和之后情况的递推关系</li>
+<li>本题中的地推情况就是dp[i]=dp[i-1]+dp[i-2]</li>
+<li>创建dp数组时，应该是n+1的长度，然后从1开始</li>
+</ol>
+<p>#打家劫舍</p>
+<ol>
+<li>设置边界值</li>
+<li>设置dp数组，初始条件</li>
+<li>for循环+状态方程 max的关系</li>
+<li>return dp[n]<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public int rob(int[] nums) &#123;</span><br><span class="line">       <span class="keyword">if</span>(nums.length == 0)&#123;</span><br><span class="line">           <span class="built_in">return</span> 0;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(nums.length == 1)&#123;</span><br><span class="line">           <span class="built_in">return</span> nums[0];</span><br><span class="line">       &#125;</span><br><span class="line">       int[] dp = new int[nums.length];</span><br><span class="line">       dp[0] = nums[0];</span><br><span class="line">       dp[1] = Math.max(dp[0],nums[1]);</span><br><span class="line">       <span class="keyword">for</span>(int i=2;i&lt;nums.length;i++)&#123;</span><br><span class="line">           dp[i] = Math.max(nums[i]+dp[i-2],dp[i-1]);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> dp[nums.length-1];        </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##最大子段和</p>
+<ol>
+<li>需要注意的地方：因为要求是连续，所以当前的元素必须要选，之后只能做放弃前面or追加这两种选择</li>
+<li>最终结果并不一定是最优解，结果会出现在中间，所以用一个max变量去打擂台<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public int maxSubArray(int[] nums) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length == 0)&#123;</span><br><span class="line">            <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(nums.length == 1)&#123;</span><br><span class="line">            <span class="built_in">return</span> nums[0];</span><br><span class="line">        &#125;</span><br><span class="line">        int[] dp = new int[nums.length];</span><br><span class="line">        dp[0] = nums[0];</span><br><span class="line">        int max_res = dp[0];</span><br><span class="line">        <span class="keyword">for</span>(int i=1;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(dp[i-1]&gt;0)&#123;</span><br><span class="line">                dp[i] = dp[i-1]+nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                dp[i] = nums[i];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(max_res &lt; dp[i])&#123;</span><br><span class="line">                max_res = dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> max_res;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>##最长回文数</p>
+<ol>
+<li>特殊情况：空字符串、null指针</li>
+<li>边界条件：单字符、双字符情况，3字符以上可以进入循环使用状态方程</li>
+<li>状态方程：dp[i][j] = j-i&lt;2&amp;&amp;s[i]==s[j] 或者 dp[i][j] = dp[i+1][j-1]&amp;&amp;s[i]==s[j]</li>
+<li>从最后一个不断向前，每次内循环向后扫描</li>
+<li>使用HashMap记录下长度和值的对应关系，最后用最大的长度去取值并返回</li>
+<li>i、j是两个字符串指针，i左j右<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public String longestPalindrome(String s) &#123;</span><br><span class="line">       <span class="keyword">if</span>(s == null || s.equals(<span class="string">""</span>))&#123;</span><br><span class="line">           <span class="built_in">return</span> s;</span><br><span class="line">       &#125;</span><br><span class="line">       boolean[][] dp = new boolean[s.length()][s.length()];</span><br><span class="line">       int max = 0;</span><br><span class="line">       HashMap&lt;Integer,String&gt; map = new HashMap&lt;&gt;();</span><br><span class="line">       <span class="keyword">for</span>(int i = s.length()-1;i&gt;=0;i--)&#123;</span><br><span class="line">           <span class="keyword">for</span>(int j=i;j&lt;s.length();j++)&#123;</span><br><span class="line">               <span class="keyword">if</span>(s.charAt(i)==s.charAt(j))&#123;</span><br><span class="line">                   <span class="keyword">if</span>(j-i&lt;2)&#123;</span><br><span class="line">                       dp[i][j]=<span class="literal">true</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="keyword">else</span> <span class="keyword">if</span>(dp[i+1][j-1])&#123;</span><br><span class="line">                       dp[i][j]=<span class="literal">true</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span>(dp[i][j]&amp;&amp;max&lt;j-i+1)&#123;</span><br><span class="line">                   max = j-i+1;</span><br><span class="line">                   map.put(max,s.substring(i,j+1));</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">return</span> map.get(max);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/18/动态规划/" data-id="ckc4v5z2s000z7wwz0znujyxa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-二叉树" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/18/二叉树/" class="article-date">
@@ -98,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckbxbfwn2000p6cwz7q0wsckv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/二叉树/" data-id="ckc4v5z2r000x7wwzg1tzaocq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -145,7 +696,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckbxbfwn3000q6cwz4g893ijq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/18/全排列/" data-id="ckc4v5z2q000w7wwzv42govtv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,383 +819,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckbxbfwnb000w6cwzl0rntk3n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-5-最长回文子串" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/17/5-最长回文子串/" class="article-date">
-  <time datetime="2020-06-17T11:51:59.000Z" itemprop="datePublished">2020-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/5-最长回文子串/">5 最长回文子串</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#解法一：暴力法</p>
-<ol>
-<li>列举出所有可能的子串</li>
-<li>专门写一个函数，检查子串和它的逆序是否相等</li>
-<li>使用hashmap将最大的长度和字符串对应起来</li>
-<li>反转字符串可以使用<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new StringBuilder(str).reverse().toString()</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>StringBuilder和StringBuffer很相似，StringBuffer线程安全；StringBuilder速度更快<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public static String longestPalindrome(String s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.equals(<span class="string">""</span>))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        int maxlength=0;</span><br><span class="line">        HashMap&lt;Integer,String&gt; map = new HashMap();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(s.substring(i,j)))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(j-i&gt;maxlength)&#123;</span><br><span class="line">                        maxlength = j-i;</span><br><span class="line">                        map.put(maxlength,s.substring(i,j));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="built_in">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> map.get(maxlength);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static boolean check(String substring)&#123;</span><br><span class="line">        <span class="keyword">if</span>(substring.equals(new StringBuilder(substring).reverse().toString()))&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>#动态规划法</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/5-最长回文子串/" data-id="ckbxbfwll00006cwz9lystjpn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Sort-algorithm-review" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/17/Sort-algorithm-review/" class="article-date">
-  <time datetime="2020-06-17T03:38:09.000Z" itemprop="datePublished">2020-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/Sort-algorithm-review/">Sort algorithm review</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#快速排序</p>
-<ol>
-<li>在主要排序部分，使用递归的形式实现。参数是list、low、high，base case是low &lt; high</li>
-<li>先对当前的序列进行一次划分partition，返回主元下标，然后在主元两端递归调用方法；</li>
-<li>划分部分，先选择主元；</li>
-<li>以一个大的while循环作为主要部分，限制条件是low &lt; high</li>
-<li>在while循环内部，使用两个while分别表示从高位扫描和从低位扫描的两种情况</li>
-<li>partition最终返回的是主元的索引</li>
-<li>最坏情况是O(n^2)，发生在数组有序时；最好情况和一般情况都是O(nlogn)，最好情况发生在划分后主元两端元素相同时<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">static int partition(int[] list, int low, int high)&#123;</span><br><span class="line">        int pivot = list[low];</span><br><span class="line">        <span class="keyword">while</span>(low&lt;high)&#123;</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[high]&gt;=pivot)&#123;</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            list[low] = list[high];</span><br><span class="line">            <span class="keyword">while</span>(low&lt;high &amp;&amp; list[low]&lt;=pivot)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            list[high] = list[low];</span><br><span class="line">        &#125;</span><br><span class="line">        list[low] = pivot;</span><br><span class="line">        <span class="built_in">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void quickSort(int[] list, int low, int high)&#123;</span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int pivotIndex = partition(list,low,high);</span><br><span class="line">            quickSort(list,pivotIndex+1,high);</span><br><span class="line">            quickSort(list,low,pivotIndex-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>#归并排序</p>
-<ol>
-<li>主要部分采用递归分治策略，递归条件是low &lt; high，之后算出中点左右分别递归调用函数，最终用merge函数实现合并</li>
-<li>merge函数中需要定义一个与输入数组等长的辅助数组；</li>
-<li>定义三个指针分别指向数组前半段、数组后半段，辅助数组</li>
-<li>使用三个while进行操作，按照出牌的方式。两边轮流打擂台，比大小，较小的先进入辅助数组</li>
-<li>之所以使用三个while是因为还要考虑一边出完牌，另一边还没有出完的情况</li>
-<li>辅助数组中的元素要重新赋值给原数组，注意赋值时的low、high界限<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">static void merge(int[] current, int low, int mid, int high)&#123;</span><br><span class="line">        //合并连个数组（一个数组的前后两端，需要三个指针）</span><br><span class="line">        int[] targetTemp = new int[current.length];</span><br><span class="line">        int i=mid+1,j=low,k=low;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high &amp;&amp; j&lt;=mid) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current[i]&lt;=current[j])&#123;</span><br><span class="line">                targetTemp[k]=current[i];</span><br><span class="line">                k++;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                targetTemp[k]=current[j];</span><br><span class="line">                k++;</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;=high)&#123;</span><br><span class="line">            targetTemp[k]=current[i];</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(j&lt;=mid)&#123;</span><br><span class="line">            targetTemp[k]=current[j];</span><br><span class="line">            k++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(int n=low;n&lt;=high;n++)&#123;</span><br><span class="line">            current[n] = targetTemp[n];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //low、high对应的是index</span><br><span class="line">    static void mergeSort(int[] current,int low, int high)&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(low&lt;high)&#123;</span><br><span class="line">            int mid = (low+high)/2;</span><br><span class="line">            mergeSort(current,low,mid);</span><br><span class="line">            mergeSort(current,mid+1,high);</span><br><span class="line">            merge(current,low,mid,high);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>#堆排序</p>
-<ol>
-<li>主要分为两部分：总体部分、调整部分</li>
-<li>总体部分接收一个list作为参数。首先从第一个非叶子节点开始，初建大顶堆；然后用一个for循环，先交换第一个和最后一个，然后再从第一个结点开始调整，范围不包括最后一个</li>
-<li>调整部分接受三个参数：list、调整范围、调整结点编号</li>
-<li>先将调整结点的值赋给临时变量</li>
-<li>然后用一个while循环，限制条件是左子节点不越界</li>
-<li>在while循环内先判断一下右子节点是否越界，在不越界且右子节点比左子节点大的情况下，指向右子节点</li>
-<li>然后将当前指向的结点和临时变量的值进行比较，如果比临时变量大，则用子结点覆盖当前节点，并进一步指向子结点的左子节点</li>
-<li>在while结束之后，将临时变量赋给它最终的位置处<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">static void sort(int[] list)&#123;</span><br><span class="line">        //从第一个非叶子节点开始调整</span><br><span class="line">        int temp=0;</span><br><span class="line">        //初建大顶堆</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length/2-1;i&gt;=0;i--)&#123;</span><br><span class="line">            //从第一个非叶子节点开始，调整范围是整个数组</span><br><span class="line">            heapAdjust(list,list.length,i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(int i=list.length-1;i&gt;=1;i--)&#123;</span><br><span class="line">            //交换第一个和最后一个</span><br><span class="line">            temp = list[0];</span><br><span class="line">            list[0] = list[i];</span><br><span class="line">            list[i] = temp;</span><br><span class="line">            //从第一个开始，调整范围不包括最后一个</span><br><span class="line">            heapAdjust(list,i,0);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //参数1是list，参数2是调整范围长度，参数3是调整结点</span><br><span class="line">    static void heapAdjust(int[] list, int len, int i)&#123;</span><br><span class="line">        //临时变量存储</span><br><span class="line">        int temp = list[i];</span><br><span class="line">        int index = 2*i+1;</span><br><span class="line">        //当左子节点结点没有超过调整范围</span><br><span class="line">        <span class="keyword">while</span>(index&lt;len)&#123;</span><br><span class="line">            //比较左右子节点</span><br><span class="line">            <span class="keyword">if</span>(index+1&lt;len &amp;&amp; list[index]&lt;list[index+1])</span><br><span class="line">                //如果右子节点没有超过范围，且右子节点比较大,则指向右子节点</span><br><span class="line">                index++;</span><br><span class="line">            <span class="keyword">if</span>(list[index]&gt;temp)&#123;</span><br><span class="line">                list[i] = list[index];</span><br><span class="line">                i = index;</span><br><span class="line">                index = 2*index+1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //将临时存储的变量交给最终确定的位置</span><br><span class="line">        list[i] = temp;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>注：快速排序是不稳定的，归并排序是稳定的</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/Sort-algorithm-review/" data-id="ckbxbfwmm000d6cwztgeqtu0e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LongestNonRepeat" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/17/LongestNonRepeat/" class="article-date">
-  <time datetime="2020-06-17T01:11:44.000Z" itemprop="datePublished">2020-06-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/LongestNonRepeat/">LongestNonRepeat</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Leetcode problem-3</p>
-<h1 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h1><ol>
-<li>利用两个for循环列举出string中所有可能的substring的情况；</li>
-<li>再编写一个接收string参数的函数，这个函数的作用是检查string中是否有重复的字母；<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">static class Solution &#123;</span><br><span class="line">        public int lengthOfLongestSubstring(String s) &#123;</span><br><span class="line">            //考虑从一个字母到所有字母都上的情况</span><br><span class="line">            int maxlength=0;</span><br><span class="line">            //String maxstr = null;</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(int j=i+1;j&lt;s.length()+1;j++)&#123;</span><br><span class="line">                    String temp = s.substring(i,j);</span><br><span class="line">                    <span class="keyword">if</span>(check(temp))&#123;</span><br><span class="line">                        //没有重复字符</span><br><span class="line">                        <span class="keyword">if</span>(temp.length()&gt;maxlength)&#123;</span><br><span class="line">                            maxlength = temp.length();</span><br><span class="line">                            //maxstr = temp;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        //有重复字符</span><br><span class="line">                        <span class="built_in">continue</span>;</span><br><span class="line">                    &#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean check(String substring)&#123;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span>(int i=0;i&lt;substring.length();i++)&#123;</span><br><span class="line">                Character ch = substring.charAt(i);</span><br><span class="line">                <span class="keyword">if</span>(set.contains(ch))</span><br><span class="line">                    //说明有重复</span><br><span class="line">                    <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">                //在不包括的情况下要加进去</span><br><span class="line">                set.add(ch);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>总结：<br>在检查是否有重复字母时，使用到了HashSet；</p>
-<ol>
-<li>HashSet基于HashMap，组合了Hash在迭代时不能保证顺序；</li>
-<li>具有add、remove、contains、size操作，时间复杂度都是O(1)级别</li>
-<li>线程不安全</li>
-<li>HashSet是为了快速查找而设计的set，set是一种特殊的collection,不保存重复的元素</li>
-<li>Map适合存储键值对数据，常用操作get、put；Set检索能力低下，但是删除和插入效率高，常用操作add、remove、contains；List与数组类似，可以动态增长，插入删除效率低。</li>
-</ol>
-<h1 id="解法二：Sliding-windows"><a href="#解法二：Sliding-windows" class="headerlink" title="解法二：Sliding windows"></a>解法二：Sliding windows</h1><p>（本题能使用滑动窗口，原因是因为：要求连续、且连续部分有内部的限制）</p>
-<ol>
-<li>形成一个字符串的滑动窗口</li>
-<li>设定坐标i、j，当新加入的成员满足要求时，增长j</li>
-<li>当新加入的成员不满足要求时，增加i，进行缩减检查<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br><span class="line">            int j = 0;</span><br><span class="line">            int maxlength = 0;</span><br><span class="line">            Set&lt;Character&gt; <span class="built_in">set</span> = new HashSet&lt;&gt;();</span><br><span class="line">            <span class="keyword">while</span>(i&lt;s.length() &amp;&amp; j&lt;s.length())&#123;</span><br><span class="line">                <span class="keyword">if</span>(set.contains(s.charAt(j)))&#123;</span><br><span class="line">                    //如果集合中已经包含了新加进来的字符，则去掉，然后更改索引</span><br><span class="line">                    set.remove(s.charAt(i));</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    //如果不包含最左侧的字符</span><br><span class="line">                    set.add(s.charAt(j));</span><br><span class="line">                    j++;</span><br><span class="line">                    maxlength = Math.max(maxlength,j-i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> maxlength;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>注意：</p>
-<ol>
-<li>HashSet和HashMap的参数都要求是对象int对应Integer，char对应Character</li>
-<li>String获取指定索引字符的方式：str.charAt(i)</li>
-<li>快速比大小：Math.max(a,b)</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/17/LongestNonRepeat/" data-id="ckbxbfwme00086cwz5rok5etf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Add-two-numbers" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/14/Add-two-numbers/" class="article-date">
-  <time datetime="2020-06-14T12:27:08.000Z" itemprop="datePublished">2020-06-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/14/Add-two-numbers/">Add_two_numbers</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Add-Two-Numbers"><a href="#Add-Two-Numbers" class="headerlink" title="Add Two Numbers"></a>Add Two Numbers</h1><h1 id="基本数学解法，要考虑到多种意外情况"><a href="#基本数学解法，要考虑到多种意外情况" class="headerlink" title="基本数学解法，要考虑到多种意外情况"></a>基本数学解法，要考虑到多种意外情况</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition <span class="keyword">for</span> singly-linked list.</span><br><span class="line"> * public class ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode next;</span><br><span class="line"> *     <span class="function"><span class="title">ListNode</span></span>() &#123;&#125;</span><br><span class="line"> *     ListNode(int val) &#123; this.val = val; &#125;</span><br><span class="line"> *     ListNode(int val, ListNode next) &#123; this.val = val; this.next = next; &#125;</span><br><span class="line"> * &#125;</span><br><span class="line"> */</span><br><span class="line">import static java.lang.Integer.max;</span><br><span class="line">class Solution &#123;</span><br><span class="line">    public ListNode addTwoNumbers(ListNode l1, ListNode l2) &#123;</span><br><span class="line">        int count1 = 0;</span><br><span class="line">            int count2 = 0;</span><br><span class="line">            ListNode temp;</span><br><span class="line">            ListNode list1 = l1;</span><br><span class="line">            ListNode list2 = l2;</span><br><span class="line">            temp = l1;</span><br><span class="line">            <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">                count1++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            temp = l2;</span><br><span class="line">            <span class="keyword">while</span>(temp!= null)&#123;</span><br><span class="line">                count2++;</span><br><span class="line">                temp = temp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            //ListNode result = new</span><br><span class="line">            int size = max(count1,count2)+1;</span><br><span class="line">            int[] result = new int[size];</span><br><span class="line">            <span class="keyword">for</span>(int i=0;list1!=null||list2!=null;i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(list1==null||list2==null)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(list1==null)&#123;</span><br><span class="line">                        result[i]=result[i]+list2.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        result[i]=result[i]+list1.val;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i]=result[i]+list1.val+list2.val;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(result[i]&gt;=10)&#123;</span><br><span class="line">                    result[i+1]=result[i]/10;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    result[i+1]=0;</span><br><span class="line">                &#125;</span><br><span class="line">                result[i]=result[i]%10;</span><br><span class="line">                <span class="keyword">if</span>(list1 == null)&#123;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(list2 == null)&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    list1 = list1.next;</span><br><span class="line">                    list2 = list2.next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            ListNode first = null;</span><br><span class="line">            ListNode second = null;</span><br><span class="line">            <span class="keyword">if</span>(result[size-1]!=0)&#123;</span><br><span class="line">                first = new ListNode(result[size-1]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-2;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                first = new ListNode(result[size-2]);</span><br><span class="line">                <span class="keyword">for</span>(int i=size-3;i&gt;=0;i--)&#123;</span><br><span class="line">                    second = new ListNode(result[i],first);</span><br><span class="line">                    first = second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="built_in">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总结知识点</p>
-<ol>
-<li><p>Java中的链表数据结构<br>使用类来表示链表结点</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class ListNode&#123;</span><br><span class="line">    int val;</span><br><span class="line">    ListNode next;</span><br><span class="line">    <span class="function"><span class="title">ListNode</span></span>()&#123;&#125;;</span><br><span class="line">    ListNode(int val)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">    &#125;</span><br><span class="line">    ListNode(int val,ListNode next)&#123;</span><br><span class="line">        this.val = val;</span><br><span class="line">        this.next = next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>对链表进行遍历的方式<br>使用一个temp指针指向一个结点，然后temp=temp.next这样的去遍历</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">static void displayList(ListNode list)&#123;</span><br><span class="line">        ListNode temp = list;</span><br><span class="line">        <span class="keyword">if</span>(temp == null)&#123;</span><br><span class="line">            System.out.println(<span class="string">"链表为空\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(temp!=null)&#123;</span><br><span class="line">            System.out.print(temp.val+<span class="string">" "</span>);</span><br><span class="line">            temp = temp.next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/14/Add-two-numbers/" data-id="ckbxbfwls00016cwzdr7cnqyv" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Two-Sum" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/13/Two-Sum/" class="article-date">
-  <time datetime="2020-06-13T07:27:57.000Z" itemprop="datePublished">2020-06-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/13/Two-Sum/">Two Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Two-Sum"><a href="#Two-Sum" class="headerlink" title="Two Sum"></a>Two Sum</h1><h2 id="解法一：暴力法"><a href="#解法一：暴力法" class="headerlink" title="解法一：暴力法"></a>解法一：暴力法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length-1;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j=i+1;j&lt;nums.length;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j] == target)&#123;</span><br><span class="line">                    <span class="built_in">return</span> new int[] &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>总结知识点：</p>
-<ol>
-<li><p>java查看数组长度</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums.length</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>java创建匿名数组</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new int[]&#123;&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="解法二：HashMap"><a href="#解法二：HashMap" class="headerlink" title="解法二：HashMap"></a>解法二：HashMap</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        HashMap&lt;Integer,Integer&gt; map = new HashMap&lt;Integer,Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span>(int i=0;i&lt;nums.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(map.get(target-nums[i])!=null)&#123;</span><br><span class="line">                <span class="built_in">return</span> new int[]&#123;map.get(target-nums[i]),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                map.put(nums[i],i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">return</span> new int[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>算法大意：<br>找到自己的另一半<br>如果另一半还没有出现<br>就先领着自己的号牌，去hashmap中去等待<br>当另一半出现了，返回两个人的号牌</p>
-<p>总结知识点：</p>
-<ol>
-<li>创建HashMap<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;K,V&gt; map = new HashMap&lt;K,V&gt;();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>在Java中，K、V都需要是对象类型，不可以是基础数据类型<br>int可以用Integer代替</p>
-<ol start="2">
-<li>取元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.get(K);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>如果K值对应的V不存在，则返回的是null</p>
-<ol start="3">
-<li>放元素<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">map.put(K,V);</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/Two-Sum/" data-id="ckbxbfwmp000g6cwznf5raxb0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-HOw-to-use-chrome-developer-tool" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/02/10/HOw-to-use-chrome-developer-tool/" class="article-date">
-  <time datetime="2020-02-10T08:40:20.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/HOw-to-use-chrome-developer-tool/">HOw to use chrome developer tool</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-打开你的Chrome浏览器，新建标签页"><a href="#1-打开你的Chrome浏览器，新建标签页" class="headerlink" title="1. 打开你的Chrome浏览器，新建标签页"></a>1. 打开你的Chrome浏览器，新建标签页</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/1.png" alt=""></p>
-<h2 id="2-找到选项中的开发者工具"><a href="#2-找到选项中的开发者工具" class="headerlink" title="2. 找到选项中的开发者工具"></a>2. 找到选项中的开发者工具</h2><p><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/2.png" alt=""></p>
-<h2 id="3-运行便调试JS代码"><a href="#3-运行便调试JS代码" class="headerlink" title="3. 运行便调试JS代码"></a>3. 运行便调试JS代码</h2><ol>
-<li>进入Sources面板</li>
-<li>new一个snippet</li>
-<li>编写源码</li>
-<li>右键snippet条目，单机Run</li>
-<li>在下方Console中查看输出结果<br><img src="/2020/02/10/HOw-to-use-chrome-developer-tool/3.png" alt=""></li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/02/10/HOw-to-use-chrome-developer-tool/" data-id="ckbxbfwm700046cwzniv9ixln" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-暑假开发踩坑记录" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/26/暑假开发踩坑记录/" class="article-date">
-  <time datetime="2019-06-26T03:06:15.000Z" itemprop="datePublished">2019-06-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/26/暑假开发踩坑记录/">暑假开发踩坑记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-版本更新带来的问题"><a href="#1-版本更新带来的问题" class="headerlink" title="1. 版本更新带来的问题"></a>1. 版本更新带来的问题</h2><p>首先，要将Android Studio、gradle都升级到最新的版本，具体做法可以是<br>help-&gt;check update<br>然后，如果在build的过程中遇到 app:compileDebugJavaWithJavac 的问题，<br>需要将第三方库”react-native”也更新到兼容的版本，具体做法可以是<br>file-&gt;project structure</p>
-<h2 id="2-调试者工具快捷键"><a href="#2-调试者工具快捷键" class="headerlink" title="2. 调试者工具快捷键"></a>2. 调试者工具快捷键</h2><p>Android模式下，ctrl+M</p>
-<h2 id="3-RN-app利用fetch从指定url中获取数据（GET方法）"><a href="#3-RN-app利用fetch从指定url中获取数据（GET方法）" class="headerlink" title="3. RN app利用fetch从指定url中获取数据（GET方法）"></a>3. RN app利用fetch从指定url中获取数据（GET方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url,&#123;method:<span class="string">'GET'</span>&#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;response.text())</span><br><span class="line">      .<span class="keyword">then</span>(responseText=&gt;&#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">          showText:responseText</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="4-利用fetch向服务器提交数据（POST方法）"><a href="#4-利用fetch向服务器提交数据（POST方法）" class="headerlink" title="4. 利用fetch向服务器提交数据（POST方法）"></a>4. 利用fetch向服务器提交数据（POST方法）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> data = new FormData()</span><br><span class="line">    data.append(<span class="string">"hello "</span>,<span class="string">"world!"</span>)</span><br><span class="line">    fetch(url,&#123;</span><br><span class="line">      method:<span class="string">'POST'</span>,</span><br><span class="line">      header:&#123;&#125;,</span><br><span class="line">      body:data</span><br><span class="line">  &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(response=&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(response.ok)&#123;</span><br><span class="line">          <span class="built_in">return</span> response.json();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">      .<span class="keyword">then</span>(json=&gt;&#123;</span><br><span class="line">          /*this.setState(&#123;</span><br><span class="line">              result:<span class="string">'Congratulation!'</span></span><br><span class="line">          &#125;);*/</span><br><span class="line">          alert(JSON.stringify(json));</span><br><span class="line">      &#125;)</span><br><span class="line">      .catch(error=&gt;&#123;</span><br><span class="line">          this.setState(&#123;</span><br><span class="line">              //result:JSON.stringify(error)</span><br><span class="line">              result:<span class="string">'What a pity!'</span></span><br><span class="line">          &#125;)</span><br><span class="line">      &#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="5-箭头函数"><a href="#5-箭头函数" class="headerlink" title="5. 箭头函数"></a>5. 箭头函数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X=&gt;X*X</span><br></pre></td></tr></table></figure>
-<p>等价于<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(X)</span><br><span class="line"><span class="built_in">return</span> X*X</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-使用本机服务器"><a href="#5-使用本机服务器" class="headerlink" title="5. 使用本机服务器"></a>5. 使用本机服务器</h2><p>在项目的根目录下运行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http-server</span><br></pre></td></tr></table></figure></p>
-<h2 id="6-解决“app-packageDebug”问题"><a href="#6-解决“app-packageDebug”问题" class="headerlink" title="6. 解决“app:packageDebug”问题"></a>6. 解决“app:packageDebug”问题</h2><p>build-&gt;clean project-&gt;rebuild</p>
-<h2 id="7-当出现“cannot-connect-to-development-server”而无法进行reload时"><a href="#7-当出现“cannot-connect-to-development-server”而无法进行reload时" class="headerlink" title="7. 当出现“cannot connect to development server”而无法进行reload时"></a>7. 当出现“cannot connect to development server”而无法进行reload时</h2><p>在AndroidManifest.xml文件中的application标签中加入一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:usesCleartextTraffic=<span class="string">"true"</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="8-以后查问题别用百度，用bing"><a href="#8-以后查问题别用百度，用bing" class="headerlink" title="8. 以后查问题别用百度，用bing"></a>8. 以后查问题别用百度，用bing</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/26/暑假开发踩坑记录/" data-id="ckbxbfwn7000s6cwz3msq2uu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/17/链表题/" data-id="ckc4v5z2w00137wwzalno7vx5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -677,7 +852,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -690,23 +865,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/27/每日一题/">每日一题</a>
+            <a href="/2020/07/02/Java-I-O/">Java-I/O</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+            <a href="/2020/07/01/Android提升/">Android提升</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/树/">树</a>
+            <a href="/2020/06/30/KMP算法/">KMP算法</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+            <a href="/2020/06/28/Java常用类库/">Java常用类库</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/singleton/">singleton</a>
+            <a href="/2020/06/28/Android总结/">Android总结</a>
           </li>
         
       </ul>

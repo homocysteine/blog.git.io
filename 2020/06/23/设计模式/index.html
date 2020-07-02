@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Homocysteine">
 <meta property="og:description" content="#MVP模式M-&amp;gt;Model;V-&amp;gt;View;P-&amp;gt;PresenterMVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示M数据处理（网络操作、数据库操作），V视图层显示，C交互处理MVC中view会直接从Model中读取数据，而不是ControllerMVP中View不会直接使用Model，它">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-23T09:06:23.326Z">
+<meta property="og:updated_time" content="2020-07-01T07:14:53.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式">
 <meta name="twitter:description" content="#MVP模式M-&amp;gt;Model;V-&amp;gt;View;P-&amp;gt;PresenterMVP从经典的MVC演变而来，与MVC类似Controller/Presenter负责逻辑的处理，Model负责提供数据，View负责显示M数据处理（网络操作、数据库操作），V视图层显示，C交互处理MVC中view会直接从Model中读取数据，而不是ControllerMVP中View不会直接使用Model，它">
@@ -106,11 +106,48 @@
 <li>具体实现，在Activity中主要编写UI逻辑，业务逻辑写在一个接口中，然后去实现这个接口</li>
 </ol>
 <p>##MVVM模式<br>MVVM将MVC的Controller改进成ViewModel<br>在MVVM框架下，View和Model是不能直接通信的<br>ViewModel能够监听两端的变化，“实现数据的双向绑定”</p>
+<p>重制</p>
+<p>#不用框架<br>所以逻辑代码都写在一个Activity中，Activity承担过多的任务<br>当项目代码增加时，activity将会变得愈发的臃肿，难以维护</p>
+<p>使用架构的目的是为了优化代码，提高开发和维护效率</p>
+<p>#MVC<br>对代码进行解耦，将数据的获取、页面的展示分隔开来<br>M-&gt;V-&gt;C-&gt;M 形成一个三角循环<br>Controller:Activity、Fragment 处理外部请求、处理业务逻辑<br>View：layout、View控件<br>Model：数据库、网络数据获取</p>
+<p>controller-&gt;Model 通过引用，Controller可以创建Model层的引用，来进行两层之间的通信<br>model-&gt;View 注册监听</p>
+<p>优点：一定程度上实现实现了Model和View的分离，增强了可维护性，降低耦合性<br>缺点：</p>
+<ol>
+<li>适合大项目，小项目容易过度开发</li>
+<li>Model和View并没有完全的实现隔离</li>
+<li>Controller与View没有完全解耦，随着业务量增加，Controller将会变得更加臃肿（Controlller通常指Activity，Activity兼顾了视图和业务量部分的工作）</li>
+</ol>
+<p>#MVP<br>Model<-->Presenter<-->View</--></--></p>
+<ol>
+<li>Model与View不再进行直接的通信，Presenter是两层通信的桥梁</li>
+<li>Activity充当view，主要负责视图层逻辑</li>
+<li>业务逻辑处理交给Presenter，Presenter持有Model和View的引用来进行通信</li>
+<li>通过重写接口函数来展示页面，方便每个Activity进行编写</li>
+<li>View通过Presenter的引用和Presenter进行通信<br>e.g. View层通过Presenter的引用调用Presenter的获取数据的方法，Presenter在方法中通过model的引用获取数据，在通过view的引用更新页面</li>
+</ol>
+<p>优点：</p>
+<ol>
+<li>使Model和View完全隔离</li>
+<li>解决了MVC中View和Controller过度耦合的缺点</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>需要编写很多的接口</li>
+<li>随着项目复杂度提高，Presenter将变得臃肿</li>
+</ol>
+<p>#MVVM</p>
+<ol>
+<li>通信图相同，只不过将Presenter改成了ViewModel</li>
+<li>在MVP的基础上，实现了数据的绑定（当数据发生变化时，视图自动更新；当视图发生变化时，数据也自动更新）</li>
+<li>减少了接口数量、控件引用数量</li>
+</ol>
+<p>#数据绑定<br>DataBinding是谷歌官方发布的一个数据绑定框架，实现数据与视图的数据绑定</p>
+<p>优点：实现双向绑定，极大简化了代码。减少了接口、引用数量。<br>缺点：数据绑定还不成熟</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/23/设计模式/" data-id="ckbxbfwna000u6cwzopgnza51" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/23/设计模式/" data-id="ckc4v5z2v00127wwzilumi519" class="article-share-link">Share</a>
       
       
     </footer>
@@ -155,7 +192,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li></ul>
     </div>
   </div>
 
@@ -168,23 +205,23 @@
       <ul>
         
           <li>
-            <a href="/2020/06/27/每日一题/">每日一题</a>
+            <a href="/2020/07/02/Java-I-O/">Java-I/O</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/Android开发屏幕显示/">Android开发屏幕显示</a>
+            <a href="/2020/07/01/Android提升/">Android提升</a>
           </li>
         
           <li>
-            <a href="/2020/06/26/树/">树</a>
+            <a href="/2020/06/30/KMP算法/">KMP算法</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/abstract-class-and-interface/">abstract class and interface</a>
+            <a href="/2020/06/28/Java常用类库/">Java常用类库</a>
           </li>
         
           <li>
-            <a href="/2020/06/25/singleton/">singleton</a>
+            <a href="/2020/06/28/Android总结/">Android总结</a>
           </li>
         
       </ul>
